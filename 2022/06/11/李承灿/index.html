@@ -22,7 +22,7 @@
 
   
 
-  <title>Hello World | Hexo</title>
+  <title>Hexo</title>
 
   
 
@@ -96,11 +96,11 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">Hello World</h1>
+          <h1 class="title-wrap"></h1>
           <h2 class="title-sub-wrap">
             <strong>John Doe</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2022-06-11T07:26:14.373Z" itemprop="datePublished">2022-06-11</time>
+            <time  class="article-date" datetime="2022-06-11T07:42:13.281Z" itemprop="datePublished">2022-06-11</time>
           </h2>
           <ul class="wrap-list dark">
   
@@ -129,19 +129,30 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+        <h1 id="李承灿"><a href="#李承灿" class="headerlink" title="李承灿"></a>李承灿</h1><h2 id="Maven方式创建SpringBoot项目"><a href="#Maven方式创建SpringBoot项目" class="headerlink" title="Maven方式创建SpringBoot项目"></a><a href="">Maven方式创建SpringBoot项目</a></h2><p>1）创建maven项目（file&gt; new &gt; project），点击NEXT下一步</p>
+ <img width="624" alt="image" src="https://user-images.githubusercontent.com/82929061/172011035-6515fb1b-134d-4c1d-a2c4-532304bbd4db.png">
+2）编辑好项目的信息，点击finish完成，在新窗口打开
+<img width="603" alt="image" src="https://user-images.githubusercontent.com/82929061/172011646-f1e32595-4d56-4ecb-a3ab-56764a3d36dd.png">
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>3）配置项目的pom.xm文件</p>
+<p> 这是刚创建好的maven空项目，我们可以给他配置成为一个springboot项目<br><img width="735" alt="image" src="https://user-images.githubusercontent.com/82929061/172011686-a60f9134-2185-44aa-8c9e-6aca79cf6973.png"></p>
+<h3 id="父工程依赖"><a href="#父工程依赖" class="headerlink" title="父工程依赖"></a>父工程依赖</h3><p><code> &lt;parent&gt;         &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;         &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;         &lt;version&gt;2.5.2&lt;/version&gt;         &lt;relativePath/&gt;     &lt;/parent&gt;</code></p>
+<h3 id="Spring-Web依赖"><a href="#Spring-Web依赖" class="headerlink" title="Spring Web依赖"></a>Spring Web依赖</h3><p><code> &lt;dependency&gt;             &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;             &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;         &lt;/dependency&gt;</code></p>
+<h3 id="写项目的启动类"><a href="#写项目的启动类" class="headerlink" title="写项目的启动类"></a>写项目的启动类</h3><p><code>@SpringBootApplication public class WuziApplication &#123;     public static void main(String[] args) &#123;         SpringApplication.run(WuziApplication.class,args);     &#125; &#125;</code></p>
+<h3 id="关闭eslint校验"><a href="#关闭eslint校验" class="headerlink" title="关闭eslint校验"></a>关闭eslint校验</h3><p><code>module.exports=&#123;   lintOnSave:false &#125;</code></p>
+<h1 id="Header-1"><a href="#Header-1" class="headerlink" title="Header 1"></a>Header 1</h1><h2 id="Header-2"><a href="#Header-2" class="headerlink" title="Header 2"></a>Header 2</h2><h3 id="Header-3"><a href="#Header-3" class="headerlink" title="Header 3"></a>Header 3</h3><ul>
+<li>Bulleted</li>
+<li>List</li>
+</ul>
+<ol>
+<li>Numbered</li>
+<li>List</li>
+</ol>
+<p><strong>Bold</strong> and <em>Italic</em> and <code>Code</code> text</p>
+<p><a href="url">Link</a> and <img src="/src" alt="Image"></p>
+<p>&#96;&#96;&#96;</p>
+<p>For more details see <a target="_blank" rel="noopener" href="https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax">Basic writing and formatting syntax</a>.</p>
+<h3 id="Support-or-Contact"><a href="#Support-or-Contact" class="headerlink" title="Support or Contact"></a>Support or Contact</h3><p>Having trouble with Pages? Check out our <a target="_blank" rel="noopener" href="https://docs.github.com/categories/github-pages-basics/">documentation</a> or <a target="_blank" rel="noopener" href="https://support.github.com/contact">contact support</a> and we’ll help you sort it out.</p>
 
       </section>
 
@@ -149,20 +160,20 @@
       
         <nav class="article-nav">
           
+          
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
     <div class="card-text">
       
-        <a href="/2022/06/11/%E6%9D%8E%E6%89%BF%E7%81%BF/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">(no title)</h2>
+        <a href="/2022/06/11/hello-world/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">Hello World</h2>
         </a>
       
-      <div class="card-text--row">Newer</div>
+      <div class="card-text--row">Older</div>
     </div>
   </article>
 </div>
-          
           
         </nav>
       
