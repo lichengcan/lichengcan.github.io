@@ -22,7 +22,7 @@
 
   
 
-  <title>解除ssl验证 | CCNAIVE</title>
+  <title>JWTUtils | CCNAIVE</title>
 
   
 
@@ -96,15 +96,13 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">解除ssl验证</h1>
+          <h1 class="title-wrap">JWTUtils</h1>
           <h2 class="title-sub-wrap">
             <strong>lichengcan</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2022-06-10T07:26:38.000Z" itemprop="datePublished">2022-06-10</time>
+            <time  class="article-date" datetime="2022-07-09T09:10:38.000Z" itemprop="datePublished">2022-07-09</time>
           </h2>
           <ul class="wrap-list dark">
-  
-    <li><a href="/categories/%E9%97%AE%E9%A2%98/">📒 问题</a></li>
   
 </ul>
           <ul class="wrap-list dark">
@@ -131,7 +129,10 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <p><code>git config --global http.sslVerify &quot;false&quot;</code></p>
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;shiro-spring&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.3.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.auth0&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;java-jwt&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.2.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Author lichengcan</span><br><span class="line"> * @Date 2020/3/1 09:18</span><br><span class="line"> * @Version 1.0</span><br><span class="line"> **/</span><br><span class="line"></span><br><span class="line">import com.auth0.jwt.JWT;</span><br><span class="line">import com.auth0.jwt.JWTVerifier;</span><br><span class="line">import com.auth0.jwt.algorithms.Algorithm;</span><br><span class="line">import com.auth0.jwt.exceptions.JWTDecodeException;</span><br><span class="line">import com.auth0.jwt.interfaces.DecodedJWT;</span><br><span class="line"></span><br><span class="line">import java.io.UnsupportedEncodingException;</span><br><span class="line">import java.util.Date;</span><br><span class="line"></span><br><span class="line">public class JWTUtils &#123;</span><br><span class="line">    /**</span><br><span class="line">     * 过期时间6小时</span><br><span class="line">     */</span><br><span class="line">    private static final long EXPIRE_TIME = 6 * 60 * 60 * 1000;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 校验token是否正确</span><br><span class="line">     *</span><br><span class="line">     * @param token  密钥</span><br><span class="line">     * @param secret 用户的密码</span><br><span class="line">     * @return 是否正确</span><br><span class="line">     */</span><br><span class="line">    public static boolean verify(String token, String username, String secret) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            Algorithm algorithm = Algorithm.HMAC256(secret);</span><br><span class="line">            JWTVerifier verifier = JWT.require(algorithm)</span><br><span class="line">                    .withClaim(&quot;username&quot;, username)</span><br><span class="line">                    .build();</span><br><span class="line">            DecodedJWT jwt = verifier.verify(token);</span><br><span class="line">            return true;</span><br><span class="line">        &#125; catch (Exception exception) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 获得token中的信息无需secret解密也能获得</span><br><span class="line">     *</span><br><span class="line">     * @return token中包含的用户名</span><br><span class="line">     */</span><br><span class="line">    public static String getUsername(String token) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            DecodedJWT jwt = JWT.decode(token);</span><br><span class="line">            return jwt.getClaim(&quot;username&quot;).asString();</span><br><span class="line">        &#125; catch (JWTDecodeException e) &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 生成签名,2min后过期</span><br><span class="line">     *</span><br><span class="line">     * @param username 用户名</span><br><span class="line">     * @param secret   用户的密码</span><br><span class="line">     * @return 加密的token</span><br><span class="line">     */</span><br><span class="line">    public static String sign(String username, String secret) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);</span><br><span class="line">            Algorithm algorithm = Algorithm.HMAC256(secret);</span><br><span class="line">            // 附带username信息</span><br><span class="line">            return JWT.create()</span><br><span class="line">                    .withClaim(&quot;username&quot;, username)</span><br><span class="line">                    .withExpiresAt(date)</span><br><span class="line">                    .sign(algorithm);</span><br><span class="line">        &#125; catch (UnsupportedEncodingException e) &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 判断过期</span><br><span class="line">     *</span><br><span class="line">     * @param token</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    public static boolean isExpire(String token) &#123;</span><br><span class="line">        DecodedJWT jwt = JWT.decode(token);</span><br><span class="line">        return System.currentTimeMillis() &gt; jwt.getExpiresAt().getTime();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 
       </section>
 
@@ -144,8 +145,8 @@
     
     <div class="card-text">
       
-        <a href="/2022/06/11/hello-world/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">何事秋风悲画扇</h2>
+        <a href="/2022/07/12/Java%E6%93%8D%E4%BD%9Cexcel/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">Java读取excel数据</h2>
         </a>
       
       <div class="card-text--row">Newer</div>
@@ -159,8 +160,8 @@
     
     <div class="card-text">
       
-        <a href="/2022/04/18/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">vue3.0快速上手</h2>
+        <a href="/2022/07/09/IP%E5%9C%B0%E5%9D%80%E6%9D%A5%E6%BA%90/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">IP地址来源</h2>
         </a>
       
       <div class="card-text--row">Older</div>
