@@ -22,7 +22,7 @@
 
   
 
-  <title>何为 ACID 特性呢？ | CCNAIVE</title>
+  <title>IP地址来源 | CCNAIVE</title>
 
   
 
@@ -96,11 +96,11 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">何为 ACID 特性呢？</h1>
+          <h1 class="title-wrap">IP地址来源</h1>
           <h2 class="title-sub-wrap">
             <strong>lichengcan</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2022-06-15T07:25:38.000Z" itemprop="datePublished">2022-06-15</time>
+            <time  class="article-date" datetime="2022-07-09T09:05:38.000Z" itemprop="datePublished">2022-07-09</time>
           </h2>
           <ul class="wrap-list dark">
   
@@ -129,12 +129,10 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <h3 id="何为-ACID-特性呢？"><a href="#何为-ACID-特性呢？" class="headerlink" title="何为 ACID 特性呢？"></a><a target="_blank" rel="noopener" href="https://snailclimb.gitee.io/javaguide/#/docs/database/mysql/mysql-questions-01?id=%E4%BD%95%E4%B8%BA-acid-%E7%89%B9%E6%80%A7%E5%91%A2%EF%BC%9F">何为 ACID 特性呢？</a></h3><ol>
-<li><strong>原子性</strong>（<code>Atomicity</code>） ： 事务是最小的执行单位，不允许分割。事务的原子性确保动作要么全部完成，要么完全不起作用；</li>
-<li><strong>一致性</strong>（<code>Consistency</code>）： 执行事务前后，数据保持一致，例如转账业务中，无论事务是否成功，转账者和收款人的总额应该是不变的；</li>
-<li><strong>隔离性</strong>（<code>Isolation</code>）： 并发访问数据库时，一个用户的事务不被其他事务所干扰，各并发事务之间数据库是独立的；</li>
-<li><strong>持久性</strong>（<code>Durability</code>）： 一个事务被提交之后。它对数据库中数据的改变是持久的，即使数据库发生故障也不应该对其有任何影响。</li>
-</ol>
+        <h6 id="IP地址来源"><a href="#IP地址来源" class="headerlink" title="IP地址来源"></a>IP地址来源</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">需要依赖</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.lionsoul&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;ip2region&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;1.7&lt;/version&gt;</span><br><span class="line">  &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">import org.apache.commons.io.FileUtils;</span><br><span class="line">import org.lionsoul.ip2region.DataBlock;</span><br><span class="line">import org.lionsoul.ip2region.DbConfig;</span><br><span class="line">import org.lionsoul.ip2region.DbSearcher;</span><br><span class="line">import org.lionsoul.ip2region.Util;</span><br><span class="line">import org.slf4j.Logger;</span><br><span class="line">import org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line">import java.io.File;</span><br><span class="line">import java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author MrBird</span><br><span class="line"> */</span><br><span class="line">public class AddressUtil &#123;</span><br><span class="line"></span><br><span class="line">    private static Logger log = LoggerFactory.getLogger(AddressUtil.class);</span><br><span class="line"></span><br><span class="line">    public static String getCityInfo(String ip)&#123;</span><br><span class="line"></span><br><span class="line">        File file;</span><br><span class="line">        try &#123;</span><br><span class="line">            //db</span><br><span class="line">            String dbPath = AddressUtil.class.getResource(&quot;/ip2region/ip2region.db&quot;).getPath();</span><br><span class="line">             file= new File(dbPath);</span><br><span class="line">            if (file.exists() == false) &#123;</span><br><span class="line">                String tmpDir = System.getProperties().getProperty(&quot;java.io.tmpdir&quot;);</span><br><span class="line">                dbPath = tmpDir + &quot;ip.db&quot;;</span><br><span class="line">                file = new File(dbPath);</span><br><span class="line">                FileUtils.copyInputStreamToFile(AddressUtil.class.getClassLoader().getResourceAsStream(&quot;classpath:ip2region/ip2region.db&quot;), file);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            //查询算法</span><br><span class="line">            int algorithm = DbSearcher.BTREE_ALGORITHM; //B-tree</span><br><span class="line">            //DbSearcher.BINARY_ALGORITHM //Binary</span><br><span class="line">            //DbSearcher.MEMORY_ALGORITYM //Memory</span><br><span class="line">            try &#123;</span><br><span class="line">                DbConfig config = new DbConfig();</span><br><span class="line">                DbSearcher searcher = new DbSearcher(config, dbPath);</span><br><span class="line"></span><br><span class="line">                //define the method</span><br><span class="line">                Method method = null;</span><br><span class="line">                switch (algorithm) &#123;</span><br><span class="line">                    case DbSearcher.BTREE_ALGORITHM:</span><br><span class="line">                        method = searcher.getClass().getMethod(&quot;btreeSearch&quot;, String.class);</span><br><span class="line">                        break;</span><br><span class="line">                    case DbSearcher.BINARY_ALGORITHM:</span><br><span class="line">                        method = searcher.getClass().getMethod(&quot;binarySearch&quot;, String.class);</span><br><span class="line">                        break;</span><br><span class="line">                    case DbSearcher.MEMORY_ALGORITYM:</span><br><span class="line">                        method = searcher.getClass().getMethod(&quot;memorySearch&quot;, String.class);</span><br><span class="line">                        break;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                DataBlock dataBlock = null;</span><br><span class="line">                if (Util.isIpAddress(ip) == false) &#123;</span><br><span class="line">                    System.out.println(&quot;Error: Invalid ip address&quot;);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                dataBlock = (DataBlock) method.invoke(searcher, ip);</span><br><span class="line"></span><br><span class="line">                return dataBlock.getRegion();</span><br><span class="line"></span><br><span class="line">            &#125; catch (Exception e) &#123;</span><br><span class="line">               // e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;catch (Exception e) &#123;</span><br><span class="line">            //e.printStackTrace();</span><br><span class="line">        &#125;finally &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void main(String[] args)  throws Exception&#123;</span><br><span class="line">        System.err.println(getCityInfo(&quot;127.0.0.1&quot;));</span><br><span class="line">        System.err.println(getCityInfo(&quot;17.1.1.3&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 
       </section>
 
@@ -147,8 +145,8 @@
     
     <div class="card-text">
       
-        <a href="/2022/06/26/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%B6%E5%8C%BA/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">数据库时区设置</h2>
+        <a href="/2022/07/09/JWTUtils/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">JWTUtils</h2>
         </a>
       
       <div class="card-text--row">Newer</div>
@@ -162,8 +160,8 @@
     
     <div class="card-text">
       
-        <a href="/2022/06/10/%E8%A7%A3%E9%99%A4SSL%E8%AE%A4%E8%AF%81/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">解除ssl验证</h2>
+        <a href="/2022/07/09/%E5%88%9B%E5%BB%BA%E9%AA%8C%E8%AF%81%E7%A0%81/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">创建验证码</h2>
         </a>
       
       <div class="card-text--row">Older</div>
