@@ -22,7 +22,7 @@
 
   
 
-  <title>常用linux命令 | CCNAIVE</title>
+  <title>java中list.add添加元素覆盖之前的问题 | CCNAIVE</title>
 
   
 
@@ -96,16 +96,20 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">常用linux命令</h1>
+          <h1 class="title-wrap">java中list.add添加元素覆盖之前的问题</h1>
           <h2 class="title-sub-wrap">
             <strong>lichengcan</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2022-07-12T08:10:38.000Z" itemprop="datePublished">2022-07-12</time>
+            <time  class="article-date" datetime="2022-07-14T08:53:38.000Z" itemprop="datePublished">2022-07-14</time>
           </h2>
           <ul class="wrap-list dark">
   
+    <li><a href="/categories/%E5%90%8E%E7%AB%AF/">📒 后端</a></li>
+  
 </ul>
           <ul class="wrap-list dark">
+  
+    <li><a href="/tags/%E9%9B%86%E5%90%88add%E8%A6%86%E7%9B%96%E4%B9%8B%E5%89%8D%E7%9A%84%E9%97%AE%E9%A2%98/">🏷️ 集合add覆盖之前的问题</a></li>
   
 </ul>
         </div>
@@ -129,10 +133,11 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">1.显示当前所有java进程pid的命令：jps</span><br><span class="line">2.查找文件或文件夹目录</span><br><span class="line">查找目录：find /（查找范围） -name &#x27;查找关键字&#x27; -type d</span><br><span class="line">查找文件：find /（查找范围） -name 查找关键字 -print</span><br><span class="line">例如：find / -name &#x27;user&#x27; -print</span><br><span class="line">3. 重命名文件或文件夹</span><br><span class="line">mv filename1 filename2</span><br><span class="line">4.rz / sz命令</span><br><span class="line">用于在本地和Linux服务器之间上传下载文件，但是很多Linux系统初始并没有这两个命令。</span><br><span class="line">lrzsz是一个unix通信套件提供的X，Y，和ZModem文件传输协议</span><br><span class="line">需要先安装：yum install lrzsz</span><br><span class="line">sz命令下载文件到本地：sz filename</span><br><span class="line">rz命令本地上传文件到服务器：rz</span><br><span class="line">5.删除文件</span><br><span class="line">rm -f 文件名</span><br><span class="line">6.查看进程</span><br><span class="line">ps -ef | grep 服务名称</span><br><span class="line">7.杀死进程</span><br><span class="line">kill -9 pid （pid为进程的ID ）</span><br><span class="line">例如：</span><br><span class="line">8.停止/启动服务命令</span><br><span class="line">./bin.sh stop</span><br><span class="line">./bin.sh start</span><br><span class="line">9.查看日志</span><br><span class="line">tail -f 日志文件名 | grep 关键字 | grep 关键字</span><br><span class="line">tail -f -n 100 日志文件 （实时打印最新的100条日志信息）</span><br></pre></td></tr></table></figure>
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;Object&gt; list  = new ArrayList&lt;Object&gt;();</span><br><span class="line">//在循环外定义一个对象</span><br><span class="line">Object obj;</span><br><span class="line">for (int i = 10; i &gt; 0; i--) &#123;</span><br><span class="line">	//给对象赋值</span><br><span class="line"> 	objt.set(i);</span><br><span class="line">    //把对象add到集合中</span><br><span class="line">    list.add(obj);</span><br><span class="line">    /*会发现list存放的obj的数都是1*/</span><br><span class="line">    </span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>在循环内定义对象</p>
 
       </section>
 
@@ -140,28 +145,14 @@
       
         <nav class="article-nav">
           
-            <div class="article-nav-item layout-padding">
-  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
-    
-    <div class="card-text">
-      
-        <a href="/2022/07/14/Java%E8%AF%BB%E5%8F%96geojson%E6%95%B0%E6%8D%AE/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">Java获取url返回数据</h2>
-        </a>
-      
-      <div class="card-text--row">Newer</div>
-    </div>
-  </article>
-</div>
-          
           
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
     <div class="card-text">
       
-        <a href="/2022/07/12/Java%E6%93%8D%E4%BD%9Cexcel/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">Java读取excel数据</h2>
+        <a href="/2022/07/14/GeoJson%E5%92%8CWkt%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">Java中GeoJson和Wtk格式转换</h2>
         </a>
       
       <div class="card-text--row">Older</div>
