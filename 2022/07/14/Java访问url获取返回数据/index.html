@@ -22,7 +22,7 @@
 
   
 
-  <title>数据库时区设置 | CCNAIVE</title>
+  <title>Java获取url返回数据 | CCNAIVE</title>
 
   
 
@@ -96,16 +96,20 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">数据库时区设置</h1>
+          <h1 class="title-wrap">Java获取url返回数据</h1>
           <h2 class="title-sub-wrap">
             <strong>lichengcan</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2022-06-26T03:11:38.000Z" itemprop="datePublished">2022-06-26</time>
+            <time  class="article-date" datetime="2022-07-14T03:21:38.000Z" itemprop="datePublished">2022-07-14</time>
           </h2>
           <ul class="wrap-list dark">
   
+    <li><a href="/categories/%E5%90%8E%E7%AB%AF/">📒 后端</a></li>
+  
 </ul>
           <ul class="wrap-list dark">
+  
+    <li><a href="/tags/Java%E8%8E%B7%E5%8F%96url/">🏷️ Java获取url</a></li>
   
 </ul>
         </div>
@@ -129,35 +133,24 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;serverTimezone=Asia/Shanghai</span><br></pre></td></tr></table></figure>
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * HTTP 请求模板</span><br><span class="line"> *</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">@Bean(&quot;restTemplate&quot;)</span><br><span class="line">public RestTemplate restTemplate() &#123;</span><br><span class="line">    SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();</span><br><span class="line"></span><br><span class="line">    //单位为ms</span><br><span class="line">    factory.setReadTimeout(60000);</span><br><span class="line">    factory.setConnectTimeout(60000);</span><br><span class="line">    return new RestTemplate(factory);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/data&quot;)</span><br><span class="line">public class DataHandleController &#123;</span><br><span class="line"></span><br><span class="line">	@Autowired</span><br><span class="line">    RestTemplate restTemplate;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;/getData&quot;)</span><br><span class="line">    public ResultMap getData() &#123;</span><br><span class="line">        String url = &quot;https://ldjsc.data.suqian.gov.cn//internalProcess/analyse/queryList&quot;;</span><br><span class="line">        HttpHeaders headers = new HttpHeaders();</span><br><span class="line">        headers.setContentType(MediaType.APPLICATION_JSON);</span><br><span class="line">//      设置请求参数</span><br><span class="line">        HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">        map.put(&quot;authCode&quot;, &quot;1&quot;);</span><br><span class="line">        //用HttpEntity封装整个请求报文</span><br><span class="line">        HttpEntity&lt;HashMap&lt;String, Object&gt;&gt; request = new HttpEntity&lt;&gt;(map, headers);</span><br><span class="line"></span><br><span class="line">//        开始调用</span><br><span class="line">//        参数1：目标请求地址</span><br><span class="line">//        参数2：请求体</span><br><span class="line">//        参数3：目标请求接口的返回值类型（execute接口的返回值类型）</span><br><span class="line">        Map resultMap = restTemplate.postForObject(url, request, Map.class);</span><br><span class="line">        List&lt;Map&gt; dataList = (List&lt;Map&gt;) resultMap.get(&quot;data&quot;);</span><br><span class="line"></span><br><span class="line">        List&lt;Map&gt; mapResult = new ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        for (Map parentMap : dataList) &#123;</span><br><span class="line">            List&lt;Map&gt; mapList = (List&lt;Map&gt;) parentMap.get(&quot;judgmentList&quot;);</span><br><span class="line">            //获取parentMap名称</span><br><span class="line">            String name = (String) parentMap.get(&quot;name&quot;);</span><br><span class="line">            for (Map sonMap : mapList) &#123;</span><br><span class="line">                sonMap.put(&quot;name&quot;,name);</span><br><span class="line">                mapResult.add(sonMap);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        List&lt;Map&gt; sellAmount = mapResult.stream().sorted(Comparator.comparing((Map x) -&gt; (Integer) x.get(&quot;id&quot;)).reversed()).collect(Collectors.toList());</span><br><span class="line">        return Result.success(sellAmount);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
       </section>
 
       
       
         <nav class="article-nav">
           
-            <div class="article-nav-item layout-padding">
-  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
-    
-    <div class="card-text">
-      
-        <a href="/2022/06/28/redis%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">redis的使用</h2>
-        </a>
-      
-      <div class="card-text--row">Newer</div>
-    </div>
-  </article>
-</div>
-          
           
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
     <div class="card-text">
       
-        <a href="/2022/06/15/ACID%E6%95%B0%E6%8D%AE%E5%BA%93%E7%89%B9%E6%80%A7/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">何为 ACID 特性呢？</h2>
+        <a href="/2022/07/14/Java%E8%AF%BB%E5%8F%96geojson%E6%95%B0%E6%8D%AE/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">Java获取url返回数据</h2>
         </a>
       
       <div class="card-text--row">Older</div>
