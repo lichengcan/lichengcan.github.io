@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="IP地址来源, 李承灿">
+    <meta name="keywords" content="redis 中List学习, 李承灿">
     <meta name="description" content="李承灿的blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>IP地址来源 | CCNAIVE</title>
+    <title>redis 中List学习 | CCNAIVE</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">IP地址来源</h1>
+                    <h1 class="description center-align post-title">redis 中List学习</h1>
                 </div>
             </div>
         </div>
@@ -431,8 +431,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/">
-                                <span class="chip bg-color">工具类</span>
+                            <a href="/tags/redis/">
+                                <span class="chip bg-color">redis</span>
                             </a>
                         
                     </div>
@@ -443,8 +443,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
-                                后端
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                数据库
                             </a>
                         
                     </div>
@@ -456,7 +456,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-07-09
+                    2022-07-25
                 </div>
                 
 
@@ -477,17 +477,17 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="IP地址来源"><a href="#IP地址来源" class="headerlink" title="IP地址来源"></a>IP地址来源</h1><blockquote>
-<pre><code>1.导入工具类
-  &lt;dependency&gt;
-        &lt;groupId&gt;org.lionsoul&lt;/groupId&gt;
-        &lt;artifactId&gt;ip2region&lt;/artifactId&gt;
-        &lt;version&gt;1.7&lt;/version&gt;
-    &lt;/dependency&gt;
-</code></pre>
+                <h2 id="Redis-List列表"><a href="#Redis-List列表" class="headerlink" title="Redis List列表"></a>Redis List列表</h2><blockquote>
+<p>是简单的字符串列表，按顺序插入</p>
+<p>底层实现是双向链表，两端操作性能高，中间操作性能很低</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">import org.apache.commons.io.FileUtils;</span><br><span class="line">import org.lionsoul.ip2region.DataBlock;</span><br><span class="line">import org.lionsoul.ip2region.DbConfig;</span><br><span class="line">import org.lionsoul.ip2region.DbSearcher;</span><br><span class="line">import org.lionsoul.ip2region.Util;</span><br><span class="line">import org.slf4j.Logger;</span><br><span class="line">import org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line">import java.io.File;</span><br><span class="line">import java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author MrBird</span><br><span class="line"> */</span><br><span class="line">public class AddressUtil &#123;</span><br><span class="line"></span><br><span class="line">    private static Logger log = LoggerFactory.getLogger(AddressUtil.class);</span><br><span class="line"></span><br><span class="line">    public static String getCityInfo(String ip)&#123;</span><br><span class="line"></span><br><span class="line">        File file;</span><br><span class="line">        try &#123;</span><br><span class="line">            //db</span><br><span class="line">            String dbPath = AddressUtil.class.getResource(&quot;/ip2region/ip2region.db&quot;).getPath();</span><br><span class="line">             file= new File(dbPath);</span><br><span class="line">            if (file.exists() == false) &#123;</span><br><span class="line">                String tmpDir = System.getProperties().getProperty(&quot;java.io.tmpdir&quot;);</span><br><span class="line">                dbPath = tmpDir + &quot;ip.db&quot;;</span><br><span class="line">                file = new File(dbPath);</span><br><span class="line">                FileUtils.copyInputStreamToFile(AddressUtil.class.getClassLoader().getResourceAsStream(&quot;classpath:ip2region/ip2region.db&quot;), file);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            //查询算法</span><br><span class="line">            int algorithm = DbSearcher.BTREE_ALGORITHM; //B-tree</span><br><span class="line">            //DbSearcher.BINARY_ALGORITHM //Binary</span><br><span class="line">            //DbSearcher.MEMORY_ALGORITYM //Memory</span><br><span class="line">            try &#123;</span><br><span class="line">                DbConfig config = new DbConfig();</span><br><span class="line">                DbSearcher searcher = new DbSearcher(config, dbPath);</span><br><span class="line"></span><br><span class="line">                //define the method</span><br><span class="line">                Method method = null;</span><br><span class="line">                switch (algorithm) &#123;</span><br><span class="line">                    case DbSearcher.BTREE_ALGORITHM:</span><br><span class="line">                        method = searcher.getClass().getMethod(&quot;btreeSearch&quot;, String.class);</span><br><span class="line">                        break;</span><br><span class="line">                    case DbSearcher.BINARY_ALGORITHM:</span><br><span class="line">                        method = searcher.getClass().getMethod(&quot;binarySearch&quot;, String.class);</span><br><span class="line">                        break;</span><br><span class="line">                    case DbSearcher.MEMORY_ALGORITYM:</span><br><span class="line">                        method = searcher.getClass().getMethod(&quot;memorySearch&quot;, String.class);</span><br><span class="line">                        break;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                DataBlock dataBlock = null;</span><br><span class="line">                if (Util.isIpAddress(ip) == false) &#123;</span><br><span class="line">                    System.out.println(&quot;Error: Invalid ip address&quot;);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                dataBlock = (DataBlock) method.invoke(searcher, ip);</span><br><span class="line"></span><br><span class="line">                return dataBlock.getRegion();</span><br><span class="line"></span><br><span class="line">            &#125; catch (Exception e) &#123;</span><br><span class="line">               // e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;catch (Exception e) &#123;</span><br><span class="line">            //e.printStackTrace();</span><br><span class="line">        &#125;finally &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void main(String[] args)  throws Exception&#123;</span><br><span class="line">        System.err.println(getCityInfo(&quot;127.0.0.1&quot;));</span><br><span class="line">        System.err.println(getCityInfo(&quot;17.1.1.3&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+<h3 id="放值"><a href="#放值" class="headerlink" title="放值"></a>放值</h3><blockquote>
+<p>lpush k1 v1 v2 v3 从左边放数据 rpush</p>
+</blockquote>
+<h3 id="取值，取完就没有了"><a href="#取值，取完就没有了" class="headerlink" title="取值，取完就没有了"></a>取值，取完就没有了</h3><blockquote>
+<p>lpop rpop 从左边、右边取值 取出来就没有了？是的</p>
+</blockquote>
+<h2 id="针对list操作"><a href="#针对list操作" class="headerlink" title="针对list操作"></a>针对list操作</h2><p><img src="C:\Users\lichengcan\AppData\Roaming\Typora\typora-user-images\image-20220725113514562.png" alt="image-20220725113514562"></p>
 
                 
             </div>
@@ -514,7 +514,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://lichengcan.github.io/2022/07/09/IP%E5%9C%B0%E5%9D%80%E6%9D%A5%E6%BA%90/">https://lichengcan.github.io/2022/07/09/IP%E5%9C%B0%E5%9D%80%E6%9D%A5%E6%BA%90/</a>
+                    <a href="https://lichengcan.github.io/2022/07/25/redis%E4%B8%ADList%E7%B1%BB%E5%9E%8B%E5%AD%A6%E4%B9%A0/">https://lichengcan.github.io/2022/07/25/redis%E4%B8%ADList%E7%B1%BB%E5%9E%8B%E5%AD%A6%E4%B9%A0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -552,8 +552,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/">
-                                    <span class="chip bg-color">工具类</span>
+                                <a href="/tags/redis/">
+                                    <span class="chip bg-color">redis</span>
                                 </a>
                             
                         </div>
@@ -723,17 +723,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2022/07/09/JWTUtils/">
+                <a href="/2022/07/25/redis%E4%B8%ADList%E7%B1%BB%E5%9E%8B%E5%AD%A6%E4%B9%A0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="JWTUtils">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="redis 中List学习">
                         
-                        <span class="card-title">JWTUtils</span>
+                        <span class="card-title">redis 中List学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -743,26 +744,27 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
-                                    后端
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/">
-                        <span class="chip bg-color">工具类</span>
+                    <a href="/tags/redis/">
+                        <span class="chip bg-color">redis</span>
                     </a>
                     
                 </div>
@@ -776,13 +778,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/07/09/%E5%88%9B%E5%BB%BA%E9%AA%8C%E8%AF%81%E7%A0%81/">
+                <a href="/2022/07/24/redis%E5%AD%A6%E4%B9%A0-Stirng%E7%B1%BB%E5%9E%8B/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="创建验证码">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="redis学习Key,String类型">
                         
-                        <span class="card-title">创建验证码</span>
+                        <span class="card-title">redis学习Key,String类型</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -793,15 +795,27 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-24
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            lichengcan
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/redis/">
+                        <span class="chip bg-color">redis</span>
+                    </a>
+                    
                 </div>
                 
             </div>
