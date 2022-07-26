@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="redis中Hash结构学习, 李承灿">
+    <meta name="keywords" content="redis中Zset有序集合学习, 李承灿">
     <meta name="description" content="李承灿的blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>redis中Hash结构学习 | CCNAIVE</title>
+    <title>redis中Zset有序集合学习 | CCNAIVE</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">redis中Hash结构学习</h1>
+                    <h1 class="description center-align post-title">redis中Zset有序集合学习</h1>
                 </div>
             </div>
         </div>
@@ -477,18 +477,23 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Redis-Hash-哈希"><a href="#Redis-Hash-哈希" class="headerlink" title="Redis Hash 哈希"></a>Redis Hash 哈希</h1><p>1.键值对集合</p>
-<blockquote>
-<p>1.hset key field value </p>
+                <h1 id="Redis有序集合Zset-（sorted-set）"><a href="#Redis有序集合Zset-（sorted-set）" class="headerlink" title="Redis有序集合Zset （sorted set）"></a>Redis有序集合Zset （sorted set）</h1><blockquote>
+<p>没有重复元素的有序集合</p>
 </blockquote>
-<p><code>hset k1 user1:001 name lichengcan age 18</code></p>
-<p><code>hget k1 user1:001 name</code></p>
-<p><code>hget k1 user1:001 age</code></p>
-<h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><p><img src="https://user-images.githubusercontent.com/82929061/180906619-35c61b34-6e0d-4361-90eb-6c82acafcfdb.png" alt="image"></p>
-<h3 id="对象存储"><a href="#对象存储" class="headerlink" title="对象存储"></a>对象存储</h3><p><img src="https://user-images.githubusercontent.com/82929061/180905695-aa616b57-d2bb-4f67-a101-df1584c27bdb.png" alt="image"></p>
-<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><blockquote>
-<p>Hash 类型对应数据结构两种：zipList 压缩列表，hashTable 哈希表，当field-value长度较短且个数较少时，使用zipList，否则使用HashTable</p>
-</blockquote>
+<ul>
+<li><p>zadd key score1 value1 score2 value2</p>
+</li>
+<li><p>zrange key 0 -1 进行排序输出</p>
+</li>
+<li><p>zrange key start stop withscores</p>
+<p><img src="https://user-images.githubusercontent.com/82929061/180908324-df6acc56-bd5f-4b71-a39c-c07bf1ac2ffc.png" alt="image"></p>
+<p>**</p>
+<p><img src="https://user-images.githubusercontent.com/82929061/180908437-8b796552-34eb-49ea-883c-23ff40eb6601.png" alt="image"></p>
+</li>
+</ul>
+<h3 id="如何使用Zset实现一个文章访问排行榜"><a href="#如何使用Zset实现一个文章访问排行榜" class="headerlink" title="如何使用Zset实现一个文章访问排行榜"></a>如何使用Zset实现一个文章访问排行榜</h3><h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><p>hash + 跳跃表</p>
+<p><img src="https://user-images.githubusercontent.com/82929061/180914725-2f004c48-a71c-479a-bde8-47399629035d.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/82929061/180914780-2831f49f-af69-4c3b-8233-aefa93b5d164.png" alt="image"></p>
 
                 
             </div>
@@ -515,7 +520,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://lichengcan.github.io/2022/07/26/redis%E4%B8%ADHash%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0/">https://lichengcan.github.io/2022/07/26/redis%E4%B8%ADHash%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0/</a>
+                    <a href="https://lichengcan.github.io/2022/07/26/redis%E4%B8%ADZset%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88%E5%AD%A6%E4%B9%A0/">https://lichengcan.github.io/2022/07/26/redis%E4%B8%ADZset%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88%E5%AD%A6%E4%B9%A0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -724,9 +729,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2022/07/26/redis%E4%B8%ADZset%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88%E5%AD%A6%E4%B9%A0/">
                     <div class="card-image">
@@ -744,9 +750,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -759,6 +765,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -777,13 +784,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/07/26/redis%E4%B8%ADSet%E9%9B%86%E5%90%88%E5%AD%A6%E4%B9%A0/">
+                <a href="/2022/07/26/redis%E4%B8%ADHash%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="redis中Set集合学习">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="redis中Hash结构学习">
                         
-                        <span class="card-title">redis中Set集合学习</span>
+                        <span class="card-title">redis中Hash结构学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
