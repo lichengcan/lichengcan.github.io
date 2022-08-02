@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="redis中Zset有序集合学习, 李承灿">
+    <meta name="keywords" content="时间戳">
     <meta name="description" content="李承灿的blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>redis中Zset有序集合学习 | CCNAIVE</title>
+    <title>Java生成时间戳 | CCNAIVE</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">redis中Zset有序集合学习</h1>
+                    <h1 class="description center-align post-title">Java生成时间戳</h1>
                 </div>
             </div>
         </div>
@@ -429,13 +429,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/redis/">
-                                <span class="chip bg-color">redis</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -443,8 +439,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                数据库
+                            <a href="/categories/Java/" class="post-category">
+                                Java
                             </a>
                         
                     </div>
@@ -456,7 +452,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-07-26
+                    2022-08-02
                 </div>
                 
 
@@ -477,23 +473,9 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Redis有序集合Zset-（sorted-set）"><a href="#Redis有序集合Zset-（sorted-set）" class="headerlink" title="Redis有序集合Zset （sorted set）"></a>Redis有序集合Zset （sorted set）</h1><blockquote>
-<p>没有重复元素的有序集合</p>
-</blockquote>
-<ul>
-<li><p>zadd key score1 value1 score2 value2</p>
-</li>
-<li><p>zrange key 0 -1 进行排序输出</p>
-</li>
-<li><p>zrange key start stop withscores</p>
-<p><img src="https://user-images.githubusercontent.com/82929061/180908324-df6acc56-bd5f-4b71-a39c-c07bf1ac2ffc.png" alt="image"></p>
-<p>**</p>
-<p><img src="https://user-images.githubusercontent.com/82929061/180908437-8b796552-34eb-49ea-883c-23ff40eb6601.png" alt="image"></p>
-</li>
-</ul>
-<h3 id="如何使用Zset实现一个文章访问排行榜"><a href="#如何使用Zset实现一个文章访问排行榜" class="headerlink" title="如何使用Zset实现一个文章访问排行榜"></a>如何使用Zset实现一个文章访问排行榜</h3><h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><p>hash + 跳跃表</p>
-<p><img src="https://user-images.githubusercontent.com/82929061/180914725-2f004c48-a71c-479a-bde8-47399629035d.png" alt="image"></p>
-<p><img src="https://user-images.githubusercontent.com/82929061/180914780-2831f49f-af69-4c3b-8233-aefa93b5d164.png" alt="image"></p>
+                <h2 id="使用-Java-中的-Date-类获取当前时间戳"><a href="#使用-Java-中的-Date-类获取当前时间戳" class="headerlink" title="使用 Java 中的 Date 类获取当前时间戳"></a>使用 Java 中的 <code>Date</code> 类获取当前时间戳</h2><p>我们可以使用 util 包的 <code>Date</code> 类来获取当前时间戳。要以 <code>yyyy.MM.dd</code> 格式格式化时间戳，我们可以使用 <code>SimpleDateFormat</code> 类。请参见下面的示例。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SimpleTesting</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">SimpleDateFormat</span> <span class="variable">date</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;yyyy.MM.dd HH:mm:ss&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">timeStamp</span> <span class="operator">=</span> date.format(<span class="keyword">new</span> <span class="title class_">Date</span>());</span><br><span class="line">        System.out.println(<span class="string">&quot;Current Time Stamp: &quot;</span>+timeStamp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
                 
             </div>
@@ -520,7 +502,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://lichengcan.github.io/2022/07/26/redis%E4%B8%ADZset%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88%E5%AD%A6%E4%B9%A0/">https://lichengcan.github.io/2022/07/26/redis%E4%B8%ADZset%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88%E5%AD%A6%E4%B9%A0/</a>
+                    <a href="https://lichengcan.github.io/2022/08/02/Java%E7%94%9F%E6%88%90%E6%97%B6%E9%97%B4%E6%88%B3/">https://lichengcan.github.io/2022/08/02/Java%E7%94%9F%E6%88%90%E6%97%B6%E9%97%B4%E6%88%B3/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -557,11 +539,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/redis/">
-                                    <span class="chip bg-color">redis</span>
-                                </a>
-                            
+                            <span class="chip bg-color">No tag</span>
                         </div>
                     
                 </div>
@@ -729,66 +707,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2022/07/27/redis%E4%B8%AD%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85/">
+                <a href="/2022/08/02/Java%E7%94%9F%E6%88%90%E6%97%B6%E9%97%B4%E6%88%B3/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="redis中发布订阅">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Java生成时间戳">
                         
-                        <span class="card-title">redis中发布订阅</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-27
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                    数据库
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/redis/">
-                        <span class="chip bg-color">redis</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/07/26/redis%E4%B8%ADHash%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="redis中Hash结构学习">
-                        
-                        <span class="card-title">redis中Hash结构学习</span>
+                        <span class="card-title">Java生成时间戳</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -799,7 +729,49 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/07/27/redis%E6%96%B0%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="redis新数据类型">
+                        
+                        <span class="card-title">redis新数据类型</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-27
                             </span>
                         <span class="publish-author">
                             
