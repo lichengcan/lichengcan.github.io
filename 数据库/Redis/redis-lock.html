@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>redis-lock | CCNAIVE</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    
+    <meta name="description" content="小灿的学习日记">
+    
+    <link rel="preload" href="/assets/css/0.styles.7d3fdf66.css" as="style"><link rel="preload" href="/assets/js/app.6534040d.js" as="script"><link rel="preload" href="/assets/js/7.eeebda03.js" as="script"><link rel="preload" href="/assets/js/2.f0a1edd3.js" as="script"><link rel="preload" href="/assets/js/1.643cc4f2.js" as="script"><link rel="preload" href="/assets/js/177.873362a0.js" as="script"><link rel="prefetch" href="/assets/js/10.0520c326.js"><link rel="prefetch" href="/assets/js/100.988026df.js"><link rel="prefetch" href="/assets/js/101.81e2ff08.js"><link rel="prefetch" href="/assets/js/102.36b3f937.js"><link rel="prefetch" href="/assets/js/103.eba14f20.js"><link rel="prefetch" href="/assets/js/104.50d96841.js"><link rel="prefetch" href="/assets/js/105.d0c0977d.js"><link rel="prefetch" href="/assets/js/106.fc6cb2c9.js"><link rel="prefetch" href="/assets/js/107.e315d219.js"><link rel="prefetch" href="/assets/js/108.76cd7ca9.js"><link rel="prefetch" href="/assets/js/109.d3dafd15.js"><link rel="prefetch" href="/assets/js/11.b21c2034.js"><link rel="prefetch" href="/assets/js/110.fda56fe0.js"><link rel="prefetch" href="/assets/js/111.3f8e48b1.js"><link rel="prefetch" href="/assets/js/112.2c89ba9b.js"><link rel="prefetch" href="/assets/js/113.eacbc747.js"><link rel="prefetch" href="/assets/js/114.c057daab.js"><link rel="prefetch" href="/assets/js/115.6b217c96.js"><link rel="prefetch" href="/assets/js/116.a840229d.js"><link rel="prefetch" href="/assets/js/117.923fd778.js"><link rel="prefetch" href="/assets/js/118.a3f6ffea.js"><link rel="prefetch" href="/assets/js/119.f481cd82.js"><link rel="prefetch" href="/assets/js/120.b1583337.js"><link rel="prefetch" href="/assets/js/121.32ad8931.js"><link rel="prefetch" href="/assets/js/122.5f2dd840.js"><link rel="prefetch" href="/assets/js/123.69696b62.js"><link rel="prefetch" href="/assets/js/124.e7a52a92.js"><link rel="prefetch" href="/assets/js/125.30be9cda.js"><link rel="prefetch" href="/assets/js/126.e6eed476.js"><link rel="prefetch" href="/assets/js/127.3c8d5baa.js"><link rel="prefetch" href="/assets/js/128.bcfa0ed7.js"><link rel="prefetch" href="/assets/js/129.edcb11eb.js"><link rel="prefetch" href="/assets/js/130.88ad4cfa.js"><link rel="prefetch" href="/assets/js/131.5acd5599.js"><link rel="prefetch" href="/assets/js/132.70fb861a.js"><link rel="prefetch" href="/assets/js/133.93d18c8b.js"><link rel="prefetch" href="/assets/js/134.0d49c7bb.js"><link rel="prefetch" href="/assets/js/135.5350eefd.js"><link rel="prefetch" href="/assets/js/136.226ae8bd.js"><link rel="prefetch" href="/assets/js/137.860a1a83.js"><link rel="prefetch" href="/assets/js/138.88a94ac6.js"><link rel="prefetch" href="/assets/js/139.f05ec155.js"><link rel="prefetch" href="/assets/js/14.8559ecd5.js"><link rel="prefetch" href="/assets/js/140.0a8568eb.js"><link rel="prefetch" href="/assets/js/141.61a44542.js"><link rel="prefetch" href="/assets/js/142.e0d69133.js"><link rel="prefetch" href="/assets/js/143.476887b3.js"><link rel="prefetch" href="/assets/js/144.9ca442b6.js"><link rel="prefetch" href="/assets/js/145.9d7dd8a8.js"><link rel="prefetch" href="/assets/js/146.3b3425a3.js"><link rel="prefetch" href="/assets/js/147.8ba2f547.js"><link rel="prefetch" href="/assets/js/148.8d43174c.js"><link rel="prefetch" href="/assets/js/149.d1ae9745.js"><link rel="prefetch" href="/assets/js/15.2192e3db.js"><link rel="prefetch" href="/assets/js/150.2cd06a26.js"><link rel="prefetch" href="/assets/js/151.56fac813.js"><link rel="prefetch" href="/assets/js/152.d545559b.js"><link rel="prefetch" href="/assets/js/153.da35bcee.js"><link rel="prefetch" href="/assets/js/154.40badbac.js"><link rel="prefetch" href="/assets/js/155.eb6f3b08.js"><link rel="prefetch" href="/assets/js/156.5f5db2b5.js"><link rel="prefetch" href="/assets/js/157.91d509a7.js"><link rel="prefetch" href="/assets/js/158.a7b00ed6.js"><link rel="prefetch" href="/assets/js/159.6aaf6557.js"><link rel="prefetch" href="/assets/js/16.1864fa6a.js"><link rel="prefetch" href="/assets/js/160.7a28e14a.js"><link rel="prefetch" href="/assets/js/161.afba317d.js"><link rel="prefetch" href="/assets/js/162.57ce5960.js"><link rel="prefetch" href="/assets/js/163.139f1bea.js"><link rel="prefetch" href="/assets/js/164.c46d8850.js"><link rel="prefetch" href="/assets/js/165.d39bac4b.js"><link rel="prefetch" href="/assets/js/166.1734c148.js"><link rel="prefetch" href="/assets/js/167.1f3e5249.js"><link rel="prefetch" href="/assets/js/168.9dd1857f.js"><link rel="prefetch" href="/assets/js/169.fca0df58.js"><link rel="prefetch" href="/assets/js/17.87577c8d.js"><link rel="prefetch" href="/assets/js/170.cbaf0459.js"><link rel="prefetch" href="/assets/js/171.49934678.js"><link rel="prefetch" href="/assets/js/172.fdedca84.js"><link rel="prefetch" href="/assets/js/173.41402aec.js"><link rel="prefetch" href="/assets/js/174.f27a7d20.js"><link rel="prefetch" href="/assets/js/175.61e23e6c.js"><link rel="prefetch" href="/assets/js/176.2fbf317d.js"><link rel="prefetch" href="/assets/js/178.4295e166.js"><link rel="prefetch" href="/assets/js/179.f7ad097e.js"><link rel="prefetch" href="/assets/js/18.93c727b5.js"><link rel="prefetch" href="/assets/js/180.79ace166.js"><link rel="prefetch" href="/assets/js/181.8eda4fb2.js"><link rel="prefetch" href="/assets/js/182.4c5f73b8.js"><link rel="prefetch" href="/assets/js/183.146b38c1.js"><link rel="prefetch" href="/assets/js/184.83f11b02.js"><link rel="prefetch" href="/assets/js/185.ea48341e.js"><link rel="prefetch" href="/assets/js/186.40154540.js"><link rel="prefetch" href="/assets/js/187.ffb85b9d.js"><link rel="prefetch" href="/assets/js/188.db19e2df.js"><link rel="prefetch" href="/assets/js/189.8136f442.js"><link rel="prefetch" href="/assets/js/19.b605cf24.js"><link rel="prefetch" href="/assets/js/190.ba3d7188.js"><link rel="prefetch" href="/assets/js/191.8a4dfaed.js"><link rel="prefetch" href="/assets/js/192.ce0c68d4.js"><link rel="prefetch" href="/assets/js/193.d23ad6ba.js"><link rel="prefetch" href="/assets/js/194.9540561d.js"><link rel="prefetch" href="/assets/js/195.5925775f.js"><link rel="prefetch" href="/assets/js/196.92649142.js"><link rel="prefetch" href="/assets/js/197.7ae58f3e.js"><link rel="prefetch" href="/assets/js/198.76220300.js"><link rel="prefetch" href="/assets/js/199.6a4fd5d3.js"><link rel="prefetch" href="/assets/js/20.7883c972.js"><link rel="prefetch" href="/assets/js/200.bec9ed24.js"><link rel="prefetch" href="/assets/js/201.6468f655.js"><link rel="prefetch" href="/assets/js/202.3da3c946.js"><link rel="prefetch" href="/assets/js/203.629fb9d2.js"><link rel="prefetch" href="/assets/js/204.8bd087cd.js"><link rel="prefetch" href="/assets/js/205.55891499.js"><link rel="prefetch" href="/assets/js/206.af2e2551.js"><link rel="prefetch" href="/assets/js/207.728ee58f.js"><link rel="prefetch" href="/assets/js/208.5b9faf09.js"><link rel="prefetch" href="/assets/js/209.750b7b16.js"><link rel="prefetch" href="/assets/js/21.284cd660.js"><link rel="prefetch" href="/assets/js/210.11c47081.js"><link rel="prefetch" href="/assets/js/211.b44f3775.js"><link rel="prefetch" href="/assets/js/212.10d920b4.js"><link rel="prefetch" href="/assets/js/213.680b8c29.js"><link rel="prefetch" href="/assets/js/22.baf5e49f.js"><link rel="prefetch" href="/assets/js/23.948d5956.js"><link rel="prefetch" href="/assets/js/24.3ee10d44.js"><link rel="prefetch" href="/assets/js/25.2a0cbf8a.js"><link rel="prefetch" href="/assets/js/26.5ea54464.js"><link rel="prefetch" href="/assets/js/27.da9b1229.js"><link rel="prefetch" href="/assets/js/28.c40bff46.js"><link rel="prefetch" href="/assets/js/29.2ab4bafc.js"><link rel="prefetch" href="/assets/js/3.1cbe20ad.js"><link rel="prefetch" href="/assets/js/30.1bf4ac93.js"><link rel="prefetch" href="/assets/js/31.965ef027.js"><link rel="prefetch" href="/assets/js/32.363699be.js"><link rel="prefetch" href="/assets/js/33.550b819e.js"><link rel="prefetch" href="/assets/js/34.b67efa64.js"><link rel="prefetch" href="/assets/js/35.d3ac76a2.js"><link rel="prefetch" href="/assets/js/36.a5a09527.js"><link rel="prefetch" href="/assets/js/37.419d15ba.js"><link rel="prefetch" href="/assets/js/38.539e08fa.js"><link rel="prefetch" href="/assets/js/39.57721681.js"><link rel="prefetch" href="/assets/js/4.bf9bea87.js"><link rel="prefetch" href="/assets/js/40.fee2ffa4.js"><link rel="prefetch" href="/assets/js/41.8d6d1697.js"><link rel="prefetch" href="/assets/js/42.a3711bcc.js"><link rel="prefetch" href="/assets/js/43.bab10ed1.js"><link rel="prefetch" href="/assets/js/44.6d521161.js"><link rel="prefetch" href="/assets/js/45.0def4920.js"><link rel="prefetch" href="/assets/js/46.38645343.js"><link rel="prefetch" href="/assets/js/47.467ea9e8.js"><link rel="prefetch" href="/assets/js/48.62cb80dd.js"><link rel="prefetch" href="/assets/js/49.140fac27.js"><link rel="prefetch" href="/assets/js/5.f17c50dd.js"><link rel="prefetch" href="/assets/js/50.ab2ef2ce.js"><link rel="prefetch" href="/assets/js/51.dda1bef6.js"><link rel="prefetch" href="/assets/js/52.50a66fef.js"><link rel="prefetch" href="/assets/js/53.14fa3000.js"><link rel="prefetch" href="/assets/js/54.127c2791.js"><link rel="prefetch" href="/assets/js/55.21c5a044.js"><link rel="prefetch" href="/assets/js/56.73e6d0f4.js"><link rel="prefetch" href="/assets/js/57.8e31b337.js"><link rel="prefetch" href="/assets/js/58.9b76b5cd.js"><link rel="prefetch" href="/assets/js/59.d0bb0217.js"><link rel="prefetch" href="/assets/js/6.bb850a72.js"><link rel="prefetch" href="/assets/js/60.069967aa.js"><link rel="prefetch" href="/assets/js/61.ace0973e.js"><link rel="prefetch" href="/assets/js/62.647cf22e.js"><link rel="prefetch" href="/assets/js/63.cbeb1940.js"><link rel="prefetch" href="/assets/js/64.d8263956.js"><link rel="prefetch" href="/assets/js/65.29f7aece.js"><link rel="prefetch" href="/assets/js/66.b1a66fcb.js"><link rel="prefetch" href="/assets/js/67.fc6fa20f.js"><link rel="prefetch" href="/assets/js/68.4bac887f.js"><link rel="prefetch" href="/assets/js/69.ebef8ead.js"><link rel="prefetch" href="/assets/js/70.c8e698a9.js"><link rel="prefetch" href="/assets/js/71.3f2ad4d6.js"><link rel="prefetch" href="/assets/js/72.74d8acb3.js"><link rel="prefetch" href="/assets/js/73.ef9cfb82.js"><link rel="prefetch" href="/assets/js/74.e11b8988.js"><link rel="prefetch" href="/assets/js/75.9c36ae5a.js"><link rel="prefetch" href="/assets/js/76.00f1cfc1.js"><link rel="prefetch" href="/assets/js/77.0b46906d.js"><link rel="prefetch" href="/assets/js/78.9ce37c3c.js"><link rel="prefetch" href="/assets/js/79.52217d95.js"><link rel="prefetch" href="/assets/js/8.e256d34a.js"><link rel="prefetch" href="/assets/js/80.75a300d9.js"><link rel="prefetch" href="/assets/js/81.1ed34134.js"><link rel="prefetch" href="/assets/js/82.42258528.js"><link rel="prefetch" href="/assets/js/83.38c1c298.js"><link rel="prefetch" href="/assets/js/84.3447645f.js"><link rel="prefetch" href="/assets/js/85.e4d96ce3.js"><link rel="prefetch" href="/assets/js/86.c5a929c8.js"><link rel="prefetch" href="/assets/js/87.60098c6f.js"><link rel="prefetch" href="/assets/js/88.1ea54429.js"><link rel="prefetch" href="/assets/js/89.d6093e6d.js"><link rel="prefetch" href="/assets/js/9.b10e5e75.js"><link rel="prefetch" href="/assets/js/90.daa693a8.js"><link rel="prefetch" href="/assets/js/91.27666f7e.js"><link rel="prefetch" href="/assets/js/92.6b866399.js"><link rel="prefetch" href="/assets/js/93.4321125e.js"><link rel="prefetch" href="/assets/js/94.c28ddd6a.js"><link rel="prefetch" href="/assets/js/95.cd68e720.js"><link rel="prefetch" href="/assets/js/96.2ed404ff.js"><link rel="prefetch" href="/assets/js/97.9eade5a2.js"><link rel="prefetch" href="/assets/js/98.61f9a0a2.js"><link rel="prefetch" href="/assets/js/99.f628a362.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.ca9da1e0.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.7d3fdf66.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>CCNAIVE</h3> <p class="description" data-v-59e6cb88>小灿的学习日记</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2024
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">CCNAIVE</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      小灿的学习日记
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/lichengcan" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/lichengcan0228/lichengcan0228" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <!----> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>167</h3> <h6 data-v-1fad0c41>文章</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>6</h3> <h6 data-v-1fad0c41>标签</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      小灿的学习日记
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/lichengcan" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/lichengcan0228/lichengcan0228" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <ul class="sidebar-links"><li><a href="/" aria-current="page" class="sidebar-link">CCNAIVE</a></li><li><section class="sidebar-group collapsable depth-0"><a href="/Java/面向对象/多态" class="sidebar-heading clickable"><span>Java 从入门到放弃</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/数据结构与算法/排序/排序" class="sidebar-heading clickable"><span>数据结构与算法</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/网络/基础篇/TCP-IP" class="sidebar-heading clickable"><span>网络</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/Spring/Spring/Spring" class="sidebar-heading clickable"><span>Spring 全家桶</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/数据库/MySQL/CommonUseSQL" class="sidebar-heading clickable"><span>数据库</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/技术框架/rabbitmq/rabbitmq" class="sidebar-heading clickable"><span>技术框架</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/Linux/LinuxCommand" class="sidebar-heading clickable"><span>Linux 服务器相关</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/杂/一些网站/website" class="sidebar-heading clickable"><span>杂</span> <span class="arrow right"></span></a> <!----></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>redis-lock</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2024
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">redis-lock</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>承灿</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>2023/9/8</span></i> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h3 id="redis-lock"><a href="#redis-lock" class="header-anchor">#</a> redis-lock</h3> <h2 id="使用互斥锁-解决redis缓存击穿问题"><a href="#使用互斥锁-解决redis缓存击穿问题" class="header-anchor">#</a> 使用互斥锁-解决redis缓存击穿问题</h2> <h3 id="_1-controller"><a href="#_1-controller" class="header-anchor">#</a> 1 controller</h3> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * @author lcc
+ * @date 2023/09/08
+ */
+@RestController
+@RequestMapping(&quot;/city&quot;)
+public class CityController {
+
+   private final CityService cityService;
+
+   @Autowired
+   public CityController(CityService cityService) {
+      this.cityService = cityService;
+   }
+
+   @GetMapping(&quot;/{id}&quot;)
+   public Object getCity(@PathVariable(&quot;id&quot;) String cityCode) {
+      return cityService.getByCode(cityCode);
+   }
+}
+</code></pre></div><h3 id="_2-service"><a href="#_2-service" class="header-anchor">#</a> 2 service</h3> <div class="language- extra-class"><pre class="language-text"><code>package com.example.redis.service.impl;
+
+import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.redis.constants.RedisConstants;
+import com.example.redis.domain.City;
+import com.example.redis.mapper.CityMapper;
+import com.example.redis.service.CityService;
+import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.stereotype.Service;
+
+
+import lombok.extern.slf4j.Slf4j;
+
+import java.util.concurrent.TimeUnit;
+
+/**
+ * @author lcc
+ * @date 2023/09/08
+ */
+@Service
+@Slf4j
+public class CityServiceImpl extends ServiceImpl&lt;CityMapper, City&gt; implements CityService {
+
+    private StringRedisTemplate stringRedisTemplate;
+    private CityMapper cityMapper;
+
+    @Autowired
+    public CityServiceImpl(StringRedisTemplate stringRedisTemplate,
+                           CityMapper cityMapper){
+        this.stringRedisTemplate = stringRedisTemplate;
+        this.cityMapper = cityMapper;
+    }
+
+    @Override
+    public City getByCode(String cityCode) {
+        String key = RedisConstants.CACHE_CITY_KEY+cityCode;
+        return queryCityWithMutex(key, cityCode);
+    }
+
+    /**
+     * 通过互斥锁机制查询城市信息
+     * @param key
+     */
+    private City queryCityWithMutex(String key, String cityCode) {
+        City city = null;
+        // 1.查询缓存
+        String cityJson = stringRedisTemplate.opsForValue().get(key);
+        // 2.判断缓存是否有数据
+        if (StringUtils.isNotBlank(cityJson)) {
+            // 3.有,则返回
+            city = JSONObject.parseObject(cityJson, City.class);
+            return city;
+        }
+        // 4.无,则获取互斥锁
+        String lockKey = RedisConstants.LOCK_CITY_KEY + cityCode;
+        Boolean isLock = tryLock(lockKey);
+        // 5.判断获取锁是否成功
+        try {
+            if (!isLock) {
+                // 6.获取失败, 休眠并重试
+                Thread.sleep(100);
+                return queryCityWithMutex(key, cityCode);
+            }
+            // 7.获取成功, 查询数据库
+            city = baseMapper.selectById(cityCode);
+            // 8.判断数据库是否有数据
+            if (city == null) {
+                // 9.无,则将空数据写入redis
+                stringRedisTemplate.opsForValue().set(key, &quot;&quot;, RedisConstants.CACHE_NULL_TTL, TimeUnit.MINUTES);
+                return null;
+            }
+            // 10.有,则将数据写入redis
+            stringRedisTemplate.opsForValue().set(key, JSONObject.toJSONString(city), RedisConstants.CACHE_CITY_TTL, TimeUnit.MINUTES);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            // 11.释放锁
+            unLock(lockKey);
+        }
+        // 12.返回数据
+        return city;
+    }
+
+    /**
+     * 获取互斥锁
+     * @return
+     */
+    private Boolean tryLock(String key) {
+        //如果key不存在则进行存储，当存在时，则代表当前互斥锁被其他线程获取了
+        Boolean flag = stringRedisTemplate.opsForValue().setIfAbsent(key, &quot;1&quot;, 10, TimeUnit.SECONDS);
+        return BooleanUtils.isTrue(flag);
+    }
+
+    /**
+     * 释放锁
+     * @param key
+     */
+    private void unLock(String key) {
+        stringRedisTemplate.delete(key);
+    }
+
+}
+
+</code></pre></div><h3 id="_3-entity"><a href="#_3-entity" class="header-anchor">#</a> 3 entity</h3> <div class="language- extra-class"><pre class="language-text"><code>package com.example.redis.domain;
+
+import lombok.Data;
+
+@Data
+public class City {
+    private Integer id;
+
+    private String name;
+}
+
+</code></pre></div><h3 id="_4-mapper"><a href="#_4-mapper" class="header-anchor">#</a> 4 mapper</h3> <div class="language- extra-class"><pre class="language-text"><code>package com.example.redis.mapper;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.example.redis.domain.City;
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface CityMapper extends BaseMapper&lt;City&gt; {
+
+}
+
+</code></pre></div><h3 id="_5-依赖"><a href="#_5-依赖" class="header-anchor">#</a> 5 依赖</h3> <div class="language- extra-class"><pre class="language-text"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+    &lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+        &lt;version&gt;2.7.6&lt;/version&gt;
+        &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
+    &lt;/parent&gt;
+    &lt;groupId&gt;com.example&lt;/groupId&gt;
+    &lt;artifactId&gt;redis&lt;/artifactId&gt;
+    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+    &lt;name&gt;redis&lt;/name&gt;
+    &lt;description&gt;redis&lt;/description&gt;
+    &lt;properties&gt;
+        &lt;java.version&gt;8&lt;/java.version&gt;
+    &lt;/properties&gt;
+    &lt;dependencies&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-data-rest&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.baomidou&lt;/groupId&gt;
+            &lt;artifactId&gt;mybatis-plus-boot-starter&lt;/artifactId&gt;
+            &lt;version&gt;3.5.0&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;mysql&lt;/groupId&gt;
+            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+            &lt;version&gt;8.0.27&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-beans&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;!-- mybatis-plus --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.baomidou&lt;/groupId&gt;
+            &lt;artifactId&gt;mybatis-plus-boot-starter&lt;/artifactId&gt;
+            &lt;version&gt;3.4.1&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;!-- lettuce pool 缓存连接池--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;
+            &lt;artifactId&gt;commons-pool2&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;commons-lang&lt;/groupId&gt;
+            &lt;artifactId&gt;commons-lang&lt;/artifactId&gt;
+            &lt;version&gt;2.6&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!--处理JSON格式--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+            &lt;artifactId&gt;fastjson&lt;/artifactId&gt;
+            &lt;version&gt;1.2.3&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!--hutool--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;cn.hutool&lt;/groupId&gt;
+            &lt;artifactId&gt;hutool-all&lt;/artifactId&gt;
+            &lt;version&gt;5.7.17&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+            &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+            &lt;version&gt;1.16.20&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+&lt;/project&gt;
+</code></pre></div></div></section> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/数据库/Redis/Redis.html" class="prev">
+          Redis
+        </a></span> <span class="next"><a href="/数据库/MongoDB/MongoDB.html">
+          MongoDB
+        </a></span></p></div> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-3" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/redis-lock.html#redis-lock" class="sidebar-link reco-side-redis-lock" data-v-b57cc07c>redis-lock</a></li><li class="level-2" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/redis-lock.html#使用互斥锁-解决redis缓存击穿问题" class="sidebar-link reco-side-使用互斥锁-解决redis缓存击穿问题" data-v-b57cc07c>使用互斥锁-解决redis缓存击穿问题</a></li><li class="level-3" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/redis-lock.html#_1-controller" class="sidebar-link reco-side-_1-controller" data-v-b57cc07c>1 controller</a></li><li class="level-3" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/redis-lock.html#_2-service" class="sidebar-link reco-side-_2-service" data-v-b57cc07c>2 service</a></li><li class="level-3" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/redis-lock.html#_3-entity" class="sidebar-link reco-side-_3-entity" data-v-b57cc07c>3 entity</a></li><li class="level-3" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/redis-lock.html#_4-mapper" class="sidebar-link reco-side-_4-mapper" data-v-b57cc07c>4 mapper</a></li><li class="level-3" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/redis-lock.html#_5-依赖" class="sidebar-link reco-side-_5-依赖" data-v-b57cc07c>5 依赖</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.6534040d.js" defer></script><script src="/assets/js/7.eeebda03.js" defer></script><script src="/assets/js/2.f0a1edd3.js" defer></script><script src="/assets/js/1.643cc4f2.js" defer></script><script src="/assets/js/177.873362a0.js" defer></script>
+  </body>
+</html>
