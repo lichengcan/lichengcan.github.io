@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Docker搭建redis集群 | CCNAIVE</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="小灿的学习日记">
+    
+    <link rel="preload" href="/assets/css/0.styles.ac0ba637.css" as="style"><link rel="preload" href="/assets/js/app.9ff2d364.js" as="script"><link rel="preload" href="/assets/js/3.531b82cf.js" as="script"><link rel="preload" href="/assets/js/1.66bfa7cb.js" as="script"><link rel="preload" href="/assets/js/117.d5961bc5.js" as="script"><link rel="prefetch" href="/assets/js/10.bbcc4f2b.js"><link rel="prefetch" href="/assets/js/100.7aa78320.js"><link rel="prefetch" href="/assets/js/101.be1a84ed.js"><link rel="prefetch" href="/assets/js/102.e54a66c3.js"><link rel="prefetch" href="/assets/js/103.96ea8db8.js"><link rel="prefetch" href="/assets/js/104.1843f7ee.js"><link rel="prefetch" href="/assets/js/105.5cb7f1d0.js"><link rel="prefetch" href="/assets/js/106.d0836c05.js"><link rel="prefetch" href="/assets/js/107.ac03de3a.js"><link rel="prefetch" href="/assets/js/108.050b9491.js"><link rel="prefetch" href="/assets/js/109.77d90976.js"><link rel="prefetch" href="/assets/js/11.7cbe3508.js"><link rel="prefetch" href="/assets/js/110.d8921d36.js"><link rel="prefetch" href="/assets/js/111.e834d261.js"><link rel="prefetch" href="/assets/js/112.fc17c22f.js"><link rel="prefetch" href="/assets/js/113.4a13e794.js"><link rel="prefetch" href="/assets/js/114.a0fc2dc4.js"><link rel="prefetch" href="/assets/js/115.c52d7495.js"><link rel="prefetch" href="/assets/js/116.18b15740.js"><link rel="prefetch" href="/assets/js/118.ae8cd8e7.js"><link rel="prefetch" href="/assets/js/119.dbabe50a.js"><link rel="prefetch" href="/assets/js/12.03e80136.js"><link rel="prefetch" href="/assets/js/120.0a552300.js"><link rel="prefetch" href="/assets/js/121.0b55973d.js"><link rel="prefetch" href="/assets/js/122.a2372c82.js"><link rel="prefetch" href="/assets/js/123.9a1ed746.js"><link rel="prefetch" href="/assets/js/124.81c9bce0.js"><link rel="prefetch" href="/assets/js/125.9cc747cb.js"><link rel="prefetch" href="/assets/js/126.63641e51.js"><link rel="prefetch" href="/assets/js/127.afa36756.js"><link rel="prefetch" href="/assets/js/128.c3a0bafc.js"><link rel="prefetch" href="/assets/js/129.626bef76.js"><link rel="prefetch" href="/assets/js/13.98d91332.js"><link rel="prefetch" href="/assets/js/130.718e36e5.js"><link rel="prefetch" href="/assets/js/131.2f866590.js"><link rel="prefetch" href="/assets/js/132.eeae6af5.js"><link rel="prefetch" href="/assets/js/133.5f7161d3.js"><link rel="prefetch" href="/assets/js/134.d370c48c.js"><link rel="prefetch" href="/assets/js/135.cb4d88e1.js"><link rel="prefetch" href="/assets/js/136.49c2b181.js"><link rel="prefetch" href="/assets/js/137.4d5d406c.js"><link rel="prefetch" href="/assets/js/138.35297bdc.js"><link rel="prefetch" href="/assets/js/139.4cde83dd.js"><link rel="prefetch" href="/assets/js/14.5f24a2ff.js"><link rel="prefetch" href="/assets/js/140.1fba8365.js"><link rel="prefetch" href="/assets/js/141.cb4421c0.js"><link rel="prefetch" href="/assets/js/142.ea1fe29a.js"><link rel="prefetch" href="/assets/js/143.b21df084.js"><link rel="prefetch" href="/assets/js/144.a5450651.js"><link rel="prefetch" href="/assets/js/145.4a9f1b6c.js"><link rel="prefetch" href="/assets/js/146.032cd6ee.js"><link rel="prefetch" href="/assets/js/147.0ee0cf1b.js"><link rel="prefetch" href="/assets/js/148.3954607b.js"><link rel="prefetch" href="/assets/js/149.550f7938.js"><link rel="prefetch" href="/assets/js/15.1dd4d056.js"><link rel="prefetch" href="/assets/js/150.6b5ff9f8.js"><link rel="prefetch" href="/assets/js/151.7435d46f.js"><link rel="prefetch" href="/assets/js/152.4bb838b9.js"><link rel="prefetch" href="/assets/js/153.13d7f61b.js"><link rel="prefetch" href="/assets/js/154.c2c89d66.js"><link rel="prefetch" href="/assets/js/155.28853989.js"><link rel="prefetch" href="/assets/js/156.d207ca7c.js"><link rel="prefetch" href="/assets/js/157.9f4a887f.js"><link rel="prefetch" href="/assets/js/158.56a32b96.js"><link rel="prefetch" href="/assets/js/159.ccff2e00.js"><link rel="prefetch" href="/assets/js/16.9df877bb.js"><link rel="prefetch" href="/assets/js/160.1ce908c3.js"><link rel="prefetch" href="/assets/js/161.db87a48e.js"><link rel="prefetch" href="/assets/js/162.da596968.js"><link rel="prefetch" href="/assets/js/163.4b1914f2.js"><link rel="prefetch" href="/assets/js/164.d1428de2.js"><link rel="prefetch" href="/assets/js/165.3555dd76.js"><link rel="prefetch" href="/assets/js/166.3ec9c434.js"><link rel="prefetch" href="/assets/js/167.e1c89e9e.js"><link rel="prefetch" href="/assets/js/168.0a520b94.js"><link rel="prefetch" href="/assets/js/169.4122d818.js"><link rel="prefetch" href="/assets/js/17.cd29530c.js"><link rel="prefetch" href="/assets/js/170.0ac3b66b.js"><link rel="prefetch" href="/assets/js/171.a3a64b2d.js"><link rel="prefetch" href="/assets/js/172.7ac6a10c.js"><link rel="prefetch" href="/assets/js/173.4be2f7b1.js"><link rel="prefetch" href="/assets/js/174.0dfc7fdb.js"><link rel="prefetch" href="/assets/js/175.32ead0bc.js"><link rel="prefetch" href="/assets/js/176.209b5dbb.js"><link rel="prefetch" href="/assets/js/177.11adbb39.js"><link rel="prefetch" href="/assets/js/178.037a7502.js"><link rel="prefetch" href="/assets/js/18.097816ce.js"><link rel="prefetch" href="/assets/js/19.187e5563.js"><link rel="prefetch" href="/assets/js/20.6deb3fe1.js"><link rel="prefetch" href="/assets/js/21.9d82a949.js"><link rel="prefetch" href="/assets/js/22.0edad57f.js"><link rel="prefetch" href="/assets/js/23.b9c5f664.js"><link rel="prefetch" href="/assets/js/24.897f1420.js"><link rel="prefetch" href="/assets/js/25.1311359f.js"><link rel="prefetch" href="/assets/js/26.17a94cd7.js"><link rel="prefetch" href="/assets/js/27.fa379248.js"><link rel="prefetch" href="/assets/js/28.f6aab20b.js"><link rel="prefetch" href="/assets/js/29.d9c56383.js"><link rel="prefetch" href="/assets/js/30.8dba19c8.js"><link rel="prefetch" href="/assets/js/31.10a83a0f.js"><link rel="prefetch" href="/assets/js/32.edae26a7.js"><link rel="prefetch" href="/assets/js/33.72f0a131.js"><link rel="prefetch" href="/assets/js/34.5a0fb7ca.js"><link rel="prefetch" href="/assets/js/35.9f28286e.js"><link rel="prefetch" href="/assets/js/36.ae243faa.js"><link rel="prefetch" href="/assets/js/37.381ff339.js"><link rel="prefetch" href="/assets/js/38.17ebee17.js"><link rel="prefetch" href="/assets/js/39.876319cd.js"><link rel="prefetch" href="/assets/js/4.979f9922.js"><link rel="prefetch" href="/assets/js/40.b2cec200.js"><link rel="prefetch" href="/assets/js/41.91b3553a.js"><link rel="prefetch" href="/assets/js/42.80320f96.js"><link rel="prefetch" href="/assets/js/43.783075f8.js"><link rel="prefetch" href="/assets/js/44.5b01350d.js"><link rel="prefetch" href="/assets/js/45.95d4d094.js"><link rel="prefetch" href="/assets/js/46.96cea9c3.js"><link rel="prefetch" href="/assets/js/47.23ced73b.js"><link rel="prefetch" href="/assets/js/48.04da13e7.js"><link rel="prefetch" href="/assets/js/49.2b134421.js"><link rel="prefetch" href="/assets/js/5.dda74e2f.js"><link rel="prefetch" href="/assets/js/50.cbbc36b3.js"><link rel="prefetch" href="/assets/js/51.c1a47ca0.js"><link rel="prefetch" href="/assets/js/52.36261b66.js"><link rel="prefetch" href="/assets/js/53.4d53e570.js"><link rel="prefetch" href="/assets/js/54.13e1603f.js"><link rel="prefetch" href="/assets/js/55.809c8ddc.js"><link rel="prefetch" href="/assets/js/56.5df2380e.js"><link rel="prefetch" href="/assets/js/57.2194d408.js"><link rel="prefetch" href="/assets/js/58.2c620696.js"><link rel="prefetch" href="/assets/js/59.34ee045d.js"><link rel="prefetch" href="/assets/js/6.5eed2fc3.js"><link rel="prefetch" href="/assets/js/60.3f617150.js"><link rel="prefetch" href="/assets/js/61.92698d83.js"><link rel="prefetch" href="/assets/js/62.0bfecc40.js"><link rel="prefetch" href="/assets/js/63.8da717e4.js"><link rel="prefetch" href="/assets/js/64.200fd49a.js"><link rel="prefetch" href="/assets/js/65.72a58cca.js"><link rel="prefetch" href="/assets/js/66.2985426d.js"><link rel="prefetch" href="/assets/js/67.8862ebfb.js"><link rel="prefetch" href="/assets/js/68.6f5b02a9.js"><link rel="prefetch" href="/assets/js/69.aa496fb1.js"><link rel="prefetch" href="/assets/js/7.8f40985b.js"><link rel="prefetch" href="/assets/js/70.b26013d6.js"><link rel="prefetch" href="/assets/js/71.1b1ae916.js"><link rel="prefetch" href="/assets/js/72.3035363e.js"><link rel="prefetch" href="/assets/js/73.eca6d0df.js"><link rel="prefetch" href="/assets/js/74.d4240c34.js"><link rel="prefetch" href="/assets/js/75.4dcd7ab1.js"><link rel="prefetch" href="/assets/js/76.e0675e49.js"><link rel="prefetch" href="/assets/js/77.edf24e37.js"><link rel="prefetch" href="/assets/js/78.552224f2.js"><link rel="prefetch" href="/assets/js/79.be7a41b6.js"><link rel="prefetch" href="/assets/js/8.e3dca3e1.js"><link rel="prefetch" href="/assets/js/80.147a04c7.js"><link rel="prefetch" href="/assets/js/81.3ecd3a95.js"><link rel="prefetch" href="/assets/js/82.b647894f.js"><link rel="prefetch" href="/assets/js/83.200bc3a6.js"><link rel="prefetch" href="/assets/js/84.a15d5403.js"><link rel="prefetch" href="/assets/js/85.75a34ef2.js"><link rel="prefetch" href="/assets/js/86.6b4e2beb.js"><link rel="prefetch" href="/assets/js/87.b15ce75c.js"><link rel="prefetch" href="/assets/js/88.507b99bb.js"><link rel="prefetch" href="/assets/js/89.b5d5b184.js"><link rel="prefetch" href="/assets/js/9.a4890a44.js"><link rel="prefetch" href="/assets/js/90.40064807.js"><link rel="prefetch" href="/assets/js/91.5cab932b.js"><link rel="prefetch" href="/assets/js/92.8682710e.js"><link rel="prefetch" href="/assets/js/93.78582e33.js"><link rel="prefetch" href="/assets/js/94.48896994.js"><link rel="prefetch" href="/assets/js/95.b637124b.js"><link rel="prefetch" href="/assets/js/96.07d46f7c.js"><link rel="prefetch" href="/assets/js/97.c24e0b91.js"><link rel="prefetch" href="/assets/js/98.d6a95e55.js"><link rel="prefetch" href="/assets/js/99.9330a585.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ac0ba637.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>CCNAIVE</h3> <p class="description" data-v-59e6cb88>小灿的学习日记</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2025
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">CCNAIVE</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      小灿的学习日记
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/lichengcan" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/lichengcan0228/lichengcan0228" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <!----> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>160</h3> <h6 data-v-1fad0c41>文章</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>6</h3> <h6 data-v-1fad0c41>标签</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      小灿的学习日记
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/lichengcan" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/lichengcan0228/lichengcan0228" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <ul class="sidebar-links"><li><a href="/" aria-current="page" class="sidebar-link">CCNAIVE</a></li><li><section class="sidebar-group collapsable depth-0"><a href="/Java/面向对象/多态" class="sidebar-heading clickable"><span>Java 从入门到放弃</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/数据结构与算法/排序/排序" class="sidebar-heading clickable"><span>数据结构与算法</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/网络/基础篇/TCP-IP" class="sidebar-heading clickable"><span>网络</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/Spring/Spring/Spring" class="sidebar-heading clickable"><span>Spring 全家桶</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/数据库/MySQL/CommonUseSQL" class="sidebar-heading clickable"><span>数据库</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/技术框架/rabbitmq/rabbitmq" class="sidebar-heading clickable"><span>技术框架</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/Linux/LinuxCommand" class="sidebar-heading clickable"><span>Linux 服务器相关</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/杂/一些网站/website" class="sidebar-heading clickable"><span>杂</span> <span class="arrow right"></span></a> <!----></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>Docker搭建redis集群</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2025
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">Docker搭建redis集群</h1> <div data-v-8a445198><!----> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>2023/11/15</span></i> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h1 id="docker创建redis集群-方法一"><a href="#docker创建redis集群-方法一" class="header-anchor">#</a> Docker创建Redis集群 方法一</h1> <h2 id="创建redis配置文件"><a href="#创建redis配置文件" class="header-anchor">#</a> 创建Redis配置文件</h2> <div class="language- extra-class"><pre class="language-text"><code># 配置文件存放路径
+BASE_PATH=/opt/redis
+# 创建个数
+REDIS_COUNT=6
+# ip前缀
+REDIS_IP=192.168.104.128
+
+for port in $(seq 1 $REDIS_COUNT);
+do
+mkdir -p $BASE_PATH/node-$port/conf
+mkdir -p $BASE_PATH/node-$port/data
+touch $BASE_PATH/node-$port/conf/redis.conf
+cat &lt;&lt;EOF &gt; $BASE_PATH/node-$port/conf/redis.conf
+port 63$port
+# 生产环境中为了安全性请绑定当前机器的ip
+bind $REDIS_IP
+# 启动集群模式
+cluster-enabled yes
+cluster-config-file nodes.conf
+# redis节点宕机被发现的时间
+cluster-node-timeout 5000
+cluster-announce-ip $REDIS_IP$port
+cluster-announce-port 6379
+cluster-announce-bus-port 16379
+appendonly yes
+EOF
+done
+</code></pre></div><p>sudo chmod +x redis-node-config.sh</p> <p>查看脚本是否成功生成文件</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> /opt/redis
+ll
+
+</code></pre></div><p><img src="https://raw.githubusercontent.com/lichengcan/images/main/Snipaste_2023-11-15_18-06-22.jpg" alt=""></p> <h2 id="创建redis运行脚本"><a href="#创建redis运行脚本" class="header-anchor">#</a> 创建redis运行脚本</h2> <div class="language- extra-class"><pre class="language-text"><code>#!/bin/bash
+
+# 配置文件存放路径
+BASE_PATH=/opt/redis
+# 创建个数
+REDIS_COUNT=6
+# ip前缀
+REDIS_IP=192.168.104.128
+
+//这里一定要配置docker网段
+docker network create redis-net
+
+for port in $(seq 1 $REDIS_COUNT);
+do
+  docker run -d -p 637$port:6379 -p 1667$port:16379 \
+  --name redis-$port \
+  -v $BASE_PATH/node-$port/data:/data \
+  -v $BASE_PATH/node-$port/conf/redis.conf:/etc/redis/redis.conf \
+  --net redis-net \
+  --hostname redis-$port \
+  redis redis-server /etc/redis/redis.conf
+done
+</code></pre></div><p>sudo chmod +x redis-run.sh</p> <p><img src="https://raw.githubusercontent.com/lichengcan/images/main/Snipaste_2023-11-15_18-08-23.jpg" alt=""></p> <h2 id="开始搭建redis集群"><a href="#开始搭建redis集群" class="header-anchor">#</a> 开始搭建redis集群</h2> <div class="language- extra-class"><pre class="language-text"><code># 进入其中一个容器
+docker exec -it redis-1 /bin/bash
+# 说明：--cluster ：使用cluster的方式搭建集群 --cluster-replicas 1 ：一个主机有一个从机
+redis-cli --cluster create 172.16.0.11:6379 172.16.0.12:6379 172.16.0.13:6379 172.16.0.14:6379 172.16.0.15:6379 172.16.0.16:6379 --cluster-replicas 1
+</code></pre></div><h2 id="测试-redis-集群"><a href="#测试-redis-集群" class="header-anchor">#</a> 测试 redis 集群</h2> <div class="language-powershell extra-class"><pre class="language-powershell"><code><span class="token comment"># 进入redis-1容器</span>
+docker exec <span class="token operator">-</span>it redis-1 <span class="token operator">/</span>bin/bash
+<span class="token comment"># -c:以集群方式启动</span>
+redis-<span class="token function">cli</span> <span class="token operator">-</span>c
+<span class="token comment"># 设置一个键值对</span>
+<span class="token function">set</span> name berbai01
+</code></pre></div><p>这里显示是 172.16.0.12 上的 redis 处理了 set 操作。</p> <p><img src="https://raw.githubusercontent.com/lichengcan/images/main/4b3962634836410a9418a0d1037f9489%7Etplv-k3u1fbpfcp-jj-mark_3024_0_0_0_q75.webp" alt=""></p> <h2 id="查看集群节点"><a href="#查看集群节点" class="header-anchor">#</a> 查看集群节点</h2> <div class="language-powershell extra-class"><pre class="language-powershell"><code>cluster nodes
+</code></pre></div><p><img src="https://raw.githubusercontent.com/lichengcan/images/main/f9e44a56d0724a078060c6cbf320ab7e%7Etplv-k3u1fbpfcp-jj-mark_3024_0_0_0_q75.webp" alt=""></p> <p>到此已经成功搭建了 redis 的 3 主 3 从集群，上图中 master 为主 redis，slave 则是从 redis。</p> <h3 id="搭建过程的一些命令"><a href="#搭建过程的一些命令" class="header-anchor">#</a> 搭建过程的一些命令</h3> <div class="language- extra-class"><pre class="language-text"><code>清空vim中所有内容
+1,$d
+删除所有容器
+docker rm -f $(docker ps -aq)
+进入redis容器
+docker exec -it redis-1 /bin/bash
+启动集群
+redis-cli --cluster create 192.168.104.128:6371 192.168.104.128:6372 192.168.104.128:6373 192.168.104.128:6374 192.168.104.128:6375 192.168.104.128:6376 --cluster-replicas 1
+
+telnet 192.168.104.128 6371
+bash: telnet: 未找到命令...
+
+sudo yum install telnet -y
+
+</code></pre></div><h1 id="docker创建redis集群-方法二"><a href="#docker创建redis集群-方法二" class="header-anchor">#</a> Docker创建Redis集群 方法二</h1> <h2 id="使用docker-compose"><a href="#使用docker-compose" class="header-anchor">#</a> 使用docker-compose</h2> <div class="language- extra-class"><pre class="language-text"><code>version: '3'
+services:
+  redis-master:
+    image: redis
+    command: [&quot;redis-server&quot;, &quot;--appendonly&quot;, &quot;yes&quot;]
+    ports:
+      - &quot;6371:6379&quot;
+    networks:
+      - mynetwork
+
+  redis-slave:
+    image: redis
+    command: [&quot;redis-server&quot;, &quot;--slaveof&quot;, &quot;redis-master&quot;, &quot;6379&quot;, &quot;--appendonly&quot;, &quot;yes&quot;]
+    ports:
+      - &quot;6380:6379&quot;
+    depends_on:
+      - redis-master
+    networks:
+      - mynetwork
+
+  redis-sentinel:
+    image: redis
+    command: [&quot;redis-sentinel&quot;, &quot;/path/to/sentinel.conf&quot;, &quot;--sentinel&quot;, &quot;monitor&quot;, &quot;mymaster&quot;, &quot;192.168.104.128&quot;, &quot;6371&quot;, &quot;1&quot;]
+    volumes:
+      - /path/on/host/sentinel.conf:/path/to/sentinel.conf
+    ports:
+      - &quot;26379:26379&quot;
+    depends_on:
+      - redis-master
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+</code></pre></div><h2 id="新增sentinel配置文件"><a href="#新增sentinel配置文件" class="header-anchor">#</a> 新增sentinel配置文件</h2> <div class="language- extra-class"><pre class="language-text"><code>redis-sentinel:
+  image: redis
+  command: [&quot;redis-sentinel&quot;, &quot;/usr/local/etc/redis/sentinel.conf&quot;, &quot;--sentinel&quot;, &quot;monitor&quot;, &quot;mymaster&quot;, &quot;192.168.104.128&quot;, &quot;6371&quot;, &quot;1&quot;]
+  ports:
+    - &quot;26379:26379&quot;
+  depends_on:
+    - redis-master
+  networks:
+    - mynetwork
+
+</code></pre></div><h2 id="执行启动命令"><a href="#执行启动命令" class="header-anchor">#</a> 执行启动命令</h2> <div class="language- extra-class"><pre class="language-text"><code>docker-compose up -d
+</code></pre></div><p><img src="https://raw.githubusercontent.com/lichengcan/images/main/image-20231116180327619.png" alt=""></p> <p>在你的三台服务器上已经启动了Redis主节点、从节点和哨兵节点后，你可以通过以下几个步骤来验证和判断哨兵集群是否搭建成功：</p> <ol><li><p><strong>查看哨兵节点的日志：</strong></p> <p>进入任何一个哨兵节点的容器并查看日志，以确保哨兵节点正确连接到主节点并监视集群状态。使用以下命令：</p> <div class="language- extra-class"><pre class="language-text"><code>bashCopy codedocker exec -it &lt;redis-sentinel-container-id&gt; redis-cli
+INFO sentinel
+</code></pre></div><p>这将显示哨兵节点的信息，包括监视的主节点、连接状态等。</p></li> <li><p><strong>查看哨兵节点信息：</strong></p> <p>进入任何一个哨兵节点的容器并运行以下命令：</p> <div class="language- extra-class"><pre class="language-text"><code>bashCopy codedocker exec -it &lt;redis-sentinel-container-id&gt; redis-cli
+SENTINEL masters
+</code></pre></div><p>这将显示监视的主节点的信息，包括主节点的名称、IP地址、端口、运行状态等。</p></li> <li><p><strong>模拟主节点宕机：</strong></p> <p>在主节点容器中模拟宕机，观察哨兵节点是否能够正确地发现宕机并选择一个从节点升级为主节点。使用以下命令：</p> <div class="language- extra-class"><pre class="language-text"><code>bashCopy code
+docker stop &lt;redis-master-container-id&gt;
+</code></pre></div><p>然后查看其他哨兵节点的日志，观察是否发生了故障转移。</p></li> <li><p><strong>检查哨兵节点数量：</strong></p> <p>如果你有三台服务器，那么至少需要三个哨兵节点。检查每台服务器上是否都有一个运行的哨兵容器。</p></li> <li><p><strong>查看 Redis 集群信息：</strong></p> <p>使用以下命令在任何一个Redis容器上查看集群信息：</p> <div class="language- extra-class"><pre class="language-text"><code>bashCopy codedocker exec -it &lt;redis-container-id&gt; redis-cli
+CLUSTER INFO
+</code></pre></div><p>这将显示有关Redis集群的信息，包括主从关系、槽分配等。</p></li></ol> <p>通过执行这些步骤，你可以验证哨兵集群是否成功搭建，并确保故障转移等功能正常运作。如果所有步骤都顺利完成，那么你的Redis哨兵集群应该已经搭建成功。</p></div></section> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/技术框架/Docker/centos-docker-compose.html" class="prev">
+          centos 安装 docker-compose
+        </a></span> <span class="next"><a href="/技术框架/Docker/Docker-java.html">
+          Docker 搭建 Java 后端服务
+        </a></span></p></div> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6/Docker/Docker-redis.html#创建redis配置文件" class="sidebar-link reco-side-创建redis配置文件" data-v-b57cc07c>创建Redis配置文件</a></li><li class="level-2" data-v-b57cc07c><a href="/%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6/Docker/Docker-redis.html#创建redis运行脚本" class="sidebar-link reco-side-创建redis运行脚本" data-v-b57cc07c>创建redis运行脚本</a></li><li class="level-2" data-v-b57cc07c><a href="/%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6/Docker/Docker-redis.html#开始搭建redis集群" class="sidebar-link reco-side-开始搭建redis集群" data-v-b57cc07c>开始搭建redis集群</a></li><li class="level-2" data-v-b57cc07c><a href="/%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6/Docker/Docker-redis.html#测试-redis-集群" class="sidebar-link reco-side-测试-redis-集群" data-v-b57cc07c>测试 redis 集群</a></li><li class="level-2" data-v-b57cc07c><a href="/%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6/Docker/Docker-redis.html#查看集群节点" class="sidebar-link reco-side-查看集群节点" data-v-b57cc07c>查看集群节点</a></li><li class="level-3" data-v-b57cc07c><a href="/%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6/Docker/Docker-redis.html#搭建过程的一些命令" class="sidebar-link reco-side-搭建过程的一些命令" data-v-b57cc07c>搭建过程的一些命令</a></li><li class="level-2" data-v-b57cc07c><a href="/%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6/Docker/Docker-redis.html#使用docker-compose" class="sidebar-link reco-side-使用docker-compose" data-v-b57cc07c>使用docker-compose</a></li><li class="level-2" data-v-b57cc07c><a href="/%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6/Docker/Docker-redis.html#新增sentinel配置文件" class="sidebar-link reco-side-新增sentinel配置文件" data-v-b57cc07c>新增sentinel配置文件</a></li><li class="level-2" data-v-b57cc07c><a href="/%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6/Docker/Docker-redis.html#执行启动命令" class="sidebar-link reco-side-执行启动命令" data-v-b57cc07c>执行启动命令</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.9ff2d364.js" defer></script><script src="/assets/js/3.531b82cf.js" defer></script><script src="/assets/js/1.66bfa7cb.js" defer></script><script src="/assets/js/117.d5961bc5.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Java常用工具类 | CCNAIVE</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="小灿的学习日记">
+    
+    <link rel="preload" href="/assets/css/0.styles.ac0ba637.css" as="style"><link rel="preload" href="/assets/js/app.9ff2d364.js" as="script"><link rel="preload" href="/assets/js/3.531b82cf.js" as="script"><link rel="preload" href="/assets/js/1.66bfa7cb.js" as="script"><link rel="preload" href="/assets/js/30.8dba19c8.js" as="script"><link rel="prefetch" href="/assets/js/10.bbcc4f2b.js"><link rel="prefetch" href="/assets/js/100.7aa78320.js"><link rel="prefetch" href="/assets/js/101.be1a84ed.js"><link rel="prefetch" href="/assets/js/102.e54a66c3.js"><link rel="prefetch" href="/assets/js/103.96ea8db8.js"><link rel="prefetch" href="/assets/js/104.1843f7ee.js"><link rel="prefetch" href="/assets/js/105.5cb7f1d0.js"><link rel="prefetch" href="/assets/js/106.d0836c05.js"><link rel="prefetch" href="/assets/js/107.ac03de3a.js"><link rel="prefetch" href="/assets/js/108.050b9491.js"><link rel="prefetch" href="/assets/js/109.77d90976.js"><link rel="prefetch" href="/assets/js/11.7cbe3508.js"><link rel="prefetch" href="/assets/js/110.d8921d36.js"><link rel="prefetch" href="/assets/js/111.e834d261.js"><link rel="prefetch" href="/assets/js/112.fc17c22f.js"><link rel="prefetch" href="/assets/js/113.4a13e794.js"><link rel="prefetch" href="/assets/js/114.a0fc2dc4.js"><link rel="prefetch" href="/assets/js/115.c52d7495.js"><link rel="prefetch" href="/assets/js/116.18b15740.js"><link rel="prefetch" href="/assets/js/117.d5961bc5.js"><link rel="prefetch" href="/assets/js/118.ae8cd8e7.js"><link rel="prefetch" href="/assets/js/119.dbabe50a.js"><link rel="prefetch" href="/assets/js/12.03e80136.js"><link rel="prefetch" href="/assets/js/120.0a552300.js"><link rel="prefetch" href="/assets/js/121.0b55973d.js"><link rel="prefetch" href="/assets/js/122.a2372c82.js"><link rel="prefetch" href="/assets/js/123.9a1ed746.js"><link rel="prefetch" href="/assets/js/124.81c9bce0.js"><link rel="prefetch" href="/assets/js/125.9cc747cb.js"><link rel="prefetch" href="/assets/js/126.63641e51.js"><link rel="prefetch" href="/assets/js/127.afa36756.js"><link rel="prefetch" href="/assets/js/128.c3a0bafc.js"><link rel="prefetch" href="/assets/js/129.626bef76.js"><link rel="prefetch" href="/assets/js/13.98d91332.js"><link rel="prefetch" href="/assets/js/130.718e36e5.js"><link rel="prefetch" href="/assets/js/131.2f866590.js"><link rel="prefetch" href="/assets/js/132.eeae6af5.js"><link rel="prefetch" href="/assets/js/133.5f7161d3.js"><link rel="prefetch" href="/assets/js/134.d370c48c.js"><link rel="prefetch" href="/assets/js/135.cb4d88e1.js"><link rel="prefetch" href="/assets/js/136.49c2b181.js"><link rel="prefetch" href="/assets/js/137.4d5d406c.js"><link rel="prefetch" href="/assets/js/138.35297bdc.js"><link rel="prefetch" href="/assets/js/139.4cde83dd.js"><link rel="prefetch" href="/assets/js/14.5f24a2ff.js"><link rel="prefetch" href="/assets/js/140.1fba8365.js"><link rel="prefetch" href="/assets/js/141.cb4421c0.js"><link rel="prefetch" href="/assets/js/142.ea1fe29a.js"><link rel="prefetch" href="/assets/js/143.b21df084.js"><link rel="prefetch" href="/assets/js/144.a5450651.js"><link rel="prefetch" href="/assets/js/145.4a9f1b6c.js"><link rel="prefetch" href="/assets/js/146.032cd6ee.js"><link rel="prefetch" href="/assets/js/147.0ee0cf1b.js"><link rel="prefetch" href="/assets/js/148.3954607b.js"><link rel="prefetch" href="/assets/js/149.550f7938.js"><link rel="prefetch" href="/assets/js/15.1dd4d056.js"><link rel="prefetch" href="/assets/js/150.6b5ff9f8.js"><link rel="prefetch" href="/assets/js/151.7435d46f.js"><link rel="prefetch" href="/assets/js/152.4bb838b9.js"><link rel="prefetch" href="/assets/js/153.13d7f61b.js"><link rel="prefetch" href="/assets/js/154.c2c89d66.js"><link rel="prefetch" href="/assets/js/155.28853989.js"><link rel="prefetch" href="/assets/js/156.d207ca7c.js"><link rel="prefetch" href="/assets/js/157.9f4a887f.js"><link rel="prefetch" href="/assets/js/158.56a32b96.js"><link rel="prefetch" href="/assets/js/159.ccff2e00.js"><link rel="prefetch" href="/assets/js/16.9df877bb.js"><link rel="prefetch" href="/assets/js/160.1ce908c3.js"><link rel="prefetch" href="/assets/js/161.db87a48e.js"><link rel="prefetch" href="/assets/js/162.da596968.js"><link rel="prefetch" href="/assets/js/163.4b1914f2.js"><link rel="prefetch" href="/assets/js/164.d1428de2.js"><link rel="prefetch" href="/assets/js/165.3555dd76.js"><link rel="prefetch" href="/assets/js/166.3ec9c434.js"><link rel="prefetch" href="/assets/js/167.e1c89e9e.js"><link rel="prefetch" href="/assets/js/168.0a520b94.js"><link rel="prefetch" href="/assets/js/169.4122d818.js"><link rel="prefetch" href="/assets/js/17.cd29530c.js"><link rel="prefetch" href="/assets/js/170.0ac3b66b.js"><link rel="prefetch" href="/assets/js/171.a3a64b2d.js"><link rel="prefetch" href="/assets/js/172.7ac6a10c.js"><link rel="prefetch" href="/assets/js/173.4be2f7b1.js"><link rel="prefetch" href="/assets/js/174.0dfc7fdb.js"><link rel="prefetch" href="/assets/js/175.32ead0bc.js"><link rel="prefetch" href="/assets/js/176.209b5dbb.js"><link rel="prefetch" href="/assets/js/177.11adbb39.js"><link rel="prefetch" href="/assets/js/178.037a7502.js"><link rel="prefetch" href="/assets/js/18.097816ce.js"><link rel="prefetch" href="/assets/js/19.187e5563.js"><link rel="prefetch" href="/assets/js/20.6deb3fe1.js"><link rel="prefetch" href="/assets/js/21.9d82a949.js"><link rel="prefetch" href="/assets/js/22.0edad57f.js"><link rel="prefetch" href="/assets/js/23.b9c5f664.js"><link rel="prefetch" href="/assets/js/24.897f1420.js"><link rel="prefetch" href="/assets/js/25.1311359f.js"><link rel="prefetch" href="/assets/js/26.17a94cd7.js"><link rel="prefetch" href="/assets/js/27.fa379248.js"><link rel="prefetch" href="/assets/js/28.f6aab20b.js"><link rel="prefetch" href="/assets/js/29.d9c56383.js"><link rel="prefetch" href="/assets/js/31.10a83a0f.js"><link rel="prefetch" href="/assets/js/32.edae26a7.js"><link rel="prefetch" href="/assets/js/33.72f0a131.js"><link rel="prefetch" href="/assets/js/34.5a0fb7ca.js"><link rel="prefetch" href="/assets/js/35.9f28286e.js"><link rel="prefetch" href="/assets/js/36.ae243faa.js"><link rel="prefetch" href="/assets/js/37.381ff339.js"><link rel="prefetch" href="/assets/js/38.17ebee17.js"><link rel="prefetch" href="/assets/js/39.876319cd.js"><link rel="prefetch" href="/assets/js/4.979f9922.js"><link rel="prefetch" href="/assets/js/40.b2cec200.js"><link rel="prefetch" href="/assets/js/41.91b3553a.js"><link rel="prefetch" href="/assets/js/42.80320f96.js"><link rel="prefetch" href="/assets/js/43.783075f8.js"><link rel="prefetch" href="/assets/js/44.5b01350d.js"><link rel="prefetch" href="/assets/js/45.95d4d094.js"><link rel="prefetch" href="/assets/js/46.96cea9c3.js"><link rel="prefetch" href="/assets/js/47.23ced73b.js"><link rel="prefetch" href="/assets/js/48.04da13e7.js"><link rel="prefetch" href="/assets/js/49.2b134421.js"><link rel="prefetch" href="/assets/js/5.dda74e2f.js"><link rel="prefetch" href="/assets/js/50.cbbc36b3.js"><link rel="prefetch" href="/assets/js/51.c1a47ca0.js"><link rel="prefetch" href="/assets/js/52.36261b66.js"><link rel="prefetch" href="/assets/js/53.4d53e570.js"><link rel="prefetch" href="/assets/js/54.13e1603f.js"><link rel="prefetch" href="/assets/js/55.809c8ddc.js"><link rel="prefetch" href="/assets/js/56.5df2380e.js"><link rel="prefetch" href="/assets/js/57.2194d408.js"><link rel="prefetch" href="/assets/js/58.2c620696.js"><link rel="prefetch" href="/assets/js/59.34ee045d.js"><link rel="prefetch" href="/assets/js/6.5eed2fc3.js"><link rel="prefetch" href="/assets/js/60.3f617150.js"><link rel="prefetch" href="/assets/js/61.92698d83.js"><link rel="prefetch" href="/assets/js/62.0bfecc40.js"><link rel="prefetch" href="/assets/js/63.8da717e4.js"><link rel="prefetch" href="/assets/js/64.200fd49a.js"><link rel="prefetch" href="/assets/js/65.72a58cca.js"><link rel="prefetch" href="/assets/js/66.2985426d.js"><link rel="prefetch" href="/assets/js/67.8862ebfb.js"><link rel="prefetch" href="/assets/js/68.6f5b02a9.js"><link rel="prefetch" href="/assets/js/69.aa496fb1.js"><link rel="prefetch" href="/assets/js/7.8f40985b.js"><link rel="prefetch" href="/assets/js/70.b26013d6.js"><link rel="prefetch" href="/assets/js/71.1b1ae916.js"><link rel="prefetch" href="/assets/js/72.3035363e.js"><link rel="prefetch" href="/assets/js/73.eca6d0df.js"><link rel="prefetch" href="/assets/js/74.d4240c34.js"><link rel="prefetch" href="/assets/js/75.4dcd7ab1.js"><link rel="prefetch" href="/assets/js/76.e0675e49.js"><link rel="prefetch" href="/assets/js/77.edf24e37.js"><link rel="prefetch" href="/assets/js/78.552224f2.js"><link rel="prefetch" href="/assets/js/79.be7a41b6.js"><link rel="prefetch" href="/assets/js/8.e3dca3e1.js"><link rel="prefetch" href="/assets/js/80.147a04c7.js"><link rel="prefetch" href="/assets/js/81.3ecd3a95.js"><link rel="prefetch" href="/assets/js/82.b647894f.js"><link rel="prefetch" href="/assets/js/83.200bc3a6.js"><link rel="prefetch" href="/assets/js/84.a15d5403.js"><link rel="prefetch" href="/assets/js/85.75a34ef2.js"><link rel="prefetch" href="/assets/js/86.6b4e2beb.js"><link rel="prefetch" href="/assets/js/87.b15ce75c.js"><link rel="prefetch" href="/assets/js/88.507b99bb.js"><link rel="prefetch" href="/assets/js/89.b5d5b184.js"><link rel="prefetch" href="/assets/js/9.a4890a44.js"><link rel="prefetch" href="/assets/js/90.40064807.js"><link rel="prefetch" href="/assets/js/91.5cab932b.js"><link rel="prefetch" href="/assets/js/92.8682710e.js"><link rel="prefetch" href="/assets/js/93.78582e33.js"><link rel="prefetch" href="/assets/js/94.48896994.js"><link rel="prefetch" href="/assets/js/95.b637124b.js"><link rel="prefetch" href="/assets/js/96.07d46f7c.js"><link rel="prefetch" href="/assets/js/97.c24e0b91.js"><link rel="prefetch" href="/assets/js/98.d6a95e55.js"><link rel="prefetch" href="/assets/js/99.9330a585.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ac0ba637.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>CCNAIVE</h3> <p class="description" data-v-59e6cb88>小灿的学习日记</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2025
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">CCNAIVE</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      小灿的学习日记
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/lichengcan" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/lichengcan0228/lichengcan0228" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <!----> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>160</h3> <h6 data-v-1fad0c41>文章</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>6</h3> <h6 data-v-1fad0c41>标签</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      小灿的学习日记
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/lichengcan" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/lichengcan0228/lichengcan0228" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <ul class="sidebar-links"><li><a href="/" aria-current="page" class="sidebar-link">CCNAIVE</a></li><li><section class="sidebar-group collapsable depth-0"><a href="/Java/面向对象/多态" class="sidebar-heading clickable"><span>Java 从入门到放弃</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/数据结构与算法/排序/排序" class="sidebar-heading clickable"><span>数据结构与算法</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/网络/基础篇/TCP-IP" class="sidebar-heading clickable"><span>网络</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/Spring/Spring/Spring" class="sidebar-heading clickable"><span>Spring 全家桶</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/数据库/MySQL/CommonUseSQL" class="sidebar-heading clickable"><span>数据库</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/技术框架/rabbitmq/rabbitmq" class="sidebar-heading clickable"><span>技术框架</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/Linux/LinuxCommand" class="sidebar-heading clickable"><span>Linux 服务器相关</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/杂/一些网站/website" class="sidebar-heading clickable"><span>杂</span> <span class="arrow right"></span></a> <!----></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>Java常用工具类</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2025
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">Java常用工具类</h1> <div data-v-8a445198><!----> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>2022/7/15</span></i> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h2 id="geojson-wkt"><a href="#geojson-wkt" class="header-anchor">#</a> GeoJson-wkt</h2> <div class="language- extra-class"><pre class="language-text"><code>&lt;!--geojson wkt格式转换依赖--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.wololo&lt;/groupId&gt;
+    &lt;artifactId&gt;jts2geojson&lt;/artifactId&gt;
+    &lt;version&gt;0.17.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>import com.fasterxml.jackson.databind.ObjectMapper;
+import org.locationtech.jts.geom.Geometry;
+import org.locationtech.jts.io.WKTReader;
+import org.locationtech.jts.io.WKTWriter;
+import org.wololo.geojson.GeoJSON;
+import org.wololo.jts2geojson.GeoJSONReader;
+import org.wololo.jts2geojson.GeoJSONWriter;
+import java.io.IOException;
+
+/**
+ * @author lichengcan
+ * @date 2022/7/15 16:51
+ * @description geojson和wkt格式转换工具类
+ */
+public class GeoJsonConvertWktUtil {
+    /**
+     * geojson 转 geometry
+     *
+     * @param geojson
+     * @return
+     * @throws Exception
+     */
+    public static Geometry geojson2Geometry(String geojson) throws Exception {
+        GeoJSONReader reader = new GeoJSONReader();
+        Geometry geometry = reader.read(geojson);
+        return geometry;
+    }
+
+
+    /**
+     * geometry 转 geojson
+     *
+     * @param geometry
+     * @return
+     * @throws Exception
+     */
+    public static String geometry2Geojson(Geometry geometry) throws Exception {
+        GeoJSONWriter writer = new GeoJSONWriter();
+        GeoJSON json = writer.write(geometry);
+        return json.toString();
+    }
+
+
+    /**
+     * wkt 转 geometry
+     *
+     * @param wkt
+     * @return
+     * @throws Exception
+     */
+    public static Geometry wkt2Geometry(String wkt) throws Exception {
+        WKTReader reader = new WKTReader();
+        return reader.read(wkt);
+    }
+
+    /**
+     * geometry 转 wkt
+     *
+     * @param geometry
+     * @return
+     * @throws Exception
+     */
+    public static String geometry2Wkt(Geometry geometry) throws Exception {
+        WKTWriter writer = new WKTWriter();
+        return writer.write(geometry);
+    }
+
+
+    /**
+     * geojson 转 wkt
+     *
+     * @param geojson
+     * @return
+     * @throws Exception
+     */
+    public static String geojson2Wkt(String geojson) throws Exception {
+        Geometry geometry = geojson2Geometry(geojson);
+        return geometry2Wkt(geometry);
+    }
+
+    /**
+     * wkt 转 geojson
+     *
+     * @param wkt
+     * @return
+     * @throws Exception
+     */
+    public static String wkt2Geojson(String wkt) throws Exception {
+        Geometry geometry = wkt2Geometry(wkt);
+        return geometry2Geojson(geometry);
+    }
+
+    /**
+     * obj 转 json
+     *
+     * @param obj
+     * @param &lt;T&gt;
+     * @return
+     */
+    public static &lt;T&gt; String obj2StringPretty(T obj) {
+        ObjectMapper mapper = new ObjectMapper();
+        if (obj == null) {
+            return null;
+        }
+        try {
+            return obj instanceof String ? (String) obj : mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
+        } catch (IOException e) {
+            return null;
+        }
+    }
+
+    /**
+     * json 转 obj
+     *
+     * @param str
+     * @param clazz
+     * @param &lt;T&gt;
+     * @return
+     */
+    public static &lt;T&gt; T string2Obj(String str, Class&lt;T&gt; clazz) {
+        ObjectMapper mapper = new ObjectMapper();
+        if (isEmpty(str) || clazz == null) {
+            return null;
+        }
+        try {
+            return clazz.equals(String.class) ? (T) str : mapper.readValue(str, clazz);
+        } catch (IOException e) {
+            return null;
+        }
+    }
+
+    /**
+     * 为空判断
+     *
+     * @param str
+     * @return
+     */
+    private static boolean isEmpty(String str) {
+        return str == null || str.length() == 0;
+    }
+
+}
+
+</code></pre></div><h3 id="示例"><a href="#示例" class="header-anchor">#</a> 示例</h3> <p>geojson---&gt;wkt读取jeojson文件，并插入数据库</p> <div class="language- extra-class"><pre class="language-text"><code>@RestController
+@RequestMapping(&quot;/shimen&quot;)
+public class ShimenDownController {
+
+    @Autowired
+    ShimenTownService shimenTownService;
+
+    @RequestMapping(&quot;/insertShimenDown&quot;)
+    public ResultMap insertShimenDown() throws Exception {
+        //读取文件
+        File file=new File(&quot;D:\\documents\\work\\shimen_town_R_84_R(1).geojson&quot;);
+        //读取文件中的数据保存在String
+        String GeoJsonData= null;
+        try {
+            GeoJsonData = FileUtils.readFileToString(file,&quot;UTF-8&quot;);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //将所有对象都放到集合中，再一次性插入数据库
+        List&lt;ShimenTown&gt; shimenTowns = new ArrayList&lt;&gt;();
+
+        //将JeoJson格式转换枨 map
+        Map map =  JSONObject.parseObject(GeoJsonData.trim());
+        //获取key为 features的值
+        List&lt;Map&gt; features = (List&lt;Map&gt;) map.get(&quot;features&quot;);
+        //resultMapList 用来封装最终需要的数据
+        List&lt;Map&gt; resultMapList = new ArrayList&lt;&gt;();
+        //遍历features中的map
+        for (Map feature :features){
+            Map geometry = (Map) feature.get(&quot;geometry&quot;);
+            String geometryStr = JsonUtils.toJson(geometry);
+            String wkt = geojson2Wkt(geometryStr);
+            Map properties = (Map) feature.get(&quot;properties&quot;);
+            //封装最小化插入数据库的对象,这里的对象一定要放在循环里面，不然在循环过程中会替换上一次的值
+            //ArrayList集合里存的是一个对象的引用。当我们改变obj时，之前添加的数据都会被改变
+            ShimenTown shimenTown = new ShimenTown();
+            //封装需要插入数据库的数据
+            shimenTown.setBSM((String) properties.get(&quot;BSM&quot;));
+            shimenTown.setWkt(wkt);
+            shimenTown.setXZQDM((String) properties.get(&quot;XZQDM&quot;));
+            shimenTown.setXZQMC((String) properties.get(&quot;XZQMC&quot;));
+            shimenTowns.add(shimenTown);
+        }
+        //一次性插入数据库
+        return shimenTownService.insertShimenDown(shimenTowns);
+    }
+</code></pre></div><h2 id="java-excel"><a href="#java-excel" class="header-anchor">#</a> Java-Excel</h2> <div class="language- extra-class"><pre class="language-text"><code>&lt;!--excel操作包--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.poi&lt;/groupId&gt;
+    &lt;artifactId&gt;poi&lt;/artifactId&gt;
+    &lt;version&gt;4.1.2&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;!--xlsx(07)--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.poi&lt;/groupId&gt;
+    &lt;artifactId&gt;poi-ooxml&lt;/artifactId&gt;
+    &lt;version&gt;4.1.2&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;!--时间格式化工具--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;joda-time&lt;/groupId&gt;
+    &lt;artifactId&gt;joda-time&lt;/artifactId&gt;
+    &lt;version&gt;2.10.6&lt;/version&gt;
+&lt;/dependency&gt;
+
+</code></pre></div><h3 id="示例-2"><a href="#示例-2" class="header-anchor">#</a> 示例</h3> <div class="language- extra-class"><pre class="language-text"><code>package com.dataojo.utils;
+
+import com.dataojo.model.entity.CityLocation;
+import org.apache.poi.hssf.usermodel.HSSFDateUtil;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.joda.time.DateTime;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+/**
+ * @author lichengcan
+ * @date 2022/7/12 16:01
+ * @description excel操作工具类
+ */
+public class ReadExcelXssf {
+
+    public static String PATH = &quot;D:\\documents\\work\\&quot;;
+
+    public static void main(String[] args) throws Exception {
+        ReadExcelXssf readExcelXssf = new ReadExcelXssf();
+       // readExcelXssf.readExcel();
+    }
+
+    /**
+     * 将Excel数据读取出来，封装到对象中
+     * @return
+     * @throws IOException
+     */
+    public List&lt;CityLocation&gt; readExcel() throws IOException {
+        List&lt;CityLocation&gt; resultList = new ArrayList&lt;&gt;();
+        CityLocation cityLocation = new CityLocation();
+        //获取文件流
+        FileInputStream inputStream = new FileInputStream(PATH + &quot;成都轨迹叠加.xlsx&quot;);
+
+        //1.创建工作簿,使用excel能操作的这边都看看操作
+        Workbook workbook = new XSSFWorkbook(inputStream);
+        //2.得到表
+        Sheet sheet = workbook.getSheetAt(0);
+        //3.得到行
+        int rowLength = sheet.getLastRowNum();
+        int columnLength = sheet.getRow(0).getPhysicalNumberOfCells();
+        for (int i = 0; i &lt; rowLength; i++) {
+            for (int j = 0; j &lt; columnLength; j++) {
+
+                Row row = sheet.getRow(i);
+                Cell cell = row.getCell(j);
+                if(j==0){
+                    String value = getValue(cell);
+                    cityLocation.setParentId(value);
+                }
+                if(j==1){
+                    String value = getValue(cell);
+                    cityLocation.setLongitude(value);
+                }
+                if(j==2){
+                    String value = getValue(cell);
+                    cityLocation.setLatitude(value);
+                }
+                if(j==3){
+                    String value = getValue(cell);
+                    cityLocation.setCreateTime(value);
+                }
+            }
+            //System.out.println(cityLocation);
+            resultList.add(cityLocation);
+        }
+        inputStream.close();
+        return resultList;
+    }
+
+    public static String getValue(Cell cell) {
+        String cellValue = &quot;&quot;;
+        //匹配类型数据
+        if (cell != null) {
+            CellType cellType = cell.getCellType();
+            switch (cellType) {
+                case STRING: //字符串
+                    cellValue = cell.getStringCellValue();
+                    break;
+                case BOOLEAN: //布尔类型
+                    cellValue = String.valueOf(cell.getBooleanCellValue());
+                    break;
+                case BLANK: //空
+                    break;
+                case NUMERIC: //数字（日期、普通数字）
+                    if (HSSFDateUtil.isCellDateFormatted(cell)) { //日期
+                        Date date = cell.getDateCellValue();
+                        cellValue = new DateTime(date).toString(&quot;yyyy-MM-dd&quot;);
+                    } else {
+                        //不是日期格式，防止数字过长
+                        cell.setCellType(CellType.STRING);
+                        cellValue = cell.toString();
+                    }
+                    break;
+                case ERROR:
+                    break;
+                //default:
+            }
+        }
+        return cellValue;
+    }
+
+    /**
+     * 将数据输出到Excel
+     * @param cityLocations
+     * @throws IOException
+     */
+    public void printExcel(List&lt;CityLocation&gt; cityLocations) throws IOException {
+        String PATH = &quot;D:\\documents\\work\\&quot;;
+
+        //时间
+        long begin = System.currentTimeMillis();
+
+        //创建一个工作簿
+        Workbook workbook = new XSSFWorkbook();
+        //创建表
+        Sheet sheet = workbook.createSheet();
+        //写入数据
+        for (int rowNumber = 0; rowNumber &lt; cityLocations.size(); rowNumber++) {
+            CityLocation cityLocation = cityLocations.get(rowNumber);
+            Row row = sheet.createRow(rowNumber);
+            for (int cellNumber = 0; cellNumber &lt;= 3; cellNumber++) {
+                Cell cell = row.createCell(cellNumber);
+                if(cellNumber==0){
+                    cell.setCellValue(cityLocation.getParentId());
+                }
+                if(cellNumber==1){
+                    cell.setCellValue(cityLocation.getLongitude());
+                }
+                if(cellNumber==2){
+                    cell.setCellValue(cityLocation.getLatitude());
+                }
+                if(cellNumber==3){
+                    cell.setCellValue(cityLocation.getCreateTime());
+                }
+            }
+        }
+        System.out.println(&quot;over&quot;);
+
+        FileOutputStream fileOutputStream = new FileOutputStream(PATH + &quot;123.xlsx&quot;);
+        workbook.write(fileOutputStream);
+        fileOutputStream.close();
+        long end = System.currentTimeMillis();
+        System.out.println((double) (end - begin) / 1000);
+
+    }
+
+}
+excel表中数据：
+parentId	longitude	latitude	createTime
+1	104.137318	30.668151	2020/12/2 0:00
+1	104.1379449	30.66865906	2020/12/2 0:00
+1	104.139973	30.67057863	2020/12/2 0:01
+1	104.1401576	30.67075134	2020/12/2 0:01
+1	104.1402878	30.67085149	2020/12/2 0:02
+1	104.1403679	30.67092157	2020/12/2 0:02
+</code></pre></div><h2 id="java-时间戳"><a href="#java-时间戳" class="header-anchor">#</a> Java-时间戳</h2> <blockquote><p>我们可以使用 util 包的 <code>Date</code> 类来获取当前时间戳。要以 <code>yyyy.MM.dd</code> 格式格式化时间戳，我们可以使用 <code>SimpleDateFormat</code> 类。请参见下面的示例。</p></blockquote> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>text<span class="token punctuation">.</span></span><span class="token class-name">SimpleDateFormat</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Date</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SimpleTesting</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">SimpleDateFormat</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SimpleDateFormat</span><span class="token punctuation">(</span><span class="token string">&quot;yyyy.MM.dd HH:mm:ss&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">String</span> timeStamp <span class="token operator">=</span> date<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;Current Time Stamp: &quot;</span><span class="token operator">+</span>timeStamp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="ip地址来源"><a href="#ip地址来源" class="header-anchor">#</a> IP地址来源</h2> <div class="language- extra-class"><pre class="language-text"><code>1.导入工具类
+  &lt;dependency&gt;
+        &lt;groupId&gt;org.lionsoul&lt;/groupId&gt;
+        &lt;artifactId&gt;ip2region&lt;/artifactId&gt;
+        &lt;version&gt;1.7&lt;/version&gt;
+    &lt;/dependency&gt;
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>import org.apache.commons.io.FileUtils;
+import org.lionsoul.ip2region.DataBlock;
+import org.lionsoul.ip2region.DbConfig;
+import org.lionsoul.ip2region.DbSearcher;
+import org.lionsoul.ip2region.Util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.lang.reflect.Method;
+
+/**
+ * @author MrBird
+ */
+public class AddressUtil {
+
+    private static Logger log = LoggerFactory.getLogger(AddressUtil.class);
+
+    public static String getCityInfo(String ip){
+
+        File file;
+        try {
+            //db
+            String dbPath = AddressUtil.class.getResource(&quot;/ip2region/ip2region.db&quot;).getPath();
+             file= new File(dbPath);
+            if (file.exists() == false) {
+                String tmpDir = System.getProperties().getProperty(&quot;java.io.tmpdir&quot;);
+                dbPath = tmpDir + &quot;ip.db&quot;;
+                file = new File(dbPath);
+                FileUtils.copyInputStreamToFile(AddressUtil.class.getClassLoader().getResourceAsStream(&quot;classpath:ip2region/ip2region.db&quot;), file);
+            }
+
+            //查询算法
+            int algorithm = DbSearcher.BTREE_ALGORITHM; //B-tree
+            //DbSearcher.BINARY_ALGORITHM //Binary
+            //DbSearcher.MEMORY_ALGORITYM //Memory
+            try {
+                DbConfig config = new DbConfig();
+                DbSearcher searcher = new DbSearcher(config, dbPath);
+
+                //define the method
+                Method method = null;
+                switch (algorithm) {
+                    case DbSearcher.BTREE_ALGORITHM:
+                        method = searcher.getClass().getMethod(&quot;btreeSearch&quot;, String.class);
+                        break;
+                    case DbSearcher.BINARY_ALGORITHM:
+                        method = searcher.getClass().getMethod(&quot;binarySearch&quot;, String.class);
+                        break;
+                    case DbSearcher.MEMORY_ALGORITYM:
+                        method = searcher.getClass().getMethod(&quot;memorySearch&quot;, String.class);
+                        break;
+                }
+
+                DataBlock dataBlock = null;
+                if (Util.isIpAddress(ip) == false) {
+                    System.out.println(&quot;Error: Invalid ip address&quot;);
+                }
+
+                dataBlock = (DataBlock) method.invoke(searcher, ip);
+
+                return dataBlock.getRegion();
+
+            } catch (Exception e) {
+               // e.printStackTrace();
+            }
+        }catch (Exception e) {
+            //e.printStackTrace();
+        }finally {
+
+        }
+
+        return null;
+    }
+    public static void main(String[] args)  throws Exception{
+        System.err.println(getCityInfo(&quot;127.0.0.1&quot;));
+        System.err.println(getCityInfo(&quot;17.1.1.3&quot;));
+    }
+}
+</code></pre></div><h2 id="java-http请求"><a href="#java-http请求" class="header-anchor">#</a> Java-Http请求</h2> <div class="language- extra-class"><pre class="language-text"><code>/**
+ * HTTP 请求模板
+ * @return
+ */
+@Bean(&quot;restTemplate&quot;)
+public RestTemplate restTemplate() {
+    SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
+
+    //单位为ms
+    factory.setReadTimeout(60000);
+    factory.setConnectTimeout(60000);
+    return new RestTemplate(factory);
+}
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>@RestController
+@RequestMapping(&quot;/data&quot;)
+public class DataHandleController {
+
+	@Autowired
+    RestTemplate restTemplate;
+
+    @RequestMapping(&quot;/getData&quot;)
+    public ResultMap getData() {
+        String url = &quot;https://ldjsc.data.suqian.gov.cn//internalProcess/analyse/queryList&quot;;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+//      设置请求参数
+        HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();
+        map.put(&quot;authCode&quot;, &quot;1&quot;);
+        //用HttpEntity封装整个请求报文
+        HttpEntity&lt;HashMap&lt;String, Object&gt;&gt; request = new HttpEntity&lt;&gt;(map, headers);
+
+//        开始调用
+//        参数1：目标请求地址
+//        参数2：请求体
+//        参数3：目标请求接口的返回值类型（execute接口的返回值类型）
+        Map resultMap = restTemplate.postForObject(url, request, Map.class);
+        List&lt;Map&gt; dataList = (List&lt;Map&gt;) resultMap.get(&quot;data&quot;);
+
+        List&lt;Map&gt; mapResult = new ArrayList&lt;&gt;();
+
+        for (Map parentMap : dataList) {
+            List&lt;Map&gt; mapList = (List&lt;Map&gt;) parentMap.get(&quot;judgmentList&quot;);
+            //获取parentMap名称
+            String name = (String) parentMap.get(&quot;name&quot;);
+            for (Map sonMap : mapList) {
+                sonMap.put(&quot;name&quot;,name);
+                mapResult.add(sonMap);
+            }
+        }
+        List&lt;Map&gt; sellAmount = mapResult.stream().sorted(Comparator.comparing((Map x) -&gt; (Integer) x.get(&quot;id&quot;)).reversed()).collect(Collectors.toList());
+        return Result.success(sellAmount);
+    }
+</code></pre></div><h2 id="java-geojson"><a href="#java-geojson" class="header-anchor">#</a> Java-GeoJson</h2> <blockquote><p>Java读取geojson格式文件数据</p></blockquote> <div class="language- extra-class"><pre class="language-text"><code>        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;
+            &lt;artifactId&gt;commons-io&lt;/artifactId&gt;
+            &lt;version&gt;1.3.2&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code> @RequestMapping(&quot;/getGeoJsonData&quot;)
+    public ResultMap getGeoJsonData(){
+        //读取文件
+        File file=new File(&quot;D:\\documents\\work\\shimen.geojson&quot;);
+        //读取文件中的数据保存在String
+        String content= null;
+        try {
+            content = FileUtils.readFileToString(file,&quot;UTF-8&quot;);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //将String 转成Map对象
+            Map map =  JSONObject.parseObject(content.trim());
+            //获取key为 features的值
+            List&lt;Map&gt; features = (List&lt;Map&gt;) map.get(&quot;features&quot;);
+            //resultMapList 用来封装最终需要的数据
+            List&lt;Map&gt; resultMapList = new ArrayList&lt;&gt;();
+            //遍历features中的map
+            for (Map feature :features){
+                Map geometry = (Map) feature.get(&quot;geometry&quot;);
+                Map properties = (Map) feature.get(&quot;properties&quot;);
+                geometry.put(&quot;XZQMC&quot;, properties.get(&quot;XZQMC&quot;));
+                resultMapList.add(geometry);
+            }
+        return Result.success(resultMapList);
+    }
+</code></pre></div><h2 id="jwt-工具类"><a href="#jwt-工具类" class="header-anchor">#</a> JWT-工具类</h2> <div class="language- extra-class"><pre class="language-text"><code>        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;
+            &lt;artifactId&gt;shiro-spring&lt;/artifactId&gt;
+            &lt;version&gt;1.3.2&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.auth0&lt;/groupId&gt;
+            &lt;artifactId&gt;java-jwt&lt;/artifactId&gt;
+            &lt;version&gt;3.2.0&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>/**
+ * @Author lichengcan
+ * @Date 2020/3/1 09:18
+ * @Version 1.0
+ **/
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.interfaces.DecodedJWT;
+import java.io.UnsupportedEncodingException;
+import java.util.Date;
+public class JWTUtils {
+    /**
+     * 过期时间6小时
+     */
+    private static final long EXPIRE_TIME = 6 * 60 * 60 * 1000;
+
+    /**
+     * 校验token是否正确
+     *
+     * @param token  密钥
+     * @param secret 用户的密码
+     * @return 是否正确
+     */
+    public static boolean verify(String token, String username, String secret) {
+        try {
+            Algorithm algorithm = Algorithm.HMAC256(secret);
+            JWTVerifier verifier = JWT.require(algorithm)
+                    .withClaim(&quot;username&quot;, username)
+                    .build();
+            DecodedJWT jwt = verifier.verify(token);
+            return true;
+        } catch (Exception exception) {
+            return false;
+        }
+    }
+
+    /**
+     * 获得token中的信息无需secret解密也能获得
+     *
+     * @return token中包含的用户名
+     */
+    public static String getUsername(String token) {
+        try {
+            DecodedJWT jwt = JWT.decode(token);
+            return jwt.getClaim(&quot;username&quot;).asString();
+        } catch (JWTDecodeException e) {
+            return null;
+        }
+    }
+
+    /**
+     * 生成签名,2min后过期
+     *
+     * @param username 用户名
+     * @param secret   用户的密码
+     * @return 加密的token
+     */
+    public static String sign(String username, String secret) {
+        try {
+            Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
+            Algorithm algorithm = Algorithm.HMAC256(secret);
+            // 附带username信息
+            return JWT.create()
+                    .withClaim(&quot;username&quot;, username)
+                    .withExpiresAt(date)
+                    .sign(algorithm);
+        } catch (UnsupportedEncodingException e) {
+            return null;
+        }
+    }
+
+    /**
+     * 判断过期
+     *
+     * @param token
+     * @return
+     */
+    public static boolean isExpire(String token) {
+        DecodedJWT jwt = JWT.decode(token);
+        return System.currentTimeMillis() &gt; jwt.getExpiresAt().getTime();
+    }
+}
+</code></pre></div><h2 id="验证码-工具类"><a href="#验证码-工具类" class="header-anchor">#</a> 验证码-工具类</h2> <div class="language- extra-class"><pre class="language-text"><code>package com.coderman.api.common.utils;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Random;
+
+/**
+ * 随机字符验证码生成工具类
+ * @author Exrickx
+ */
+/**
+ * Created by lichengcan on 2019/12/18 15:38
+ */
+public class CreateVerifyCode {
+        /**
+         * 图片的宽度
+         */
+        private int width = 160;
+        /**
+         * 图片的高度
+         */
+        private int height = 40;
+        /**
+         * 验证码字符个数
+         */
+        private int codeCount = 4;
+        /**
+         * 验证码干扰线数
+         */
+        private int lineCount = 20;
+        /**
+         * 验证码
+         */
+        private String code = null;
+        /**
+         * 验证码图片Buffer
+         */
+        private BufferedImage buffImg = null;
+
+        Random random = new Random();
+
+        public CreateVerifyCode() {
+            creatImage();
+        }
+
+        public CreateVerifyCode(int width, int height) {
+            this.width = width;
+            this.height = height;
+            creatImage();
+        }
+
+        public CreateVerifyCode(int width, int height, int codeCount) {
+            this.width = width;
+            this.height = height;
+            this.codeCount = codeCount;
+            creatImage();
+        }
+
+        public CreateVerifyCode(int width, int height, int codeCount, int lineCount) {
+            this.width = width;
+            this.height = height;
+            this.codeCount = codeCount;
+            this.lineCount = lineCount;
+            creatImage();
+        }
+
+        public CreateVerifyCode(int width, int height, int codeCount, int lineCount, String code) {
+            this.width = width;
+            this.height = height;
+            this.codeCount = codeCount;
+            this.lineCount = lineCount;
+            creatImage(code);
+        }
+
+        /**
+         * 生成图片
+         */
+        private void creatImage() {
+            // 字体的宽度
+            int fontWidth = width / codeCount;
+            // 字体的高度
+            int fontHeight = height - 5;
+            int codeY = height - 8;
+
+            // 图像buffer
+            buffImg = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+            Graphics g = buffImg.getGraphics();
+            //Graphics2D g = buffImg.createGraphics();
+            // 设置背景色
+            g.setColor(getRandColor(200, 250));
+            g.fillRect(0, 0, width, height);
+
+            // 设置字体
+            //Font font1 = getFont(fontHeight);
+            Font font = new Font(&quot;Fixedsys&quot;, Font.BOLD, fontHeight);
+            g.setFont(font);
+
+            // 设置干扰线
+            for (int i = 0; i &lt; lineCount; i++) {
+                int xs = random.nextInt(width);
+                int ys = random.nextInt(height);
+                int xe = xs + random.nextInt(width);
+                int ye = ys + random.nextInt(height);
+                g.setColor(getRandColor(1, 255));
+                g.drawLine(xs, ys, xe, ye);
+            }
+
+            // 添加噪点
+            float yawpRate = 0.01f;// 噪声率
+            int area = (int) (yawpRate * width * height);
+            for (int i = 0; i &lt; area; i++) {
+                int x = random.nextInt(width);
+                int y = random.nextInt(height);
+
+                buffImg.setRGB(x, y, random.nextInt(255));
+            }
+
+            String str1 = randomStr(codeCount);// 得到随机字符
+            this.code = str1;
+            for (int i = 0; i &lt; codeCount; i++) {
+                String strRand = str1.substring(i, i + 1);
+                g.setColor(getRandColor(1, 255));
+                // g.drawString(a,x,y);
+                // a为要画出来的东西，x和y表示要画的东西最左侧字符的基线位于此图形上下文坐标系的 (x, y) 位置处
+                g.drawString(strRand, i*fontWidth+3, codeY);
+            }
+
+        }
+
+        /**
+         * 生成指定字符图片
+         */
+        private void creatImage(String code) {
+            // 字体的宽度
+            int fontWidth = width / codeCount;
+            // 字体的高度
+            int fontHeight = height - 5;
+            int codeY = height - 8;
+
+            // 图像buffer
+            buffImg = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+            Graphics g = buffImg.getGraphics();
+            //Graphics2D g = buffImg.createGraphics();
+            // 设置背景色
+            g.setColor(getRandColor(200, 250));
+            g.fillRect(0, 0, width, height);
+
+            // 设置字体
+            //Font font1 = getFont(fontHeight);
+            Font font = new Font(&quot;Fixedsys&quot;, Font.BOLD, fontHeight);
+            g.setFont(font);
+
+            // 设置干扰线
+            for (int i = 0; i &lt; lineCount; i++) {
+                int xs = random.nextInt(width);
+                int ys = random.nextInt(height);
+                int xe = xs + random.nextInt(width);
+                int ye = ys + random.nextInt(height);
+                g.setColor(getRandColor(1, 255));
+                g.drawLine(xs, ys, xe, ye);
+            }
+
+            // 添加噪点
+            float yawpRate = 0.01f;// 噪声率
+            int area = (int) (yawpRate * width * height);
+            for (int i = 0; i &lt; area; i++) {
+                int x = random.nextInt(width);
+                int y = random.nextInt(height);
+
+                buffImg.setRGB(x, y, random.nextInt(255));
+            }
+
+            this.code = code;
+            for (int i = 0; i &lt; code.length(); i++) {
+                String strRand = code.substring(i, i + 1);
+                g.setColor(getRandColor(1, 255));
+                // g.drawString(a,x,y);
+                // a为要画出来的东西，x和y表示要画的东西最左侧字符的基线位于此图形上下文坐标系的 (x, y) 位置处
+                g.drawString(strRand, i*fontWidth+3, codeY);
+            }
+
+        }
+
+        /**
+         * 得到随机字符
+         * @param n
+         * @return
+         */
+        public String randomStr(int n) {
+            String str1 = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890&quot;;
+            String str2 = &quot;&quot;;
+            int len = str1.length() - 1;
+            double r;
+            for (int i = 0; i &lt; n; i++) {
+                r = (Math.random()) * len;
+                str2 = str2 + str1.charAt((int) r);
+            }
+            return str2;
+        }
+
+        /**
+         * 得到随机颜色
+         * @param fc
+         * @param bc
+         * @return
+         */
+        private Color getRandColor(int fc, int bc) {
+            // 给定范围获得随机颜色
+            if (fc &gt; 255){
+                fc = 255;
+            }
+            if (bc &gt; 255){
+                bc = 255;
+            }
+            int r = fc + random.nextInt(bc - fc);
+            int g = fc + random.nextInt(bc - fc);
+            int b = fc + random.nextInt(bc - fc);
+            return new Color(r, g, b);
+        }
+
+        /**
+         * 产生随机字体
+         */
+        private Font getFont(int size) {
+            Random random = new Random();
+            Font font[] = new Font[5];
+            font[0] = new Font(&quot;Ravie&quot;, Font.PLAIN, size);
+            font[1] = new Font(&quot;Antique Olive Compact&quot;, Font.PLAIN, size);
+            font[2] = new Font(&quot;Fixedsys&quot;, Font.PLAIN, size);
+            font[3] = new Font(&quot;Wide Latin&quot;, Font.PLAIN, size);
+            font[4] = new Font(&quot;Gill Sans Ultra Bold&quot;, Font.PLAIN, size);
+            return font[random.nextInt(5)];
+        }
+
+        // 扭曲方法
+        private void shear(Graphics g, int w1, int h1, Color color) {
+            shearX(g, w1, h1, color);
+            shearY(g, w1, h1, color);
+        }
+
+        private void shearX(Graphics g, int w1, int h1, Color color) {
+
+            int period = random.nextInt(2);
+
+            boolean borderGap = true;
+            int frames = 1;
+            int phase = random.nextInt(2);
+
+            for (int i = 0; i &lt; h1; i++) {
+                double d = (double) (period &gt;&gt; 1)
+                        * Math.sin((double) i / (double) period
+                        + (6.2831853071795862D * (double) phase)
+                        / (double) frames);
+                g.copyArea(0, i, w1, 1, (int) d, 0);
+                if (borderGap) {
+                    g.setColor(color);
+                    g.drawLine((int) d, i, 0, i);
+                    g.drawLine((int) d + w1, i, w1, i);
+                }
+            }
+
+        }
+
+        private void shearY(Graphics g, int w1, int h1, Color color) {
+
+            int period = random.nextInt(40) + 10; // 50;
+
+            boolean borderGap = true;
+            int frames = 20;
+            int phase = 7;
+            for (int i = 0; i &lt; w1; i++) {
+                double d = (double) (period &gt;&gt; 1)
+                        * Math.sin((double) i / (double) period
+                        + (6.2831853071795862D * (double) phase)
+                        / (double) frames);
+                g.copyArea(i, 0, 1, h1, 0, (int) d);
+                if (borderGap) {
+                    g.setColor(color);
+                    g.drawLine(i, (int) d, i, 0);
+                    g.drawLine(i, (int) d + h1, i, h1);
+                }
+
+            }
+
+        }
+
+        public void write(OutputStream sos) throws IOException {
+            ImageIO.write(buffImg, &quot;png&quot;, sos);
+            sos.close();
+        }
+
+        public BufferedImage getBuffImg() {
+            return buffImg;
+        }
+
+        public String getCode() {
+            return code.toLowerCase();
+        }
+}
+
+</code></pre></div></div></section> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/Java/杂七杂八/ListMap.html" class="prev">
+          Listmap
+        </a></span> <span class="next"><a href="/Java/杂七杂八/ListToString.html">
+          ListToString
+        </a></span></p></div> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/Java/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/JavaTools.html#geojson-wkt" class="sidebar-link reco-side-geojson-wkt" data-v-b57cc07c>GeoJson-wkt</a></li><li class="level-3" data-v-b57cc07c><a href="/Java/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/JavaTools.html#示例" class="sidebar-link reco-side-示例" data-v-b57cc07c>示例</a></li><li class="level-2" data-v-b57cc07c><a href="/Java/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/JavaTools.html#java-excel" class="sidebar-link reco-side-java-excel" data-v-b57cc07c>Java-Excel</a></li><li class="level-3" data-v-b57cc07c><a href="/Java/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/JavaTools.html#示例-2" class="sidebar-link reco-side-示例-2" data-v-b57cc07c>示例</a></li><li class="level-2" data-v-b57cc07c><a href="/Java/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/JavaTools.html#java-时间戳" class="sidebar-link reco-side-java-时间戳" data-v-b57cc07c>Java-时间戳</a></li><li class="level-2" data-v-b57cc07c><a href="/Java/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/JavaTools.html#ip地址来源" class="sidebar-link reco-side-ip地址来源" data-v-b57cc07c>IP地址来源</a></li><li class="level-2" data-v-b57cc07c><a href="/Java/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/JavaTools.html#java-http请求" class="sidebar-link reco-side-java-http请求" data-v-b57cc07c>Java-Http请求</a></li><li class="level-2" data-v-b57cc07c><a href="/Java/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/JavaTools.html#java-geojson" class="sidebar-link reco-side-java-geojson" data-v-b57cc07c>Java-GeoJson</a></li><li class="level-2" data-v-b57cc07c><a href="/Java/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/JavaTools.html#jwt-工具类" class="sidebar-link reco-side-jwt-工具类" data-v-b57cc07c>JWT-工具类</a></li><li class="level-2" data-v-b57cc07c><a href="/Java/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/JavaTools.html#验证码-工具类" class="sidebar-link reco-side-验证码-工具类" data-v-b57cc07c>验证码-工具类</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.9ff2d364.js" defer></script><script src="/assets/js/3.531b82cf.js" defer></script><script src="/assets/js/1.66bfa7cb.js" defer></script><script src="/assets/js/30.8dba19c8.js" defer></script>
+  </body>
+</html>

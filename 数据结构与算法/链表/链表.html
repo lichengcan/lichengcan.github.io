@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>链表 | CCNAIVE</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="小灿的学习日记">
+    
+    <link rel="preload" href="/assets/css/0.styles.ac0ba637.css" as="style"><link rel="preload" href="/assets/js/app.9ff2d364.js" as="script"><link rel="preload" href="/assets/js/3.531b82cf.js" as="script"><link rel="preload" href="/assets/js/1.66bfa7cb.js" as="script"><link rel="preload" href="/assets/js/156.d207ca7c.js" as="script"><link rel="prefetch" href="/assets/js/10.bbcc4f2b.js"><link rel="prefetch" href="/assets/js/100.7aa78320.js"><link rel="prefetch" href="/assets/js/101.be1a84ed.js"><link rel="prefetch" href="/assets/js/102.e54a66c3.js"><link rel="prefetch" href="/assets/js/103.96ea8db8.js"><link rel="prefetch" href="/assets/js/104.1843f7ee.js"><link rel="prefetch" href="/assets/js/105.5cb7f1d0.js"><link rel="prefetch" href="/assets/js/106.d0836c05.js"><link rel="prefetch" href="/assets/js/107.ac03de3a.js"><link rel="prefetch" href="/assets/js/108.050b9491.js"><link rel="prefetch" href="/assets/js/109.77d90976.js"><link rel="prefetch" href="/assets/js/11.7cbe3508.js"><link rel="prefetch" href="/assets/js/110.d8921d36.js"><link rel="prefetch" href="/assets/js/111.e834d261.js"><link rel="prefetch" href="/assets/js/112.fc17c22f.js"><link rel="prefetch" href="/assets/js/113.4a13e794.js"><link rel="prefetch" href="/assets/js/114.a0fc2dc4.js"><link rel="prefetch" href="/assets/js/115.c52d7495.js"><link rel="prefetch" href="/assets/js/116.18b15740.js"><link rel="prefetch" href="/assets/js/117.d5961bc5.js"><link rel="prefetch" href="/assets/js/118.ae8cd8e7.js"><link rel="prefetch" href="/assets/js/119.dbabe50a.js"><link rel="prefetch" href="/assets/js/12.03e80136.js"><link rel="prefetch" href="/assets/js/120.0a552300.js"><link rel="prefetch" href="/assets/js/121.0b55973d.js"><link rel="prefetch" href="/assets/js/122.a2372c82.js"><link rel="prefetch" href="/assets/js/123.9a1ed746.js"><link rel="prefetch" href="/assets/js/124.81c9bce0.js"><link rel="prefetch" href="/assets/js/125.9cc747cb.js"><link rel="prefetch" href="/assets/js/126.63641e51.js"><link rel="prefetch" href="/assets/js/127.afa36756.js"><link rel="prefetch" href="/assets/js/128.c3a0bafc.js"><link rel="prefetch" href="/assets/js/129.626bef76.js"><link rel="prefetch" href="/assets/js/13.98d91332.js"><link rel="prefetch" href="/assets/js/130.718e36e5.js"><link rel="prefetch" href="/assets/js/131.2f866590.js"><link rel="prefetch" href="/assets/js/132.eeae6af5.js"><link rel="prefetch" href="/assets/js/133.5f7161d3.js"><link rel="prefetch" href="/assets/js/134.d370c48c.js"><link rel="prefetch" href="/assets/js/135.cb4d88e1.js"><link rel="prefetch" href="/assets/js/136.49c2b181.js"><link rel="prefetch" href="/assets/js/137.4d5d406c.js"><link rel="prefetch" href="/assets/js/138.35297bdc.js"><link rel="prefetch" href="/assets/js/139.4cde83dd.js"><link rel="prefetch" href="/assets/js/14.5f24a2ff.js"><link rel="prefetch" href="/assets/js/140.1fba8365.js"><link rel="prefetch" href="/assets/js/141.cb4421c0.js"><link rel="prefetch" href="/assets/js/142.ea1fe29a.js"><link rel="prefetch" href="/assets/js/143.b21df084.js"><link rel="prefetch" href="/assets/js/144.a5450651.js"><link rel="prefetch" href="/assets/js/145.4a9f1b6c.js"><link rel="prefetch" href="/assets/js/146.032cd6ee.js"><link rel="prefetch" href="/assets/js/147.0ee0cf1b.js"><link rel="prefetch" href="/assets/js/148.3954607b.js"><link rel="prefetch" href="/assets/js/149.550f7938.js"><link rel="prefetch" href="/assets/js/15.1dd4d056.js"><link rel="prefetch" href="/assets/js/150.6b5ff9f8.js"><link rel="prefetch" href="/assets/js/151.7435d46f.js"><link rel="prefetch" href="/assets/js/152.4bb838b9.js"><link rel="prefetch" href="/assets/js/153.13d7f61b.js"><link rel="prefetch" href="/assets/js/154.c2c89d66.js"><link rel="prefetch" href="/assets/js/155.28853989.js"><link rel="prefetch" href="/assets/js/157.9f4a887f.js"><link rel="prefetch" href="/assets/js/158.56a32b96.js"><link rel="prefetch" href="/assets/js/159.ccff2e00.js"><link rel="prefetch" href="/assets/js/16.9df877bb.js"><link rel="prefetch" href="/assets/js/160.1ce908c3.js"><link rel="prefetch" href="/assets/js/161.db87a48e.js"><link rel="prefetch" href="/assets/js/162.da596968.js"><link rel="prefetch" href="/assets/js/163.4b1914f2.js"><link rel="prefetch" href="/assets/js/164.d1428de2.js"><link rel="prefetch" href="/assets/js/165.3555dd76.js"><link rel="prefetch" href="/assets/js/166.3ec9c434.js"><link rel="prefetch" href="/assets/js/167.e1c89e9e.js"><link rel="prefetch" href="/assets/js/168.0a520b94.js"><link rel="prefetch" href="/assets/js/169.4122d818.js"><link rel="prefetch" href="/assets/js/17.cd29530c.js"><link rel="prefetch" href="/assets/js/170.0ac3b66b.js"><link rel="prefetch" href="/assets/js/171.a3a64b2d.js"><link rel="prefetch" href="/assets/js/172.7ac6a10c.js"><link rel="prefetch" href="/assets/js/173.4be2f7b1.js"><link rel="prefetch" href="/assets/js/174.0dfc7fdb.js"><link rel="prefetch" href="/assets/js/175.32ead0bc.js"><link rel="prefetch" href="/assets/js/176.209b5dbb.js"><link rel="prefetch" href="/assets/js/177.11adbb39.js"><link rel="prefetch" href="/assets/js/178.037a7502.js"><link rel="prefetch" href="/assets/js/18.097816ce.js"><link rel="prefetch" href="/assets/js/19.187e5563.js"><link rel="prefetch" href="/assets/js/20.6deb3fe1.js"><link rel="prefetch" href="/assets/js/21.9d82a949.js"><link rel="prefetch" href="/assets/js/22.0edad57f.js"><link rel="prefetch" href="/assets/js/23.b9c5f664.js"><link rel="prefetch" href="/assets/js/24.897f1420.js"><link rel="prefetch" href="/assets/js/25.1311359f.js"><link rel="prefetch" href="/assets/js/26.17a94cd7.js"><link rel="prefetch" href="/assets/js/27.fa379248.js"><link rel="prefetch" href="/assets/js/28.f6aab20b.js"><link rel="prefetch" href="/assets/js/29.d9c56383.js"><link rel="prefetch" href="/assets/js/30.8dba19c8.js"><link rel="prefetch" href="/assets/js/31.10a83a0f.js"><link rel="prefetch" href="/assets/js/32.edae26a7.js"><link rel="prefetch" href="/assets/js/33.72f0a131.js"><link rel="prefetch" href="/assets/js/34.5a0fb7ca.js"><link rel="prefetch" href="/assets/js/35.9f28286e.js"><link rel="prefetch" href="/assets/js/36.ae243faa.js"><link rel="prefetch" href="/assets/js/37.381ff339.js"><link rel="prefetch" href="/assets/js/38.17ebee17.js"><link rel="prefetch" href="/assets/js/39.876319cd.js"><link rel="prefetch" href="/assets/js/4.979f9922.js"><link rel="prefetch" href="/assets/js/40.b2cec200.js"><link rel="prefetch" href="/assets/js/41.91b3553a.js"><link rel="prefetch" href="/assets/js/42.80320f96.js"><link rel="prefetch" href="/assets/js/43.783075f8.js"><link rel="prefetch" href="/assets/js/44.5b01350d.js"><link rel="prefetch" href="/assets/js/45.95d4d094.js"><link rel="prefetch" href="/assets/js/46.96cea9c3.js"><link rel="prefetch" href="/assets/js/47.23ced73b.js"><link rel="prefetch" href="/assets/js/48.04da13e7.js"><link rel="prefetch" href="/assets/js/49.2b134421.js"><link rel="prefetch" href="/assets/js/5.dda74e2f.js"><link rel="prefetch" href="/assets/js/50.cbbc36b3.js"><link rel="prefetch" href="/assets/js/51.c1a47ca0.js"><link rel="prefetch" href="/assets/js/52.36261b66.js"><link rel="prefetch" href="/assets/js/53.4d53e570.js"><link rel="prefetch" href="/assets/js/54.13e1603f.js"><link rel="prefetch" href="/assets/js/55.809c8ddc.js"><link rel="prefetch" href="/assets/js/56.5df2380e.js"><link rel="prefetch" href="/assets/js/57.2194d408.js"><link rel="prefetch" href="/assets/js/58.2c620696.js"><link rel="prefetch" href="/assets/js/59.34ee045d.js"><link rel="prefetch" href="/assets/js/6.5eed2fc3.js"><link rel="prefetch" href="/assets/js/60.3f617150.js"><link rel="prefetch" href="/assets/js/61.92698d83.js"><link rel="prefetch" href="/assets/js/62.0bfecc40.js"><link rel="prefetch" href="/assets/js/63.8da717e4.js"><link rel="prefetch" href="/assets/js/64.200fd49a.js"><link rel="prefetch" href="/assets/js/65.72a58cca.js"><link rel="prefetch" href="/assets/js/66.2985426d.js"><link rel="prefetch" href="/assets/js/67.8862ebfb.js"><link rel="prefetch" href="/assets/js/68.6f5b02a9.js"><link rel="prefetch" href="/assets/js/69.aa496fb1.js"><link rel="prefetch" href="/assets/js/7.8f40985b.js"><link rel="prefetch" href="/assets/js/70.b26013d6.js"><link rel="prefetch" href="/assets/js/71.1b1ae916.js"><link rel="prefetch" href="/assets/js/72.3035363e.js"><link rel="prefetch" href="/assets/js/73.eca6d0df.js"><link rel="prefetch" href="/assets/js/74.d4240c34.js"><link rel="prefetch" href="/assets/js/75.4dcd7ab1.js"><link rel="prefetch" href="/assets/js/76.e0675e49.js"><link rel="prefetch" href="/assets/js/77.edf24e37.js"><link rel="prefetch" href="/assets/js/78.552224f2.js"><link rel="prefetch" href="/assets/js/79.be7a41b6.js"><link rel="prefetch" href="/assets/js/8.e3dca3e1.js"><link rel="prefetch" href="/assets/js/80.147a04c7.js"><link rel="prefetch" href="/assets/js/81.3ecd3a95.js"><link rel="prefetch" href="/assets/js/82.b647894f.js"><link rel="prefetch" href="/assets/js/83.200bc3a6.js"><link rel="prefetch" href="/assets/js/84.a15d5403.js"><link rel="prefetch" href="/assets/js/85.75a34ef2.js"><link rel="prefetch" href="/assets/js/86.6b4e2beb.js"><link rel="prefetch" href="/assets/js/87.b15ce75c.js"><link rel="prefetch" href="/assets/js/88.507b99bb.js"><link rel="prefetch" href="/assets/js/89.b5d5b184.js"><link rel="prefetch" href="/assets/js/9.a4890a44.js"><link rel="prefetch" href="/assets/js/90.40064807.js"><link rel="prefetch" href="/assets/js/91.5cab932b.js"><link rel="prefetch" href="/assets/js/92.8682710e.js"><link rel="prefetch" href="/assets/js/93.78582e33.js"><link rel="prefetch" href="/assets/js/94.48896994.js"><link rel="prefetch" href="/assets/js/95.b637124b.js"><link rel="prefetch" href="/assets/js/96.07d46f7c.js"><link rel="prefetch" href="/assets/js/97.c24e0b91.js"><link rel="prefetch" href="/assets/js/98.d6a95e55.js"><link rel="prefetch" href="/assets/js/99.9330a585.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ac0ba637.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>CCNAIVE</h3> <p class="description" data-v-59e6cb88>小灿的学习日记</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2025
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">CCNAIVE</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      小灿的学习日记
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/lichengcan" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/lichengcan0228/lichengcan0228" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <!----> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>160</h3> <h6 data-v-1fad0c41>文章</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>6</h3> <h6 data-v-1fad0c41>标签</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      小灿的学习日记
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/lichengcan" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/lichengcan0228/lichengcan0228" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <ul class="sidebar-links"><li><a href="/" aria-current="page" class="sidebar-link">CCNAIVE</a></li><li><section class="sidebar-group collapsable depth-0"><a href="/Java/面向对象/多态" class="sidebar-heading clickable"><span>Java 从入门到放弃</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/数据结构与算法/排序/排序" class="sidebar-heading clickable"><span>数据结构与算法</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/网络/基础篇/TCP-IP" class="sidebar-heading clickable"><span>网络</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/Spring/Spring/Spring" class="sidebar-heading clickable"><span>Spring 全家桶</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/数据库/MySQL/CommonUseSQL" class="sidebar-heading clickable"><span>数据库</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/技术框架/rabbitmq/rabbitmq" class="sidebar-heading clickable"><span>技术框架</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/Linux/LinuxCommand" class="sidebar-heading clickable"><span>Linux 服务器相关</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/杂/一些网站/website" class="sidebar-heading clickable"><span>杂</span> <span class="arrow right"></span></a> <!----></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>链表</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2025
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">链表</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>承灿</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>2023/10/18</span></i> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <p>顺序表存在的一些优点与缺陷</p> <p><strong>优点：</strong></p> <ol><li>支持随机访问，可以通过下标来直接访问。</li> <li>可以排序。</li></ol> <p><strong>缺点：</strong></p> <ol><li>中间/头部的插入删除，时间复杂度为O(N)</li> <li>增容需要申请新空间，拷贝数据，释放旧空间。会有不小的消耗。</li> <li>增容一般是呈2倍的增长，势必会有一定的空间浪费。</li></ol> <p>所以为了弥补这些缺点就有了链表，那么什么是链表呢？</p> <h2 id="链表"><a href="#链表" class="header-anchor">#</a> 链表</h2> <h3 id="链表的概念及结构"><a href="#链表的概念及结构" class="header-anchor">#</a> 链表的概念及结构</h3> <p>**概念：**链表是一种物理存储结构上非连续、非顺序的存储结构，数据元素的逻辑顺序是通过链表中的指针链接次序实现的 。 只根据文字描述还是比较抽象的，直接上图来观察：</p> <p><img src="https://img-blog.csdnimg.cn/2d1dcb64e8d044128e5868bd99dd8528.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6aOO57un57ut5ZC5VFQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p> <p>图中：2.3.4.5都是结构体，称之为结点，与顺序表不同的是，链表中的每个结点不是只单纯的存一个数据。而是一个结构体，结构体成员包括一个所存的数据，和下一个结点的地址。另外，顺序表中的地址是连续的，而链表中结点的地址是随机分配的。</p> <p>那链表是怎样运行的呢？</p> <p>图中的phead指针中存放的是第一个结点的地址，那么根据指着地址我们就可以找到这个结构体，又因为这个结构体中存放了下一个结构体的地址，所以又可以找到第二个结构体，循环往复就可以找到所有的结点，直到存放空地址的结构体。</p> <p>**注：**图中的箭头实际上是不存在的，这里只是为了能够方便理解。</p> <p><strong>注意：</strong></p> <ol><li>从图中可以看出，链式结构在逻辑上是连续的，但在物理上不一定连续。</li> <li>现实中的结点一般都是从堆上申请出来的。</li> <li>从堆上申请的空间，是按照一定的策略来分配的，两次申请的空间可能连续，也可能不连续。</li></ol> <h3 id="链表的分类"><a href="#链表的分类" class="header-anchor">#</a> 链表的分类</h3> <p>实际中链表的结构非常多样，以下情况组合起来就有8种链表结构：</p> <h4 id="_1-单向或者双向"><a href="#_1-单向或者双向" class="header-anchor">#</a> 1. 单向或者双向</h4> <h4 id="_2-带头或不带头"><a href="#_2-带头或不带头" class="header-anchor">#</a> 2.带头或不带头</h4> <p><img src="https://img-blog.csdnimg.cn/60c43ab3aa7f4e0e942bd4f7d0e3e521.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6aOO57un57ut5ZC5VFQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p> <h4 id="_3-循环或非循环"><a href="#_3-循环或非循环" class="header-anchor">#</a> 3.循环或非循环</h4> <p><img src="https://img-blog.csdnimg.cn/0c89addc950d4b2c83b3aad11f14af9d.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6aOO57un57ut5ZC5VFQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p> <p><strong>虽然有这么多的链表的结构，但是我们实际中最常用还是两种结构：</strong></p> <p><img src="https://img-blog.csdnimg.cn/5785a957143d450396722cf0bb18767c.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6aOO57un57ut5ZC5VFQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img">1. 无头单向非循环链表：结构简单，一般不会单独用来存数据。实际中更多是作为其他数据结构的子结构，如哈希桶、图的邻接表等等。另外这种结构在笔试面试中出现很多。 2. 带头双向循环链表：结构最复杂，一般用在单独存储数据。实际中使用的链表数据结构，都是带头双向循环链表。另外这个结构虽然结构复杂，但是使用代码实现以后会发现结构会带来很多优势，实现反而简单了，后面我们代码实现了就知道了。</p> <h2 id="单链表的实现"><a href="#单链表的实现" class="header-anchor">#</a> 单链表的实现</h2> <div class="language-java extra-class"><pre class="language-java"><code>#pragma once
+
+#include<span class="token generics"><span class="token punctuation">&lt;</span>stdio<span class="token punctuation">.</span>h<span class="token punctuation">&gt;</span></span>
+#include<span class="token generics"><span class="token punctuation">&lt;</span><span class="token keyword">assert</span><span class="token punctuation">.</span>h<span class="token punctuation">&gt;</span></span>
+#include<span class="token generics"><span class="token punctuation">&lt;</span>stdlib<span class="token punctuation">.</span>h<span class="token punctuation">&gt;</span></span>
+
+typedef <span class="token keyword">int</span> <span class="token class-name">SLTDataType</span><span class="token punctuation">;</span>
+
+typedef struct <span class="token class-name">SListNode</span>
+<span class="token punctuation">{</span>
+	<span class="token class-name">SLTDataType</span> data<span class="token punctuation">;</span>
+	struct <span class="token class-name">SListNode</span><span class="token operator">*</span> next<span class="token punctuation">;</span><span class="token comment">//存放下一个结点的地址</span>
+
+<span class="token punctuation">}</span><span class="token class-name">SListNode</span><span class="token punctuation">;</span>
+
+
+<span class="token comment">//打印链表</span>
+<span class="token keyword">void</span> <span class="token class-name">SListPrint</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span> phead<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//申请结点</span>
+<span class="token class-name">SListNode</span><span class="token operator">*</span> <span class="token class-name">SListBuyNode</span><span class="token punctuation">(</span><span class="token class-name">SLTDataType</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//因为我们是通过一个指针指向该链表的头结点，同时因为在进行插入删除操作时可能改变链表的头结点，所下面的参数需传二级指针</span>
+<span class="token comment">//尾插</span>
+<span class="token keyword">void</span> <span class="token class-name">SListPushBack</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token operator">*</span> pphead<span class="token punctuation">,</span> <span class="token class-name">SLTDataType</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//头插</span>
+<span class="token keyword">void</span> <span class="token class-name">SListPushFront</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token operator">*</span> pphead<span class="token punctuation">,</span> <span class="token class-name">SLTDataType</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//尾删</span>
+<span class="token keyword">void</span> <span class="token class-name">SListPopBack</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token operator">*</span> pphead<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//头删</span>
+<span class="token keyword">void</span> <span class="token class-name">SListPopFront</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token operator">*</span> pphead<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token comment">//查找</span>
+<span class="token class-name">SListNode</span><span class="token operator">*</span> <span class="token class-name">SListFind</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span> phead<span class="token punctuation">,</span> <span class="token class-name">SLTDataType</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//指定位置后面插入</span>
+<span class="token keyword">void</span> <span class="token class-name">SListInsert</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token operator">*</span> pphead<span class="token punctuation">,</span> <span class="token class-name">SListNode</span><span class="token operator">*</span> pos<span class="token punctuation">,</span> <span class="token class-name">SLTDataType</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//指定位置后面删除</span>
+<span class="token keyword">void</span> <span class="token class-name">SListErase</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token operator">*</span> pphead<span class="token punctuation">,</span> <span class="token class-name">SListNode</span><span class="token operator">*</span> pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//销毁链表</span>
+<span class="token keyword">void</span> <span class="token class-name">SListDestory</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token operator">*</span> pphead<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="打印链表"><a href="#打印链表" class="header-anchor">#</a> 打印链表</h3> <p>在顺序表中是通过下标来访问每个元素，链表与顺序表不同，在访问到本结点的数据之后，需通过该结点存放的地址找到下一个结点。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">//打印链表</span>
+<span class="token keyword">void</span> <span class="token class-name">SListPrint</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span> phead<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token class-name">SListNode</span><span class="token operator">*</span> cur <span class="token operator">=</span> phead<span class="token punctuation">;</span><span class="token comment">//一般不直接移动头指针，而是创建一个指针变量来移动</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>cur<span class="token punctuation">)</span><span class="token comment">//当指针为空时结束循环</span>
+	<span class="token punctuation">{</span>
+		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;%d-&gt;&quot;</span><span class="token punctuation">,</span> cur<span class="token operator">-&gt;</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//打印该结点的数据</span>
+		cur <span class="token operator">=</span> cur<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span><span class="token comment">//将指针指向下一个结点</span>
+	<span class="token punctuation">}</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;NULL\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><img src="https://img-blog.csdnimg.cn/8c30fa2fbbf7429b805ad943ecdcdf64.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6aOO57un57ut5ZC5VFQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p> <h3 id="申请结点"><a href="#申请结点" class="header-anchor">#</a> 申请结点</h3> <p>链表的每一个结点都是动态开辟(malloc)出来的，每一个结点的大小为该结构体的大小。</p> <p>开辟成功后，要将结点存放的数据置为需要存放的值，结点存放的地址置为NULL。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">//申请结点</span>
+<span class="token class-name">SListNode</span><span class="token operator">*</span> <span class="token class-name">SListBuyNode</span><span class="token punctuation">(</span><span class="token class-name">SLTDataType</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token class-name">SListNode</span><span class="token operator">*</span> newnode <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token function">sizeof</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>newnode <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token comment">//判断结点是否开辟成功</span>
+	<span class="token punctuation">{</span>
+		<span class="token function">perror</span><span class="token punctuation">(</span><span class="token string">&quot;malloc:&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">exit</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	newnode<span class="token operator">-&gt;</span>data <span class="token operator">=</span> x<span class="token punctuation">;</span>
+	newnode<span class="token operator">-&gt;</span>next <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> newnode<span class="token punctuation">;</span><span class="token comment">//返回结点地址</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="尾插"><a href="#尾插" class="header-anchor">#</a> 尾插</h3> <p>因为不能根据下标访问元素(即不能随机访问)，当然我们也不知到最后一个结点的位置，所在尾插时，需要遍历找到最后一个结点的位置。</p> <p>同时这里分为两种情况：</p> <ol><li>如果链表为空，则直接插入即可。</li> <li>如果链表不为空，则需要找到尾结点再插入。</li></ol> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">//尾插</span>
+<span class="token keyword">void</span> <span class="token class-name">SListPushBack</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token operator">*</span> pphead<span class="token punctuation">,</span> <span class="token class-name">SLTDataType</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">assert</span><span class="token punctuation">(</span>pphead<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">SListNode</span><span class="token operator">*</span> newnode <span class="token operator">=</span> <span class="token class-name">SListBuyNode</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//申请结点</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">*</span>pphead <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token comment">//1.链表为空</span>
+	<span class="token punctuation">{</span>
+		<span class="token operator">*</span>pphead <span class="token operator">=</span> newnode<span class="token punctuation">;</span><span class="token comment">//直接将头结点置为需要插入的结点</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">else</span>
+	<span class="token punctuation">{</span>
+		<span class="token class-name">SListNode</span><span class="token operator">*</span> cur <span class="token operator">=</span> <span class="token operator">*</span>pphead<span class="token punctuation">;</span>
+		<span class="token keyword">while</span> <span class="token punctuation">(</span>cur<span class="token operator">-&gt;</span>next<span class="token punctuation">)</span><span class="token comment">//找尾结点</span>
+		<span class="token punctuation">{</span>
+			cur <span class="token operator">=</span> cur<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		cur<span class="token operator">-&gt;</span>next <span class="token operator">=</span> newnode<span class="token punctuation">;</span><span class="token comment">//将尾结点中存放的地址置为插入结点的地址即可</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="头插"><a href="#头插" class="header-anchor">#</a> 头插</h3> <p>头插相对来说比较简单，直接将申请结点的next置为头结点，然后将头结点改成申请结点即可</p> <p><strong>注：这里不需要考虑链表是否为空。</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">//头插</span>
+<span class="token keyword">void</span> <span class="token class-name">SListPushFront</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token operator">*</span> pphead<span class="token punctuation">,</span> <span class="token class-name">SLTDataType</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">assert</span><span class="token punctuation">(</span>pphead<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token class-name">SListNode</span><span class="token operator">*</span> newnode <span class="token operator">=</span> <span class="token class-name">SListBuyNode</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	newnode<span class="token operator">-&gt;</span>next <span class="token operator">=</span> <span class="token operator">*</span>pphead<span class="token punctuation">;</span><span class="token comment">//将申请结点中保存的地址置为头结点的地址</span>
+	<span class="token operator">*</span>pphead <span class="token operator">=</span> newnode<span class="token punctuation">;</span><span class="token comment">//再将头结点向右移动</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="尾删"><a href="#尾删" class="header-anchor">#</a> 尾删</h3> <p>同尾插一样，我们也不知道尾结点的地址，所以需要先找到尾结点。</p> <p>同时这里需要考虑三种情况：</p> <ol><li>链表为空。</li> <li>链表中只有一个结点。</li> <li>链表中有一个以上结点。</li></ol> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">//尾删</span>
+<span class="token keyword">void</span> <span class="token class-name">SListPopBack</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token operator">*</span> pphead<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">//1.链表为空不能删除结点,且该指针不能为空</span>
+	<span class="token keyword">assert</span><span class="token punctuation">(</span><span class="token operator">*</span>pphead <span class="token operator">&amp;&amp;</span> phead<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//2.链表中只有一个结点，直接释放该结点，然后将结点置为NULL</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">*</span>pphead<span class="token punctuation">)</span><span class="token operator">-&gt;</span>next <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token function">free</span><span class="token punctuation">(</span><span class="token operator">*</span>pphead<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token operator">*</span>pphead <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+    <span class="token comment">//3.链表中有一个以上结点，先找尾结点，释放掉尾结点,置为NULL</span>
+    <span class="token comment">//  但这样还不够，因为倒数第二个结点还存有尾结点的地址，所以需要将他置为NULL</span>
+	<span class="token class-name">SListNode</span><span class="token operator">*</span> cur <span class="token operator">=</span> <span class="token operator">*</span>pphead<span class="token punctuation">;</span><span class="token comment">//用来标记倒数第二个结点</span>
+	<span class="token class-name">SListNode</span><span class="token operator">*</span> next <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">*</span>pphead<span class="token punctuation">)</span><span class="token operator">-&gt;</span>next<span class="token punctuation">;</span><span class="token comment">//标记尾结点</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>next<span class="token operator">-&gt;</span>next<span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		next <span class="token operator">=</span> next<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+		cur <span class="token operator">=</span> cur<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	cur<span class="token operator">-&gt;</span>next <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span><span class="token comment">//将倒数第二个结点中存的地址置为NULL</span>
+	<span class="token function">free</span><span class="token punctuation">(</span>next<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//释放尾结点</span>
+	next <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="头删"><a href="#头删" class="header-anchor">#</a> 头删</h3> <p>头删也比较简单，相当于将头指针移动到第二个结点上。</p> <p>这里分为两种情况：</p> <ol><li>链表为空。</li> <li>链表不为空。</li></ol> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">//头删</span>
+<span class="token keyword">void</span> <span class="token class-name">SListPopFront</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token operator">*</span> pphead<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">assert</span><span class="token punctuation">(</span><span class="token operator">*</span>pphead <span class="token operator">&amp;&amp;</span> phead<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//链表为空不能删除</span>
+	<span class="token class-name">SListNode</span><span class="token operator">*</span> next <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">*</span>pphead<span class="token punctuation">)</span><span class="token operator">-&gt;</span>next<span class="token punctuation">;</span><span class="token comment">//记录第二个结点的地址</span>
+	<span class="token function">free</span><span class="token punctuation">(</span><span class="token operator">*</span>pphead<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//释放头结点</span>
+	<span class="token operator">*</span>pphead <span class="token operator">=</span> next<span class="token punctuation">;</span><span class="token comment">//将指针指向第二个结点</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="指定位置后面插入"><a href="#指定位置后面插入" class="header-anchor">#</a> 指定位置后面插入</h3> <p>这里在指定位置后面插入而不在前面插入是因为，在前面插入时需要找到插入位置前面的地址，而这样又会遍历一次链表，时间复杂度为O(N)，而在后面插入则直接插入即可，时间复杂度为O(1)。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">//指定位置后面插入</span>
+<span class="token keyword">void</span> <span class="token class-name">SListInsert</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token operator">*</span> pphead<span class="token punctuation">,</span> <span class="token class-name">SListNode</span><span class="token operator">*</span> pos<span class="token punctuation">,</span> <span class="token class-name">SLTDataType</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">assert</span><span class="token punctuation">(</span>pphead <span class="token operator">&amp;&amp;</span> pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token class-name">SListNode</span><span class="token operator">*</span> newnode <span class="token operator">=</span> <span class="token class-name">SListBuyNode</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//申请结点</span>
+	<span class="token class-name">SListNode</span><span class="token operator">*</span> next <span class="token operator">=</span> pos<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span><span class="token comment">//找到插入位置的下一个结点的地址</span>
+	pos<span class="token operator">-&gt;</span>next <span class="token operator">=</span> newnode<span class="token punctuation">;</span><span class="token comment">//插入结点</span>
+	newnode<span class="token operator">-&gt;</span>next <span class="token operator">=</span> next<span class="token punctuation">;</span><span class="token comment">//连接到后面的链表</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 在pos位置之前去插入一个节点</span>
+<span class="token keyword">void</span> <span class="token class-name">SListInsert</span><span class="token punctuation">(</span><span class="token class-name">SLTNode</span><span class="token operator">*</span><span class="token operator">*</span> pphead<span class="token punctuation">,</span> <span class="token class-name">ListNode</span><span class="token operator">*</span> pos<span class="token punctuation">,</span> <span class="token class-name">SLTDateType</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">assert</span><span class="token punctuation">(</span>pphead<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">assert</span><span class="token punctuation">(</span>pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token class-name">ListNode</span><span class="token operator">*</span> newnode <span class="token operator">=</span> <span class="token class-name">BuyListNode</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">*</span>pphead <span class="token operator">==</span> pos<span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		newnode<span class="token operator">-&gt;</span>next <span class="token operator">=</span> <span class="token operator">*</span>pphead<span class="token punctuation">;</span>
+		<span class="token operator">*</span>pphead <span class="token operator">=</span> newnode<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">else</span>
+	<span class="token punctuation">{</span>
+		<span class="token comment">// 找到pos的前一个位置</span>
+		<span class="token class-name">ListNode</span><span class="token operator">*</span> posPrev <span class="token operator">=</span> <span class="token operator">*</span>pphead<span class="token punctuation">;</span>
+		<span class="token keyword">while</span> <span class="token punctuation">(</span>posPrev<span class="token operator">-&gt;</span>next <span class="token operator">!=</span> pos<span class="token punctuation">)</span>
+		<span class="token punctuation">{</span>
+			posPrev <span class="token operator">=</span> posPrev<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+
+		posPrev<span class="token operator">-&gt;</span>next <span class="token operator">=</span> newnode<span class="token punctuation">;</span>
+		newnode<span class="token operator">-&gt;</span>next <span class="token operator">=</span> pos<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p></p> <h3 id="指定位置删除"><a href="#指定位置删除" class="header-anchor">#</a> 指定位置删除</h3> <p>这里在指定位置删除，而不在前面删除或者后面删除，是因为在头删和尾删时会遇到一些麻烦。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">//指定位置删除</span>
+<span class="token keyword">void</span> <span class="token class-name">SListErase</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token operator">*</span> pphead<span class="token punctuation">,</span> <span class="token class-name">SListNode</span><span class="token operator">*</span> pos<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">assert</span><span class="token punctuation">(</span>pphead <span class="token operator">&amp;&amp;</span> pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">*</span>pphead <span class="token operator">==</span> pos<span class="token punctuation">)</span><span class="token comment">//如果头结点是要删除的结点</span>
+	<span class="token punctuation">{</span>
+		<span class="token operator">*</span>pphead <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">*</span>pphead<span class="token punctuation">)</span><span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+		<span class="token function">free</span><span class="token punctuation">(</span>pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		pos <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">else</span>
+	<span class="token punctuation">{</span>
+		<span class="token class-name">SListNode</span><span class="token operator">*</span> cur <span class="token operator">=</span> <span class="token operator">*</span>pphead<span class="token punctuation">;</span>
+		<span class="token keyword">while</span> <span class="token punctuation">(</span>cur<span class="token operator">-&gt;</span>next <span class="token operator">!=</span> pos<span class="token punctuation">)</span><span class="token comment">//找到要删除的结点</span>
+		<span class="token punctuation">{</span>
+			cur <span class="token operator">=</span> cur<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		cur<span class="token operator">-&gt;</span>next <span class="token operator">=</span> pos<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span><span class="token comment">//将需要删除的结点的上一个结点的next指向需要删除的下一个结点</span>
+		<span class="token function">free</span><span class="token punctuation">(</span>pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		pos <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="查找"><a href="#查找" class="header-anchor">#</a> 查找</h3> <p>根据提供的数据，在链表中遍历每个结点，若某个结点中的数据与之相同则返回该结点的地址；若没有找到则返回NULL。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">//查找</span>
+<span class="token class-name">SListNode</span><span class="token operator">*</span> <span class="token class-name">SListFind</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span> phead<span class="token punctuation">,</span> <span class="token class-name">SLTDataType</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>phead<span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>phead<span class="token operator">-&gt;</span>data <span class="token operator">==</span> x<span class="token punctuation">)</span>
+		<span class="token punctuation">{</span>
+			<span class="token keyword">return</span> phead<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		phead <span class="token operator">=</span> phead<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="销毁链表"><a href="#销毁链表" class="header-anchor">#</a> 销毁链表</h3> <p>保存下一个结点的地址，释放当前结点，再将指针指向下一个结点，释放下一个结点，直到链表为空。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">//销毁链表</span>
+<span class="token keyword">void</span> <span class="token class-name">SListDestory</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token operator">*</span> pphead<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">assert</span><span class="token punctuation">(</span>pphead<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">*</span>pphead<span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token class-name">SListNode</span><span class="token operator">*</span> next <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">*</span>pphead<span class="token punctuation">)</span><span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+		<span class="token function">free</span><span class="token punctuation">(</span><span class="token operator">*</span>pphead<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token operator">*</span>pphead <span class="token operator">=</span> next<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="完整代码"><a href="#完整代码" class="header-anchor">#</a> 完整代码</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">//打印链表</span>
+<span class="token keyword">void</span> <span class="token class-name">SListPrint</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span> phead<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token class-name">SListNode</span><span class="token operator">*</span> cur <span class="token operator">=</span> phead<span class="token punctuation">;</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>cur<span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;%d-&gt;&quot;</span><span class="token punctuation">,</span> cur<span class="token operator">-&gt;</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		cur <span class="token operator">=</span> cur<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;NULL\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment">//申请结点</span>
+<span class="token class-name">SListNode</span><span class="token operator">*</span> <span class="token class-name">SListBuyNode</span><span class="token punctuation">(</span><span class="token class-name">SLTDataType</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token class-name">SListNode</span><span class="token operator">*</span> newnode <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token function">sizeof</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>newnode <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token function">perror</span><span class="token punctuation">(</span><span class="token string">&quot;malloc:&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">exit</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	newnode<span class="token operator">-&gt;</span>data <span class="token operator">=</span> x<span class="token punctuation">;</span>
+	newnode<span class="token operator">-&gt;</span>next <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> newnode<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//销毁链表</span>
+<span class="token keyword">void</span> <span class="token class-name">SListDestory</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token operator">*</span> pphead<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">assert</span><span class="token punctuation">(</span>pphead<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token class-name">SListNode</span><span class="token operator">*</span> cur <span class="token operator">=</span> <span class="token operator">*</span>pphead<span class="token punctuation">;</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>cur<span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token class-name">SListNode</span><span class="token operator">*</span> next <span class="token operator">=</span> cur<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+		<span class="token function">free</span><span class="token punctuation">(</span>cur<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		cur <span class="token operator">=</span> next<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token operator">*</span>pphead <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//尾插</span>
+<span class="token keyword">void</span> <span class="token class-name">SListPushBack</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token operator">*</span> pphead<span class="token punctuation">,</span> <span class="token class-name">SLTDataType</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">assert</span><span class="token punctuation">(</span>pphead<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token class-name">SListNode</span><span class="token operator">*</span> newnode <span class="token operator">=</span> <span class="token class-name">SListBuyNode</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">*</span>pphead <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token operator">*</span>pphead <span class="token operator">=</span> newnode<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">else</span>
+	<span class="token punctuation">{</span>
+		<span class="token class-name">SListNode</span><span class="token operator">*</span> cur <span class="token operator">=</span> <span class="token operator">*</span>pphead<span class="token punctuation">;</span>
+		<span class="token keyword">while</span> <span class="token punctuation">(</span>cur<span class="token operator">-&gt;</span>next<span class="token punctuation">)</span>
+		<span class="token punctuation">{</span>
+			cur <span class="token operator">=</span> cur<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		cur<span class="token operator">-&gt;</span>next <span class="token operator">=</span> newnode<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//头插</span>
+<span class="token keyword">void</span> <span class="token class-name">SListPushFront</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token operator">*</span> pphead<span class="token punctuation">,</span> <span class="token class-name">SLTDataType</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">assert</span><span class="token punctuation">(</span>pphead<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token class-name">SListNode</span><span class="token operator">*</span> newnode <span class="token operator">=</span> <span class="token class-name">SListBuyNode</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	newnode<span class="token operator">-&gt;</span>next <span class="token operator">=</span> <span class="token operator">*</span>pphead<span class="token punctuation">;</span>
+	<span class="token operator">*</span>pphead <span class="token operator">=</span> newnode<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//尾删</span>
+<span class="token keyword">void</span> <span class="token class-name">SListPopBack</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token operator">*</span> pphead<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">assert</span><span class="token punctuation">(</span><span class="token operator">*</span>pphead <span class="token operator">&amp;&amp;</span> pphead<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">*</span>pphead<span class="token punctuation">)</span><span class="token operator">-&gt;</span>next <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token function">free</span><span class="token punctuation">(</span><span class="token operator">*</span>pphead<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token operator">*</span>pphead <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token class-name">SListNode</span><span class="token operator">*</span> cur <span class="token operator">=</span> <span class="token operator">*</span>pphead<span class="token punctuation">;</span>
+	<span class="token class-name">SListNode</span><span class="token operator">*</span> next <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">*</span>pphead<span class="token punctuation">)</span><span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>next<span class="token operator">-&gt;</span>next<span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		next <span class="token operator">=</span> next<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+		cur <span class="token operator">=</span> cur<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	cur<span class="token operator">-&gt;</span>next <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+	<span class="token function">free</span><span class="token punctuation">(</span>next<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	next <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//头删</span>
+<span class="token keyword">void</span> <span class="token class-name">SListPopFront</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token operator">*</span> pphead<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">assert</span><span class="token punctuation">(</span><span class="token operator">*</span>pphead <span class="token operator">&amp;&amp;</span> pphead<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token class-name">SListNode</span><span class="token operator">*</span> next <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">*</span>pphead<span class="token punctuation">)</span><span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+	<span class="token function">free</span><span class="token punctuation">(</span><span class="token operator">*</span>pphead<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token operator">*</span>pphead <span class="token operator">=</span> next<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment">//查找</span>
+<span class="token class-name">SListNode</span><span class="token operator">*</span> <span class="token class-name">SListFind</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span> phead<span class="token punctuation">,</span> <span class="token class-name">SLTDataType</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>phead<span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>phead<span class="token operator">-&gt;</span>data <span class="token operator">==</span> x<span class="token punctuation">)</span>
+		<span class="token punctuation">{</span>
+			<span class="token keyword">return</span> phead<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		phead <span class="token operator">=</span> phead<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//指定位置后面插入</span>
+<span class="token keyword">void</span> <span class="token class-name">SListInsert</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token operator">*</span> pphead<span class="token punctuation">,</span> <span class="token class-name">SListNode</span><span class="token operator">*</span> pos<span class="token punctuation">,</span> <span class="token class-name">SLTDataType</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">assert</span><span class="token punctuation">(</span>pphead <span class="token operator">&amp;&amp;</span> pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token class-name">SListNode</span><span class="token operator">*</span> newnode <span class="token operator">=</span> <span class="token class-name">SListBuyNode</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token class-name">SListNode</span><span class="token operator">*</span> next <span class="token operator">=</span> pos<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+	pos<span class="token operator">-&gt;</span>next <span class="token operator">=</span> newnode<span class="token punctuation">;</span>
+	newnode<span class="token operator">-&gt;</span>next <span class="token operator">=</span> next<span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token comment">//指定位置删除</span>
+<span class="token keyword">void</span> <span class="token class-name">SListErase</span><span class="token punctuation">(</span><span class="token class-name">SListNode</span><span class="token operator">*</span><span class="token operator">*</span> pphead<span class="token punctuation">,</span> <span class="token class-name">SListNode</span><span class="token operator">*</span> pos<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">assert</span><span class="token punctuation">(</span>pphead <span class="token operator">&amp;&amp;</span> pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">*</span>pphead <span class="token operator">==</span> pos<span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token operator">*</span>pphead <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">*</span>pphead<span class="token punctuation">)</span><span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+		<span class="token function">free</span><span class="token punctuation">(</span>pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		pos <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">else</span>
+	<span class="token punctuation">{</span>
+		<span class="token class-name">SListNode</span><span class="token operator">*</span> cur <span class="token operator">=</span> <span class="token operator">*</span>pphead<span class="token punctuation">;</span>
+		<span class="token keyword">while</span> <span class="token punctuation">(</span>cur<span class="token operator">-&gt;</span>next <span class="token operator">!=</span> pos<span class="token punctuation">)</span>
+		<span class="token punctuation">{</span>
+			cur <span class="token operator">=</span> cur<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		cur<span class="token operator">-&gt;</span>next <span class="token operator">=</span> pos<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+		<span class="token function">free</span><span class="token punctuation">(</span>pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		pos <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>*<em>注：代码中的assert(<em>pphead)和assert(pphead)含义不相同！！！</em></em></p> <p>assert(*pphead)表示的是链表不为空。</p> <p>assert(pphead)表示的是参数二级指针不能为空，因为空指针不能解引用！</p> <h2 id="力扣链表oj"><a href="#力扣链表oj" class="header-anchor">#</a> 力扣链表OJ</h2> <p><a href="https://leetcode-cn.com/problems/remove-linked-list-elements/description/" target="_blank" rel="noopener noreferrer">力扣---移除链表元素<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><img src="https://img-blog.csdnimg.cn/dabbcfcb34d04544806fb1ef33d923d3.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6aOO57un57ut5ZC5VFQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p> <p>思路：</p> <p>与单链表的尾删类似，先找到需要删除的元素，将上一个结点的next指向该删除结点的next，</p> <p>然后free掉当前结点。</p> <p>当然这里也分为三种情况：</p> <ol><li>链表为空，返回NULL。</li> <li>需要删除的结点为头结点，直接将头结点释放，将下一个结点作为头结点。</li> <li>需要删除的结点在中，则使用常规方法。</li></ol> <p><strong>代码如下：</strong></p> <div class="language-java extra-class"><pre class="language-java"><code>typedef struct <span class="token class-name">ListNode</span> <span class="token class-name">ListNode</span><span class="token punctuation">;</span><span class="token comment">//重命名，方便处理</span>
+struct <span class="token class-name">ListNode</span><span class="token operator">*</span> <span class="token function">removeElements</span><span class="token punctuation">(</span>struct <span class="token class-name">ListNode</span><span class="token operator">*</span> head<span class="token punctuation">,</span> <span class="token keyword">int</span> val<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">//1.链表为空，直接返回NULL</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>head <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">//链表不为空</span>
+    <span class="token class-name">ListNode</span><span class="token operator">*</span>cur <span class="token operator">=</span>head<span class="token punctuation">;</span><span class="token comment">//标记需要删除结点</span>
+    <span class="token class-name">ListNode</span><span class="token operator">*</span>prev <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span><span class="token comment">//标记需要删除结点的前一个结点</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>cur<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">//找到需要删除的结点</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>cur<span class="token operator">-&gt;</span>val<span class="token operator">==</span>val<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment">//2.如果需要删除的结点为头结点</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>cur <span class="token operator">==</span> head<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token comment">//将头指针指向第二个结点</span>
+                head <span class="token operator">=</span> head<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+                <span class="token comment">//释放头结点</span>
+                <span class="token function">free</span><span class="token punctuation">(</span>cur<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                cur <span class="token operator">=</span> head<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment">//3.需要删除的结点在中间</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">{</span>
+                <span class="token comment">//将前一个结点的next指向删除结点的next</span>
+                prev<span class="token operator">-&gt;</span>next <span class="token operator">=</span> cur<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+                <span class="token function">free</span><span class="token punctuation">(</span>cur<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                cur <span class="token operator">=</span> prev<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">//不是需要删除结点就向后移动</span>
+        <span class="token keyword">else</span>
+        <span class="token punctuation">{</span>
+            prev <span class="token operator">=</span> cur<span class="token punctuation">;</span>
+            cur <span class="token operator">=</span> cur<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">return</span> head<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="顺序表和链表的区别"><a href="#顺序表和链表的区别" class="header-anchor">#</a> 顺序表和链表的区别</h2> <h2 id=""><a href="#" class="header-anchor">#</a></h2></div></section> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/数据结构与算法/排序/排序.html" class="prev">
+          排序
+        </a></span> <span class="next"><a href="/数据结构与算法/队列/队列.html">
+          队列
+        </a></span></p></div> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8.html#前言" class="sidebar-link reco-side-前言" data-v-b57cc07c>前言</a></li><li class="level-2" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8.html#链表" class="sidebar-link reco-side-链表" data-v-b57cc07c>链表</a></li><li class="level-3" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8.html#链表的概念及结构" class="sidebar-link reco-side-链表的概念及结构" data-v-b57cc07c>链表的概念及结构</a></li><li class="level-3" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8.html#链表的分类" class="sidebar-link reco-side-链表的分类" data-v-b57cc07c>链表的分类</a></li><li class="level-2" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8.html#单链表的实现" class="sidebar-link reco-side-单链表的实现" data-v-b57cc07c>单链表的实现</a></li><li class="level-3" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8.html#打印链表" class="sidebar-link reco-side-打印链表" data-v-b57cc07c>打印链表</a></li><li class="level-3" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8.html#申请结点" class="sidebar-link reco-side-申请结点" data-v-b57cc07c>申请结点</a></li><li class="level-3" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8.html#尾插" class="sidebar-link reco-side-尾插" data-v-b57cc07c>尾插</a></li><li class="level-3" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8.html#头插" class="sidebar-link reco-side-头插" data-v-b57cc07c>头插</a></li><li class="level-3" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8.html#尾删" class="sidebar-link reco-side-尾删" data-v-b57cc07c>尾删</a></li><li class="level-3" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8.html#头删" class="sidebar-link reco-side-头删" data-v-b57cc07c>头删</a></li><li class="level-3" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8.html#指定位置后面插入" class="sidebar-link reco-side-指定位置后面插入" data-v-b57cc07c>指定位置后面插入</a></li><li class="level-3" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8.html#指定位置删除" class="sidebar-link reco-side-指定位置删除" data-v-b57cc07c>指定位置删除</a></li><li class="level-3" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8.html#查找" class="sidebar-link reco-side-查找" data-v-b57cc07c>查找</a></li><li class="level-3" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8.html#销毁链表" class="sidebar-link reco-side-销毁链表" data-v-b57cc07c>销毁链表</a></li><li class="level-3" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8.html#完整代码" class="sidebar-link reco-side-完整代码" data-v-b57cc07c>完整代码</a></li><li class="level-2" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8.html#力扣链表oj" class="sidebar-link reco-side-力扣链表oj" data-v-b57cc07c>力扣链表OJ</a></li><li class="level-2" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8.html#顺序表和链表的区别" class="sidebar-link reco-side-顺序表和链表的区别" data-v-b57cc07c>顺序表和链表的区别</a></li><li class="level-2" data-v-b57cc07c><a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8.html#" class="sidebar-link reco-side-" data-v-b57cc07c></a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.9ff2d364.js" defer></script><script src="/assets/js/3.531b82cf.js" defer></script><script src="/assets/js/1.66bfa7cb.js" defer></script><script src="/assets/js/156.d207ca7c.js" defer></script>
+  </body>
+</html>

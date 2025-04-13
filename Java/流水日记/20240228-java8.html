@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>20240228-NIO技术概览 | CCNAIVE</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="小灿的学习日记">
+    
+    <link rel="preload" href="/assets/css/0.styles.ac0ba637.css" as="style"><link rel="preload" href="/assets/js/app.9ff2d364.js" as="script"><link rel="preload" href="/assets/js/3.531b82cf.js" as="script"><link rel="preload" href="/assets/js/1.66bfa7cb.js" as="script"><link rel="preload" href="/assets/js/67.8862ebfb.js" as="script"><link rel="prefetch" href="/assets/js/10.bbcc4f2b.js"><link rel="prefetch" href="/assets/js/100.7aa78320.js"><link rel="prefetch" href="/assets/js/101.be1a84ed.js"><link rel="prefetch" href="/assets/js/102.e54a66c3.js"><link rel="prefetch" href="/assets/js/103.96ea8db8.js"><link rel="prefetch" href="/assets/js/104.1843f7ee.js"><link rel="prefetch" href="/assets/js/105.5cb7f1d0.js"><link rel="prefetch" href="/assets/js/106.d0836c05.js"><link rel="prefetch" href="/assets/js/107.ac03de3a.js"><link rel="prefetch" href="/assets/js/108.050b9491.js"><link rel="prefetch" href="/assets/js/109.77d90976.js"><link rel="prefetch" href="/assets/js/11.7cbe3508.js"><link rel="prefetch" href="/assets/js/110.d8921d36.js"><link rel="prefetch" href="/assets/js/111.e834d261.js"><link rel="prefetch" href="/assets/js/112.fc17c22f.js"><link rel="prefetch" href="/assets/js/113.4a13e794.js"><link rel="prefetch" href="/assets/js/114.a0fc2dc4.js"><link rel="prefetch" href="/assets/js/115.c52d7495.js"><link rel="prefetch" href="/assets/js/116.18b15740.js"><link rel="prefetch" href="/assets/js/117.d5961bc5.js"><link rel="prefetch" href="/assets/js/118.ae8cd8e7.js"><link rel="prefetch" href="/assets/js/119.dbabe50a.js"><link rel="prefetch" href="/assets/js/12.03e80136.js"><link rel="prefetch" href="/assets/js/120.0a552300.js"><link rel="prefetch" href="/assets/js/121.0b55973d.js"><link rel="prefetch" href="/assets/js/122.a2372c82.js"><link rel="prefetch" href="/assets/js/123.9a1ed746.js"><link rel="prefetch" href="/assets/js/124.81c9bce0.js"><link rel="prefetch" href="/assets/js/125.9cc747cb.js"><link rel="prefetch" href="/assets/js/126.63641e51.js"><link rel="prefetch" href="/assets/js/127.afa36756.js"><link rel="prefetch" href="/assets/js/128.c3a0bafc.js"><link rel="prefetch" href="/assets/js/129.626bef76.js"><link rel="prefetch" href="/assets/js/13.98d91332.js"><link rel="prefetch" href="/assets/js/130.718e36e5.js"><link rel="prefetch" href="/assets/js/131.2f866590.js"><link rel="prefetch" href="/assets/js/132.eeae6af5.js"><link rel="prefetch" href="/assets/js/133.5f7161d3.js"><link rel="prefetch" href="/assets/js/134.d370c48c.js"><link rel="prefetch" href="/assets/js/135.cb4d88e1.js"><link rel="prefetch" href="/assets/js/136.49c2b181.js"><link rel="prefetch" href="/assets/js/137.4d5d406c.js"><link rel="prefetch" href="/assets/js/138.35297bdc.js"><link rel="prefetch" href="/assets/js/139.4cde83dd.js"><link rel="prefetch" href="/assets/js/14.5f24a2ff.js"><link rel="prefetch" href="/assets/js/140.1fba8365.js"><link rel="prefetch" href="/assets/js/141.cb4421c0.js"><link rel="prefetch" href="/assets/js/142.ea1fe29a.js"><link rel="prefetch" href="/assets/js/143.b21df084.js"><link rel="prefetch" href="/assets/js/144.a5450651.js"><link rel="prefetch" href="/assets/js/145.4a9f1b6c.js"><link rel="prefetch" href="/assets/js/146.032cd6ee.js"><link rel="prefetch" href="/assets/js/147.0ee0cf1b.js"><link rel="prefetch" href="/assets/js/148.3954607b.js"><link rel="prefetch" href="/assets/js/149.550f7938.js"><link rel="prefetch" href="/assets/js/15.1dd4d056.js"><link rel="prefetch" href="/assets/js/150.6b5ff9f8.js"><link rel="prefetch" href="/assets/js/151.7435d46f.js"><link rel="prefetch" href="/assets/js/152.4bb838b9.js"><link rel="prefetch" href="/assets/js/153.13d7f61b.js"><link rel="prefetch" href="/assets/js/154.c2c89d66.js"><link rel="prefetch" href="/assets/js/155.28853989.js"><link rel="prefetch" href="/assets/js/156.d207ca7c.js"><link rel="prefetch" href="/assets/js/157.9f4a887f.js"><link rel="prefetch" href="/assets/js/158.56a32b96.js"><link rel="prefetch" href="/assets/js/159.ccff2e00.js"><link rel="prefetch" href="/assets/js/16.9df877bb.js"><link rel="prefetch" href="/assets/js/160.1ce908c3.js"><link rel="prefetch" href="/assets/js/161.db87a48e.js"><link rel="prefetch" href="/assets/js/162.da596968.js"><link rel="prefetch" href="/assets/js/163.4b1914f2.js"><link rel="prefetch" href="/assets/js/164.d1428de2.js"><link rel="prefetch" href="/assets/js/165.3555dd76.js"><link rel="prefetch" href="/assets/js/166.3ec9c434.js"><link rel="prefetch" href="/assets/js/167.e1c89e9e.js"><link rel="prefetch" href="/assets/js/168.0a520b94.js"><link rel="prefetch" href="/assets/js/169.4122d818.js"><link rel="prefetch" href="/assets/js/17.cd29530c.js"><link rel="prefetch" href="/assets/js/170.0ac3b66b.js"><link rel="prefetch" href="/assets/js/171.a3a64b2d.js"><link rel="prefetch" href="/assets/js/172.7ac6a10c.js"><link rel="prefetch" href="/assets/js/173.4be2f7b1.js"><link rel="prefetch" href="/assets/js/174.0dfc7fdb.js"><link rel="prefetch" href="/assets/js/175.32ead0bc.js"><link rel="prefetch" href="/assets/js/176.209b5dbb.js"><link rel="prefetch" href="/assets/js/177.11adbb39.js"><link rel="prefetch" href="/assets/js/178.037a7502.js"><link rel="prefetch" href="/assets/js/18.097816ce.js"><link rel="prefetch" href="/assets/js/19.187e5563.js"><link rel="prefetch" href="/assets/js/20.6deb3fe1.js"><link rel="prefetch" href="/assets/js/21.9d82a949.js"><link rel="prefetch" href="/assets/js/22.0edad57f.js"><link rel="prefetch" href="/assets/js/23.b9c5f664.js"><link rel="prefetch" href="/assets/js/24.897f1420.js"><link rel="prefetch" href="/assets/js/25.1311359f.js"><link rel="prefetch" href="/assets/js/26.17a94cd7.js"><link rel="prefetch" href="/assets/js/27.fa379248.js"><link rel="prefetch" href="/assets/js/28.f6aab20b.js"><link rel="prefetch" href="/assets/js/29.d9c56383.js"><link rel="prefetch" href="/assets/js/30.8dba19c8.js"><link rel="prefetch" href="/assets/js/31.10a83a0f.js"><link rel="prefetch" href="/assets/js/32.edae26a7.js"><link rel="prefetch" href="/assets/js/33.72f0a131.js"><link rel="prefetch" href="/assets/js/34.5a0fb7ca.js"><link rel="prefetch" href="/assets/js/35.9f28286e.js"><link rel="prefetch" href="/assets/js/36.ae243faa.js"><link rel="prefetch" href="/assets/js/37.381ff339.js"><link rel="prefetch" href="/assets/js/38.17ebee17.js"><link rel="prefetch" href="/assets/js/39.876319cd.js"><link rel="prefetch" href="/assets/js/4.979f9922.js"><link rel="prefetch" href="/assets/js/40.b2cec200.js"><link rel="prefetch" href="/assets/js/41.91b3553a.js"><link rel="prefetch" href="/assets/js/42.80320f96.js"><link rel="prefetch" href="/assets/js/43.783075f8.js"><link rel="prefetch" href="/assets/js/44.5b01350d.js"><link rel="prefetch" href="/assets/js/45.95d4d094.js"><link rel="prefetch" href="/assets/js/46.96cea9c3.js"><link rel="prefetch" href="/assets/js/47.23ced73b.js"><link rel="prefetch" href="/assets/js/48.04da13e7.js"><link rel="prefetch" href="/assets/js/49.2b134421.js"><link rel="prefetch" href="/assets/js/5.dda74e2f.js"><link rel="prefetch" href="/assets/js/50.cbbc36b3.js"><link rel="prefetch" href="/assets/js/51.c1a47ca0.js"><link rel="prefetch" href="/assets/js/52.36261b66.js"><link rel="prefetch" href="/assets/js/53.4d53e570.js"><link rel="prefetch" href="/assets/js/54.13e1603f.js"><link rel="prefetch" href="/assets/js/55.809c8ddc.js"><link rel="prefetch" href="/assets/js/56.5df2380e.js"><link rel="prefetch" href="/assets/js/57.2194d408.js"><link rel="prefetch" href="/assets/js/58.2c620696.js"><link rel="prefetch" href="/assets/js/59.34ee045d.js"><link rel="prefetch" href="/assets/js/6.5eed2fc3.js"><link rel="prefetch" href="/assets/js/60.3f617150.js"><link rel="prefetch" href="/assets/js/61.92698d83.js"><link rel="prefetch" href="/assets/js/62.0bfecc40.js"><link rel="prefetch" href="/assets/js/63.8da717e4.js"><link rel="prefetch" href="/assets/js/64.200fd49a.js"><link rel="prefetch" href="/assets/js/65.72a58cca.js"><link rel="prefetch" href="/assets/js/66.2985426d.js"><link rel="prefetch" href="/assets/js/68.6f5b02a9.js"><link rel="prefetch" href="/assets/js/69.aa496fb1.js"><link rel="prefetch" href="/assets/js/7.8f40985b.js"><link rel="prefetch" href="/assets/js/70.b26013d6.js"><link rel="prefetch" href="/assets/js/71.1b1ae916.js"><link rel="prefetch" href="/assets/js/72.3035363e.js"><link rel="prefetch" href="/assets/js/73.eca6d0df.js"><link rel="prefetch" href="/assets/js/74.d4240c34.js"><link rel="prefetch" href="/assets/js/75.4dcd7ab1.js"><link rel="prefetch" href="/assets/js/76.e0675e49.js"><link rel="prefetch" href="/assets/js/77.edf24e37.js"><link rel="prefetch" href="/assets/js/78.552224f2.js"><link rel="prefetch" href="/assets/js/79.be7a41b6.js"><link rel="prefetch" href="/assets/js/8.e3dca3e1.js"><link rel="prefetch" href="/assets/js/80.147a04c7.js"><link rel="prefetch" href="/assets/js/81.3ecd3a95.js"><link rel="prefetch" href="/assets/js/82.b647894f.js"><link rel="prefetch" href="/assets/js/83.200bc3a6.js"><link rel="prefetch" href="/assets/js/84.a15d5403.js"><link rel="prefetch" href="/assets/js/85.75a34ef2.js"><link rel="prefetch" href="/assets/js/86.6b4e2beb.js"><link rel="prefetch" href="/assets/js/87.b15ce75c.js"><link rel="prefetch" href="/assets/js/88.507b99bb.js"><link rel="prefetch" href="/assets/js/89.b5d5b184.js"><link rel="prefetch" href="/assets/js/9.a4890a44.js"><link rel="prefetch" href="/assets/js/90.40064807.js"><link rel="prefetch" href="/assets/js/91.5cab932b.js"><link rel="prefetch" href="/assets/js/92.8682710e.js"><link rel="prefetch" href="/assets/js/93.78582e33.js"><link rel="prefetch" href="/assets/js/94.48896994.js"><link rel="prefetch" href="/assets/js/95.b637124b.js"><link rel="prefetch" href="/assets/js/96.07d46f7c.js"><link rel="prefetch" href="/assets/js/97.c24e0b91.js"><link rel="prefetch" href="/assets/js/98.d6a95e55.js"><link rel="prefetch" href="/assets/js/99.9330a585.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ac0ba637.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>CCNAIVE</h3> <p class="description" data-v-59e6cb88>小灿的学习日记</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2025
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">CCNAIVE</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      小灿的学习日记
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/lichengcan" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/lichengcan0228/lichengcan0228" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <!----> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>160</h3> <h6 data-v-1fad0c41>文章</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>6</h3> <h6 data-v-1fad0c41>标签</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      小灿的学习日记
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/lichengcan" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/lichengcan0228/lichengcan0228" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <ul class="sidebar-links"><li><a href="/" aria-current="page" class="sidebar-link">CCNAIVE</a></li><li><section class="sidebar-group collapsable depth-0"><a href="/Java/面向对象/多态" class="sidebar-heading clickable"><span>Java 从入门到放弃</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/数据结构与算法/排序/排序" class="sidebar-heading clickable"><span>数据结构与算法</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/网络/基础篇/TCP-IP" class="sidebar-heading clickable"><span>网络</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/Spring/Spring/Spring" class="sidebar-heading clickable"><span>Spring 全家桶</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/数据库/MySQL/CommonUseSQL" class="sidebar-heading clickable"><span>数据库</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/技术框架/rabbitmq/rabbitmq" class="sidebar-heading clickable"><span>技术框架</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/Linux/LinuxCommand" class="sidebar-heading clickable"><span>Linux 服务器相关</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/杂/一些网站/website" class="sidebar-heading clickable"><span>杂</span> <span class="arrow right"></span></a> <!----></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>20240228-NIO技术概览</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2025
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page" style="padding-right:0;"><section style="display:;"><div class="page-title"><h1 class="title">20240228-NIO技术概览</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>ccnaive</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>2024/2/28</span></i> <!----> <!----></div></div> <div class="theme-reco-content content__default"><blockquote><p><a href="https://www.jb51.net/article/48304.htm" target="_blank" rel="noopener noreferrer">JAVA8 十大新特性详解_java_脚本之家 (jb51.net)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <div class="language- extra-class"><pre class="language-text"><code>一、接口的默认方法
+
+Java 8允许我们给接口添加一个非抽象的方法实现，只需要使用 default关键字即可，这个特征又叫做扩展方法，示例如下：
+
+复制代码代码如下:
+
+interface Formula {
+    double calculate(int a);
+    default double sqrt(int a) {
+        return Math.sqrt(a);
+    }
+}
+
+
+Formula接口在拥有calculate方法之外同时还定义了sqrt方法，实现了Formula接口的子类只需要实现一个calculate方法，默认方法sqrt将在子类上可以直接使用。
+复制代码代码如下:
+
+Formula formula = new Formula() {
+    @Override
+    public double calculate(int a) {
+        return sqrt(a * 100);
+    }
+};
+formula.calculate(100);     // 100.0
+formula.sqrt(16);           // 4.0
+
+
+文中的formula被实现为一个匿名类的实例，该代码非常容易理解，6行代码实现了计算 sqrt(a * 100)。在下一节中，我们将会看到实现单方法接口的更简单的做法。
+译者注： 在Java中只有单继承，如果要让一个类赋予新的特性，通常是使用接口来实现，在C++中支持多继承，允许一个子类同时具有多个父类的接口与功能，在其他语言中，让一个类同时具有其他的可复用代码的方法叫做mixin。新的Java 8 的这个特新在编译器实现的角度上来说更加接近Scala的trait。 在C#中也有名为扩展方法的概念，允许给已存在的类型扩展方法，和Java 8的这个在语义上有差别。
+
+二、Lambda 表达式
+
+首先看看在老版本的Java中是如何排列字符串的：
+
+复制代码代码如下:
+
+List&lt;String&gt; names = Arrays.asList(&quot;peter&quot;, &quot;anna&quot;, &quot;mike&quot;, &quot;xenia&quot;);
+Collections.sort(names, new Comparator&lt;String&gt;() {
+    @Override
+    public int compare(String a, String b) {
+        return b.compareTo(a);
+    }
+});
+
+
+只需要给静态方法 Collections.sort 传入一个List对象以及一个比较器来按指定顺序排列。通常做法都是创建一个匿名的比较器对象然后将其传递给sort方法。
+在Java 8 中你就没必要使用这种传统的匿名对象的方式了，Java 8提供了更简洁的语法，lambda表达式：
+
+复制代码代码如下:
+
+Collections.sort(names, (String a, String b) -&gt; {
+    return b.compareTo(a);
+});
+
+看到了吧，代码变得更段且更具有可读性，但是实际上还可以写得更短：
+复制代码代码如下:
+
+Collections.sort(names, (String a, String b) -&gt; b.compareTo(a));
+
+对于函数体只有一行代码的，你可以去掉大括号{}以及return关键字，但是你还可以写得更短点：
+复制代码代码如下:
+
+Collections.sort(names, (a, b) -&gt; b.compareTo(a));
+
+Java编译器可以自动推导出参数类型，所以你可以不用再写一次类型。接下来我们看看lambda表达式还能作出什么更方便的东西来：
+
+三、函数式接口
+
+Lambda表达式是如何在java的类型系统中表示的呢？每一个lambda表达式都对应一个类型，通常是接口类型。而“函数式接口”是指仅仅只包含一个抽象方法的接口，每一个该类型的lambda表达式都会被匹配到这个抽象方法。因为 默认方法 不算抽象方法，所以你也可以给你的函数式接口添加默认方法。
+我们可以将lambda表达式当作任意只包含一个抽象方法的接口类型，确保你的接口一定达到这个要求，你只需要给你的接口添加 @FunctionalInterface 注解，编译器如果发现你标注了这个注解的接口有多于一个抽象方法的时候会报错的。
+
+示例如下：
+
+复制代码代码如下:
+
+@FunctionalInterface
+interface Converter&lt;F, T&gt; {
+    T convert(F from);
+}
+Converter&lt;String, Integer&gt; converter = (from) -&gt; Integer.valueOf(from);
+Integer converted = converter.convert(&quot;123&quot;);
+System.out.println(converted);    // 123
+
+需要注意如果@FunctionalInterface如果没有指定，上面的代码也是对的。
+译者注 将lambda表达式映射到一个单方法的接口上，这种做法在Java 8之前就有别的语言实现，比如Rhino JavaScript解释器，如果一个函数参数接收一个单方法的接口而你传递的是一个function，Rhino 解释器会自动做一个单接口的实例到function的适配器，典型的应用场景有 org.w3c.dom.events.EventTarget 的addEventListener 第二个参数 EventListener。
+
+四、方法与构造函数引用
+
+前一节中的代码还可以通过静态方法引用来表示：
+
+复制代码代码如下:
+
+Converter&lt;String, Integer&gt; converter = Integer::valueOf;
+Integer converted = converter.convert(&quot;123&quot;);
+System.out.println(converted);   // 123
+
+Java 8 允许你使用 :: 关键字来传递方法或者构造函数引用，上面的代码展示了如何引用一个静态方法，我们也可以引用一个对象的方法：
+复制代码代码如下:
+
+ converter = something::startsWith;
+String converted = converter.convert(&quot;Java&quot;);
+System.out.println(converted);    // &quot;J&quot;
+
+接下来看看构造函数是如何使用::关键字来引用的，首先我们定义一个包含多个构造函数的简单类：
+复制代码代码如下:
+
+class Person {
+    String firstName;
+    String lastName;
+    Person() {}
+
+    Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+}
+
+
+接下来我们指定一个用来创建Person对象的对象工厂接口：
+复制代码代码如下:
+
+interface PersonFactory&lt;P extends Person&gt; {
+    P create(String firstName, String lastName);
+}
+
+这里我们使用构造函数引用来将他们关联起来，而不是实现一个完整的工厂：
+复制代码代码如下:
+
+PersonFactory&lt;Person&gt; personFactory = Person::new;
+Person person = personFactory.create(&quot;Peter&quot;, &quot;Parker&quot;);
+
+我们只需要使用 Person::new 来获取Person类构造函数的引用，Java编译器会自动根据PersonFactory.create方法的签名来选择合适的构造函数。
+五、Lambda 作用域
+
+在lambda表达式中访问外层作用域和老版本的匿名对象中的方式很相似。你可以直接访问标记了final的外层局部变量，或者实例的字段以及静态变量。
+
+六、访问局部变量
+
+我们可以直接在lambda表达式中访问外层的局部变量：
+
+复制代码代码如下:
+
+final int num = 1;
+Converter&lt;Integer, String&gt; stringConverter =
+        (from) -&gt; String.valueOf(from + num);
+stringConverter.convert(2);     // 3
+
+
+但是和匿名对象不同的是，这里的变量num可以不用声明为final，该代码同样正确：
+复制代码代码如下:
+
+int num = 1;
+Converter&lt;Integer, String&gt; stringConverter =
+        (from) -&gt; String.valueOf(from + num);
+stringConverter.convert(2);     // 3
+
+
+不过这里的num必须不可被后面的代码修改（即隐性的具有final的语义），例如下面的就无法编译：
+复制代码代码如下:
+
+int num = 1;
+Converter&lt;Integer, String&gt; stringConverter =
+        (from) -&gt; String.valueOf(from + num);
+num = 3;
+
+在lambda表达式中试图修改num同样是不允许的。
+
+七、访问对象字段与静态变量
+和本地变量不同的是，lambda内部对于实例的字段以及静态变量是即可读又可写。该行为和匿名对象是一致的：
+
+复制代码代码如下:
+class Lambda4 {
+    static int outerStaticNum;
+    int outerNum;
+    void testScopes() {
+        Converter&lt;Integer, String&gt; stringConverter1 = (from) -&gt; {
+            outerNum = 23;
+            return String.valueOf(from);
+        };
+
+        Converter&lt;Integer, String&gt; stringConverter2 = (from) -&gt; {
+            outerStaticNum = 72;
+            return String.valueOf(from);
+        };
+    }
+}
+
+
+
+八、访问接口的默认方法
+
+还记得第一节中的formula例子么，接口Formula定义了一个默认方法sqrt可以直接被formula的实例包括匿名对象访问到，但是在lambda表达式中这个是不行的。
+Lambda表达式中是无法访问到默认方法的，以下代码将无法编译：
+复制代码代码如下:
+
+Formula formula = (a) -&gt; sqrt( a * 100);
+Built-in Functional Interfaces
+
+JDK 1.8 API包含了很多内建的函数式接口，在老Java中常用到的比如Comparator或者Runnable接口，这些接口都增加了@FunctionalInterface注解以便能用在lambda上。
+Java 8 API同样还提供了很多全新的函数式接口来让工作更加方便，有一些接口是来自Google Guava库里的，即便你对这些很熟悉了，还是有必要看看这些是如何扩展到lambda上使用的。
+
+Predicate接口
+Predicate 接口只有一个参数，返回boolean类型。该接口包含多种默认方法来将Predicate组合成其他复杂的逻辑（比如：与，或，非）：
+
+复制代码代码如下:
+
+Predicate&lt;String&gt; predicate = (s) -&gt; s.length() &gt; 0;
+predicate.test(&quot;foo&quot;);              // true
+predicate.negate().test(&quot;foo&quot;);     // false
+
+Predicate&lt;Boolean&gt; nonNull = Objects::nonNull;
+Predicate&lt;Boolean&gt; isNull = Objects::isNull;
+
+Predicate&lt;String&gt; isEmpty = String::isEmpty;
+Predicate&lt;String&gt; isNotEmpty = isEmpty.negate();
+
+
+
+Function 接口
+Function 接口有一个参数并且返回一个结果，并附带了一些可以和其他函数组合的默认方法（compose, andThen）：
+
+复制代码代码如下:
+
+Function&lt;String, Integer&gt; toInteger = Integer::valueOf;
+Function&lt;String, String&gt; backToString = toInteger.andThen(String::valueOf);
+backToString.apply(&quot;123&quot;);     // &quot;123&quot;
+
+
+
+Supplier 接口
+
+Supplier 接口返回一个任意范型的值，和Function接口不同的是该接口没有任何参数
+复制代码代码如下:
+
+Supplier&lt;Person&gt; personSupplier = Person::new;
+personSupplier.get();   // new Person
+
+
+Consumer 接口
+
+Consumer 接口表示执行在单个参数上的操作。
+复制代码代码如下:
+
+Consumer&lt;Person&gt; greeter = (p) -&gt; System.out.println(&quot;Hello, &quot; + p.firstName);
+greeter.accept(new Person(&quot;Luke&quot;, &quot;Skywalker&quot;));
+
+
+Comparator 接口
+
+Comparator 是老Java中的经典接口， Java 8在此之上添加了多种默认方法：
+复制代码代码如下:
+
+Comparator&lt;Person&gt; comparator = (p1, p2) -&gt; p1.firstName.compareTo(p2.firstName);
+Person p1 = new Person(&quot;John&quot;, &quot;Doe&quot;);
+Person p2 = new Person(&quot;Alice&quot;, &quot;Wonderland&quot;);
+
+comparator.compare(p1, p2);             // &gt; 0
+comparator.reversed().compare(p1, p2);  // &lt; 0
+
+
+
+Optional 接口
+Optional 不是函数是接口，这是个用来防止NullPointerException异常的辅助类型，这是下一届中将要用到的重要概念，现在先简单的看看这个接口能干什么：
+
+Optional 被定义为一个简单的容器，其值可能是null或者不是null。在Java 8之前一般某个函数应该返回非空对象但是偶尔却可能返回了null，而在Java 8中，不推荐你返回null而是返回Optional。
+
+复制代码代码如下:
+
+Optional&lt;String&gt; optional = Optional.of(&quot;bam&quot;);
+optional.isPresent();           // true
+optional.get();                 // &quot;bam&quot;
+optional.orElse(&quot;fallback&quot;);    // &quot;bam&quot;
+
+optional.ifPresent((s) -&gt; System.out.println(s.charAt(0)));     // &quot;b&quot;
+
+
+
+Stream 接口
+java.util.Stream 表示能应用在一组元素上一次执行的操作序列。Stream 操作分为中间操作或者最终操作两种，最终操作返回一特定类型的计算结果，而中间操作返回Stream本身，这样你就可以将多个操作依次串起来。Stream 的创建需要指定一个数据源，比如 java.util.Collection的子类，List或者Set， Map不支持。Stream的操作可以串行执行或者并行执行。
+
+首先看看Stream是怎么用，首先创建实例代码的用到的数据List：
+
+复制代码代码如下:
+
+List&lt;String&gt; stringCollection = new ArrayList&lt;&gt;();
+stringCollection.add(&quot;ddd2&quot;);
+stringCollection.add(&quot;aaa2&quot;);
+stringCollection.add(&quot;bbb1&quot;);
+stringCollection.add(&quot;aaa1&quot;);
+stringCollection.add(&quot;bbb3&quot;);
+stringCollection.add(&quot;ccc&quot;);
+stringCollection.add(&quot;bbb2&quot;);
+stringCollection.add(&quot;ddd1&quot;);
+
+Java 8扩展了集合类，可以通过 Collection.stream() 或者 Collection.parallelStream() 来创建一个Stream。下面几节将详细解释常用的Stream操作：
+Filter 过滤
+
+过滤通过一个predicate接口来过滤并只保留符合条件的元素，该操作属于中间操作，所以我们可以在过滤后的结果来应用其他Stream操作（比如forEach）。forEach需要一个函数来对过滤后的元素依次执行。forEach是一个最终操作，所以我们不能在forEach之后来执行其他Stream操作。
+
+复制代码代码如下:
+
+stringCollection
+    .stream()
+    .filter((s) -&gt; s.startsWith(&quot;a&quot;))
+    .forEach(System.out::println);
+// &quot;aaa2&quot;, &quot;aaa1&quot;
+
+
+
+Sort 排序
+排序是一个中间操作，返回的是排序好后的Stream。如果你不指定一个自定义的Comparator则会使用默认排序。
+
+复制代码代码如下:
+
+stringCollection
+    .stream()
+    .sorted()
+    .filter((s) -&gt; s.startsWith(&quot;a&quot;))
+    .forEach(System.out::println);
+// &quot;aaa1&quot;, &quot;aaa2&quot;
+
+
+需要注意的是，排序只创建了一个排列好后的Stream，而不会影响原有的数据源，排序之后原数据stringCollection是不会被修改的：
+复制代码代码如下:
+
+System.out.println(stringCollection);
+// ddd2, aaa2, bbb1, aaa1, bbb3, ccc, bbb2, ddd1
+
+
+Map 映射
+
+中间操作map会将元素根据指定的Function接口来依次将元素转成另外的对象，下面的示例展示了将字符串转换为大写字符串。你也可以通过map来讲对象转换成其他类型，map返回的Stream类型是根据你map传递进去的函数的返回值决定的。
+复制代码代码如下:
+
+stringCollection
+    .stream()
+    .map(String::toUpperCase)
+    .sorted((a, b) -&gt; b.compareTo(a))
+    .forEach(System.out::println);
+// &quot;DDD2&quot;, &quot;DDD1&quot;, &quot;CCC&quot;, &quot;BBB3&quot;, &quot;BBB2&quot;, &quot;AAA2&quot;, &quot;AAA1&quot;
+
+
+
+Match 匹配
+Stream提供了多种匹配操作，允许检测指定的Predicate是否匹配整个Stream。所有的匹配操作都是最终操作，并返回一个boolean类型的值。
+
+复制代码代码如下:
+
+boolean anyStartsWithA =
+    stringCollection
+        .stream()
+        .anyMatch((s) -&gt; s.startsWith(&quot;a&quot;));
+System.out.println(anyStartsWithA);      // true
+
+boolean allStartsWithA =
+    stringCollection
+        .stream()
+        .allMatch((s) -&gt; s.startsWith(&quot;a&quot;));
+
+System.out.println(allStartsWithA);      // false
+
+boolean noneStartsWithZ =
+    stringCollection
+        .stream()
+        .noneMatch((s) -&gt; s.startsWith(&quot;z&quot;));
+
+System.out.println(noneStartsWithZ);      // true
+
+Count 计数
+
+计数是一个最终操作，返回Stream中元素的个数，返回值类型是long。
+
+复制代码代码如下:
+
+long startsWithB =
+    stringCollection
+        .stream()
+        .filter((s) -&gt; s.startsWith(&quot;b&quot;))
+        .count();
+System.out.println(startsWithB);    // 3
+
+
+
+Reduce 规约
+这是一个最终操作，允许通过指定的函数来讲stream中的多个元素规约为一个元素，规越后的结果是通过Optional接口表示的：
+
+复制代码代码如下:
+
+Optional&lt;String&gt; reduced =
+    stringCollection
+        .stream()
+        .sorted()
+        .reduce((s1, s2) -&gt; s1 + &quot;#&quot; + s2);
+reduced.ifPresent(System.out::println);
+// &quot;aaa1#aaa2#bbb1#bbb2#bbb3#ccc#ddd1#ddd2&quot;
+
+
+
+并行Streams
+前面提到过Stream有串行和并行两种，串行Stream上的操作是在一个线程中依次完成，而并行Stream则是在多个线程上同时执行。
+
+下面的例子展示了是如何通过并行Stream来提升性能：
+
+首先我们创建一个没有重复元素的大表：
+
+复制代码代码如下:
+
+int max = 1000000;
+List&lt;String&gt; values = new ArrayList&lt;&gt;(max);
+for (int i = 0; i &lt; max; i++) {
+    UUID uuid = UUID.randomUUID();
+    values.add(uuid.toString());
+}
+
+然后我们计算一下排序这个Stream要耗时多久，
+串行排序：
+复制代码代码如下:
+
+long t0 = System.nanoTime();
+long count = values.stream().sorted().count();
+System.out.println(count);
+
+long t1 = System.nanoTime();
+
+long millis = TimeUnit.NANOSECONDS.toMillis(t1 - t0);
+System.out.println(String.format(&quot;sequential sort took: %d ms&quot;, millis));
+
+// 串行耗时: 899 ms
+并行排序：
+
+复制代码代码如下:
+
+long t0 = System.nanoTime();
+long count = values.parallelStream().sorted().count();
+System.out.println(count);
+
+long t1 = System.nanoTime();
+
+long millis = TimeUnit.NANOSECONDS.toMillis(t1 - t0);
+System.out.println(String.format(&quot;parallel sort took: %d ms&quot;, millis));
+
+// 并行排序耗时: 472 ms
+上面两个代码几乎是一样的，但是并行版的快了50%之多，唯一需要做的改动就是将stream()改为parallelStream()。
+
+Map
+
+前面提到过，Map类型不支持stream，不过Map提供了一些新的有用的方法来处理一些日常任务。
+
+复制代码代码如下:
+
+Map&lt;Integer, String&gt; map = new HashMap&lt;&gt;();
+for (int i = 0; i &lt; 10; i++) {
+    map.putIfAbsent(i, &quot;val&quot; + i);
+}
+
+map.forEach((id, val) -&gt; System.out.println(val));
+以上代码很容易理解， putIfAbsent 不需要我们做额外的存在性检查，而forEach则接收一个Consumer接口来对map里的每一个键值对进行操作。
+
+下面的例子展示了map上的其他有用的函数：
+
+复制代码代码如下:
+
+map.computeIfPresent(3, (num, val) -&gt; val + num);
+map.get(3);             // val33
+map.computeIfPresent(9, (num, val) -&gt; null);
+map.containsKey(9);     // false
+
+map.computeIfAbsent(23, num -&gt; &quot;val&quot; + num);
+map.containsKey(23);    // true
+
+map.computeIfAbsent(3, num -&gt; &quot;bam&quot;);
+map.get(3);             // val33
+
+
+接下来展示如何在Map里删除一个键值全都匹配的项：
+复制代码代码如下:
+
+map.remove(3, &quot;val3&quot;);
+map.get(3);             // val33
+map.remove(3, &quot;val33&quot;);
+map.get(3);             // null
+
+
+另外一个有用的方法：
+复制代码代码如下:
+
+map.getOrDefault(42, &quot;not found&quot;);  // not found
+
+对Map的元素做合并也变得很容易了：
+复制代码代码如下:
+
+map.merge(9, &quot;val9&quot;, (value, newValue) -&gt; value.concat(newValue));
+map.get(9);             // val9
+map.merge(9, &quot;concat&quot;, (value, newValue) -&gt; value.concat(newValue));
+map.get(9);             // val9concat
+
+
+Merge做的事情是如果键名不存在则插入，否则则对原键对应的值做合并操作并重新插入到map中。
+九、Date API
+
+Java 8 在包java.time下包含了一组全新的时间日期API。新的日期API和开源的Joda-Time库差不多，但又不完全一样，下面的例子展示了这组新API里最重要的一些部分：
+
+Clock 时钟
+
+Clock类提供了访问当前日期和时间的方法，Clock是时区敏感的，可以用来取代 System.currentTimeMillis() 来获取当前的微秒数。某一个特定的时间点也可以使用Instant类来表示，Instant类也可以用来创建老的java.util.Date对象。
+
+复制代码代码如下:
+
+Clock clock = Clock.systemDefaultZone();
+long millis = clock.millis();
+Instant instant = clock.instant();
+Date legacyDate = Date.from(instant);   // legacy java.util.Date
+
+
+
+Timezones 时区
+在新API中时区使用ZoneId来表示。时区可以很方便的使用静态方法of来获取到。 时区定义了到UTS时间的时间差，在Instant时间点对象到本地日期对象之间转换的时候是极其重要的。
+
+复制代码代码如下:
+
+System.out.println(ZoneId.getAvailableZoneIds());
+// prints all available timezone ids
+ZoneId zone1 = ZoneId.of(&quot;Europe/Berlin&quot;);
+ZoneId zone2 = ZoneId.of(&quot;Brazil/East&quot;);
+System.out.println(zone1.getRules());
+System.out.println(zone2.getRules());
+
+// ZoneRules[currentStandardOffset=+01:00]
+// ZoneRules[currentStandardOffset=-03:00]
+
+
+
+LocalTime 本地时间
+LocalTime 定义了一个没有时区信息的时间，例如 晚上10点，或者 17:30:15。下面的例子使用前面代码创建的时区创建了两个本地时间。之后比较时间并以小时和分钟为单位计算两个时间的时间差：
+
+复制代码代码如下:
+
+LocalTime now1 = LocalTime.now(zone1);
+LocalTime now2 = LocalTime.now(zone2);
+System.out.println(now1.isBefore(now2));  // false
+
+long hoursBetween = ChronoUnit.HOURS.between(now1, now2);
+long minutesBetween = ChronoUnit.MINUTES.between(now1, now2);
+
+System.out.println(hoursBetween);       // -3
+System.out.println(minutesBetween);     // -239
+
+
+LocalTime 提供了多种工厂方法来简化对象的创建，包括解析时间字符串。
+复制代码代码如下:
+
+LocalTime late = LocalTime.of(23, 59, 59);
+System.out.println(late);       // 23:59:59
+DateTimeFormatter germanFormatter =
+    DateTimeFormatter
+        .ofLocalizedTime(FormatStyle.SHORT)
+        .withLocale(Locale.GERMAN);
+
+LocalTime leetTime = LocalTime.parse(&quot;13:37&quot;, germanFormatter);
+System.out.println(leetTime);   // 13:37
+
+
+LocalDate 本地日期
+
+LocalDate 表示了一个确切的日期，比如 2014-03-11。该对象值是不可变的，用起来和LocalTime基本一致。下面的例子展示了如何给Date对象加减天/月/年。另外要注意的是这些对象是不可变的，操作返回的总是一个新实例。
+
+复制代码代码如下:
+
+LocalDate today = LocalDate.now();
+LocalDate tomorrow = today.plus(1, ChronoUnit.DAYS);
+LocalDate yesterday = tomorrow.minusDays(2);
+LocalDate independenceDay = LocalDate.of(2014, Month.JULY, 4);
+DayOfWeek dayOfWeek = independenceDay.getDayOfWeek();
+
+
+System.out.println(dayOfWeek);    // FRIDAY
+从字符串解析一个LocalDate类型和解析LocalTime一样简单：
+复制代码代码如下:
+
+DateTimeFormatter germanFormatter =
+    DateTimeFormatter
+        .ofLocalizedDate(FormatStyle.MEDIUM)
+        .withLocale(Locale.GERMAN);
+LocalDate xmas = LocalDate.parse(&quot;24.12.2014&quot;, germanFormatter);
+System.out.println(xmas);   // 2014-12-24
+
+
+
+LocalDateTime 本地日期时间
+LocalDateTime 同时表示了时间和日期，相当于前两节内容合并到一个对象上了。LocalDateTime和LocalTime还有LocalDate一样，都是不可变的。LocalDateTime提供了一些能访问具体字段的方法。
+
+复制代码代码如下:
+
+LocalDateTime sylvester = LocalDateTime.of(2014, Month.DECEMBER, 31, 23, 59, 59);
+DayOfWeek dayOfWeek = sylvester.getDayOfWeek();
+System.out.println(dayOfWeek);      // WEDNESDAY
+
+Month month = sylvester.getMonth();
+System.out.println(month);          // DECEMBER
+
+long minuteOfDay = sylvester.getLong(ChronoField.MINUTE_OF_DAY);
+System.out.println(minuteOfDay);    // 1439
+
+
+只要附加上时区信息，就可以将其转换为一个时间点Instant对象，Instant时间点对象可以很容易的转换为老式的java.util.Date。
+复制代码代码如下:
+
+Instant instant = sylvester
+        .atZone(ZoneId.systemDefault())
+        .toInstant();
+Date legacyDate = Date.from(instant);
+System.out.println(legacyDate);     // Wed Dec 31 23:59:59 CET 2014
+
+
+格式化LocalDateTime和格式化时间和日期一样的，除了使用预定义好的格式外，我们也可以自己定义格式：
+复制代码代码如下:
+
+DateTimeFormatter formatter =
+    DateTimeFormatter
+        .ofPattern(&quot;MMM dd, yyyy - HH:mm&quot;);
+LocalDateTime parsed = LocalDateTime.parse(&quot;Nov 03, 2014 - 07:13&quot;, formatter);
+String string = formatter.format(parsed);
+System.out.println(string);     // Nov 03, 2014 - 07:13
+
+
+和java.text.NumberFormat不一样的是新版的DateTimeFormatter是不可变的，所以它是线程安全的。
+关于时间日期格式的详细信息：http://download.java.net/jdk8/docs/api/java/time/format/DateTimeFormatter.html
+十、Annotation 注解
+
+在Java 8中支持多重注解了，先看个例子来理解一下是什么意思。
+首先定义一个包装类Hints注解用来放置一组具体的Hint注解：
+
+复制代码代码如下:
+
+@interface Hints {
+    Hint[] value();
+}
+@Repeatable(Hints.class)
+@interface Hint {
+    String value();
+}
+
+
+Java 8允许我们把同一个类型的注解使用多次，只需要给该注解标注一下@Repeatable即可。
+例 1: 使用包装类当容器来存多个注解（老方法）
+
+复制代码代码如下:
+
+@Hints({@Hint(&quot;hint1&quot;), @Hint(&quot;hint2&quot;)})
+class Person {}
+
+例 2：使用多重注解（新方法）
+复制代码代码如下:
+
+@Hint(&quot;hint1&quot;)
+@Hint(&quot;hint2&quot;)
+class Person {}
+
+第二个例子里java编译器会隐性的帮你定义好@Hints注解，了解这一点有助于你用反射来获取这些信息：
+复制代码代码如下:
+
+Hint hint = Person.class.getAnnotation(Hint.class);
+System.out.println(hint);                   // null
+Hints hints1 = Person.class.getAnnotation(Hints.class);
+System.out.println(hints1.value().length);  // 2
+
+Hint[] hints2 = Person.class.getAnnotationsByType(Hint.class);
+System.out.println(hints2.length);          // 2
+
+
+即便我们没有在Person类上定义@Hints注解，我们还是可以通过 getAnnotation(Hints.class) 来获取 @Hints注解，更加方便的方法是使用 getAnnotationsByType 可以直接获取到所有的@Hint注解。
+另外Java 8的注解还增加到两种新的target上了：
+复制代码代码如下:
+
+@Target({ElementType.TYPE_PARAMETER, ElementType.TYPE_USE})
+@interface MyAnnotation {}
+
+关于Java 8的新特性就写到这了，肯定还有更多的特性等待发掘。JDK 1.8里还有很多很有用的东西，比如Arrays.parallelSort, StampedLock和CompletableFuture等等。
+</code></pre></div></div></section> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/Java/流水日记/20240226-jvm.html" class="prev">
+          20240226-jvm
+        </a></span> <span class="next"><a href="/Java/流水日记/20240228-NIO.html">
+          20240228-NIO
+        </a></span></p></div> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:0;" data-v-b57cc07c data-v-7dd95ae2></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.9ff2d364.js" defer></script><script src="/assets/js/3.531b82cf.js" defer></script><script src="/assets/js/1.66bfa7cb.js" defer></script><script src="/assets/js/67.8862ebfb.js" defer></script>
+  </body>
+</html>
